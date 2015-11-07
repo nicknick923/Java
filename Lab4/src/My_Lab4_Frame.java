@@ -19,6 +19,7 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
    public My_Lab4_Frame()
    {
       initComponents();
+      //jake sucks
       setSize(550, 450);  // change numbers here if you don't like size
       picfig = new PicFig(figPanel);
       stickfig = new StickFig(figPanel);
