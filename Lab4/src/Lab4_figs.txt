@@ -1,0 +1,64 @@
+CS 2430 - Lab 4 - Figures, Key Events, JPGs, Sounds
+Points: 5 [towards Program5's 30 point total]
+This is to be done as a team.
+This will be demo'ed when Program 5 is demo'ed.
+     Instructor has right to demo lab4 to himself prior to 
+              actual demo of program 5.
+
+C. Save/Build, then run. You should see the GOF bounce around.
+
+D. Add a handler for keyPressed for the figPanel
+      - while in design mode, select FigPanel 
+      - Right click on figPanel, choose Properties and then Events
+      - To the right of KeyPressed, select the "..."
+      - Click the "Add..." button, name the handler, myKeyAdapter
+      - In Source, window Copy/Paste the following to the myKeyAdapter handler:
+
+      stickfig.hide();
+      if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN )
+         stickfig.move(0, 10);
+      else if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP )
+         stickfig.move(0, -10);
+      else if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT )
+         stickfig.move(-10, 0);
+      else if ( evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT )
+         stickfig.move(10, 0);
+      stickfig.draw();
+      picfig.draw();
+
+
+E. In the init method, right after the line to start the timer, 
+   put the following:
+         figPanel.requestFocus();
+
+F. Save/Build, then run. Use the arrow keys to move the stick figure.
+
+G. Add the following at the end of the code in the actionPerfomed:
+        try
+        {
+           if( picfig.collidedWith(stickfig) )
+           {   
+              java.io.File soundFile = new java.io.File(
+                    "C:\\Windows\\Media\\chord.wav");
+              javax.sound.sampled.AudioInputStream audioIn = 
+                    javax.sound.sampled.AudioSystem.getAudioInputStream(
+                                                                  soundFile);
+              javax.sound.sampled.Clip clip = 
+                    javax.sound.sampled.AudioSystem.getClip();
+              
+              clip.open(audioIn);
+              clip.start();
+           }
+         }
+         catch ( Exception ex )
+         {
+            System.out.println(ex);
+         }
+
+
+H. Save/Build, then run. Try to stay away from the GOF!
+
+I. 
+   Add buttons to speed up and slow down the timer.  
+   Put at the end of each handler:  figPanel.requestFocus();
+
