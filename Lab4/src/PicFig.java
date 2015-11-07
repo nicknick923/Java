@@ -10,7 +10,7 @@ public class PicFig extends PFig
 
    public PicFig(Panel p)
    {
-      super(50,  50,  110,  78,  p );
+      super(50,  50,  80,  150,  p );
        try
        {
           File file = new File("gof.jpg");
