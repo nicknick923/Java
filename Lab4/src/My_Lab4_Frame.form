@@ -31,16 +31,13 @@
     <Property name="useNullLayout" type="boolean" value="true"/>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="figPanel">
+    <Container class="java.awt.Panel" name="figPanel">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c8" green="c8" red="c8" type="rgb"/>
-        </Property>
         <Property name="name" type="java.lang.String" value="figPanel" noResource="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="30" width="340" height="240"/>
+          <AbsoluteConstraints x="10" y="30" width="380" height="260"/>
         </Constraint>
       </Constraints>
 

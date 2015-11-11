@@ -34,7 +34,7 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
    private void initComponents()
    {
 
-      figPanel = new javax.swing.JPanel();
+      figPanel = new java.awt.Panel();
 
       setMinimumSize(new java.awt.Dimension(500, 500));
       setTitle("My Lab4 Frame");
@@ -47,10 +47,9 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
       });
       setLayout(null);
 
-      figPanel.setBackground(new java.awt.Color(200, 200, 200));
       figPanel.setName("figPanel"); // NOI18N
       add(figPanel);
-      figPanel.setBounds(10, 30, 340, 240);
+      figPanel.setBounds(10, 30, 380, 260);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -87,6 +86,6 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
-   private javax.swing.JPanel figPanel;
+   private java.awt.Panel figPanel;
    // End of variables declaration//GEN-END:variables
 }
