@@ -16,8 +16,6 @@ public abstract class PFigure implements Comparable
    protected int priority;       // Can use to determine "winner"
    protected Panel panel;        // Panel the figure lives on
 
-   penis
-   
    public PFigure ( int startX, int startY, int _width, int _height, 
                     int pr, Panel p )
    {
