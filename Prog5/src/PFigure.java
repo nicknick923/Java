@@ -17,7 +17,7 @@ public abstract class PFigure implements Comparable
    protected Panel panel;        // Panel the figure lives on
 
    //Jake Likes TH PP
-   
+   //Not as much as Nick likes it though...
    public PFigure ( int startX, int startY, int _width, int _height, 
                     int pr, Panel p )
    {
