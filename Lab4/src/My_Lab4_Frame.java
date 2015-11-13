@@ -37,7 +37,7 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
       figPanel = new java.awt.Panel();
 
       setMinimumSize(new java.awt.Dimension(500, 500));
-      setTitle("My Lab4 Frame");
+      setTitle("Prog5Prop");
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
