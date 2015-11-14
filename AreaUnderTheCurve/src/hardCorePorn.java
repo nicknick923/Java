@@ -28,6 +28,8 @@ private int startingX;
       cConstant = stdin.nextFloat();
       
       System.out.println(aMultiplier + "x^2+"+bMultiplier+"x+"+cConstant);
+      
+      //Hint: input the range
    }
    
 }
