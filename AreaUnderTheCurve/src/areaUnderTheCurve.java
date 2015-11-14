@@ -8,6 +8,6 @@ public class areaUnderTheCurve
 {
    public static void main(String args[])
    {
-      System.out.println("jake sucks a fat dick");
+      System.out.println("your a douche");
    }
 }
