@@ -9,20 +9,20 @@ import java.awt.Polygon;
  @author Nick Sosinski
  @author Jake Ira
  */
-public class xBoxDeathBox extends enemyFigure
+public class deathDroid extends enemyFigure
 {
 
    private static final int boxWidth = 100;
    private static final int boxHeight = 118;
 
-   public xBoxDeathBox(Panel p)
+   public deathDroid(Panel p)
    {
       super(0, 0, boxWidth, boxHeight, 1, p);
       int startingX = super.getRandom(0, p.getWidth() - boxWidth);
       int startingY = super.getRandom(0, p.getHeight() - boxHeight);
       move(startingX, startingY);
-      xVelocity = super.getRandom(-10, 10);
-      yVelocity = super.getRandom(-10, 10);
+      xVelocity = super.getRandom(-5, 5);
+      yVelocity = super.getRandom(-5, 5);
    }
 
    @Override
@@ -102,33 +102,33 @@ public class xBoxDeathBox extends enemyFigure
       //Draw the Left Antenna
       Polygon leftAntenna = new Polygon();
       leftAntenna.addPoint(
-            (int) (width * ((double) 154 / 547)),
-            (int) (height * ((double) 10 / 646)));
+            (int) (x + (width * ((double) 154 / 547))),
+            (int) (y + (height * ((double) 10 / 646))));
       leftAntenna.addPoint(
-            (int) (width * ((double) 168 / 547)),
-            (int) (height * ((double) 5 / 646)));
+            (int) (x + (width * ((double) 168 / 547))),
+            (int) (y + (height * ((double) 5 / 646))));
       leftAntenna.addPoint(
-            (int) (width * ((double) 198 / 547)),
-            (int) (height * ((double) 59 / 646)));
+            (int) (x + (width * ((double) 198 / 547))),
+            (int) (y + (height * ((double) 59 / 646))));
       leftAntenna.addPoint(
-            (int) (width * ((double) 189 / 547)),
-            (int) (height * ((double) 64 / 646)));
+            (int) (x + (width * ((double) 189 / 547))),
+            (int) (y + (height * ((double) 64 / 646))));
       g.fillPolygon(leftAntenna);
 
       //Draw the Right Antenna
       Polygon rightAntenna = new Polygon();
       rightAntenna.addPoint(
-            (int) (width * ((double) 388 / 547)),
-            (int) (height * ((double) 10 / 646)));
+            (int) (x + (width * ((double) 388 / 547))),
+            (int) (y + (height * ((double) 10 / 646))));
       rightAntenna.addPoint(
-            (int) (width * ((double) 379 / 547)),
-            (int) (height * ((double) 5 / 646)));
+            (int) (x + (width * ((double) 379 / 547))),
+            (int) (y + (height * ((double) 5 / 646))));
       rightAntenna.addPoint(
-            (int) (width * ((double) 349 / 547)),
-            (int) (height * ((double) 59 / 646)));
+            (int) (x + (width * ((double) 349 / 547))),
+            (int) (y + (height * ((double) 59 / 646))));
       rightAntenna.addPoint(
-            (int) (width * ((double) 358 / 547)),
-            (int) (height * ((double) 64 / 646)));
+            (int) (x + (width * ((double) 358 / 547))),
+            (int) (y + (height * ((double) 64 / 646))));
       g.fillPolygon(rightAntenna);
 
       //Draw the Left Eye

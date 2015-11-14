@@ -8,9 +8,8 @@ import java.awt.event.ActionEvent;
  */
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
-//private final teddyFig Teddy;
 private final listOfPFigures figureList;
-private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
+private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
 
    /**
     Creates new form Prog5GUI
@@ -126,7 +125,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
    private void addxBoxDeathBoxActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addxBoxDeathBoxActionPerformed
    {//GEN-HEADEREND:event_addxBoxDeathBoxActionPerformed
-      figureList.addFigure(new xBoxDeathBox(gamePanel));
+      figureList.addFigure(new deathDroid(gamePanel));
    }//GEN-LAST:event_addxBoxDeathBoxActionPerformed
 
    /**

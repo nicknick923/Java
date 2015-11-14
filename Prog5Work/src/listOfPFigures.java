@@ -1,5 +1,4 @@
 
-
 import java.awt.*;
 
 /**
@@ -12,7 +11,7 @@ import java.awt.*;
 public class listOfPFigures
 {
 
-   private final int figMax = 10;
+   private final int figMax = 50;
    private PFigure[] listOfFigures = new PFigure[figMax];
    private int figCount = 0;
    private Panel workingPanel;
@@ -39,6 +38,7 @@ public class listOfPFigures
          listOfFigures[i].move();
          listOfFigures[i].draw();
       }
+      avoidFlicker();
    }
 
    private void hideAll()
@@ -48,6 +48,13 @@ public class listOfPFigures
       g.setColor(workingPanel.getBackground());
       g.fillRect(0, 0, workingPanel.getWidth(), workingPanel.getHeight());
       g.setColor(oldColor);
+   }
+
+   private void avoidFlicker()
+   {
+      Graphics g = workingPanel.getGraphics();
+      g.setColor(workingPanel.getBackground());
+      g.fillRect(0, 0, 0, 0);
    }
 
    public void addFigure(PFigure inFigure)
