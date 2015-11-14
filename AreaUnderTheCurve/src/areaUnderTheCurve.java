@@ -9,20 +9,12 @@ import java.util.Scanner;
 public class areaUnderTheCurve
 {
 
-   private static Scanner stdin;
-
-   private int startingX;
-   private int endingX;
-   private int numberOfRectangles = 100000;
+   protected static Scanner stdin;
 
    public static void main(String args[])
    {
       stdin = new Scanner(System.in);
-      for(int i =0; i < 10; i++)
-         System.out.println(stdin.next());
-      
-      
-      //ax^2+bx+c
+      hardCorePorn sexyPorn = new hardCorePorn();
       
       
    }
