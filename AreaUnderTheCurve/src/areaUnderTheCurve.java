@@ -5,7 +5,7 @@
  @author Jake Ira
  */
 import java.util.Scanner;
-
+//i think jake is awesome
 public class areaUnderTheCurve
 {
 
