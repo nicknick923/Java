@@ -9,12 +9,12 @@ import java.util.StringTokenizer;
 public class hardCorePorn extends areaUnderTheCurve
 {
 
-   private int startingX;
-   private int endingX;
-   private int numberOfRectangles = 100000;
-   private float aMultiplier;
-   private float bMultiplier;
-   private float cConstant;
+   public int startingX;
+   public int endingX;
+   public int numberOfRectangles = 100000;
+   public float aMultiplier;
+   public float bMultiplier;
+   public float cConstant;
 
    public void run()
    {
@@ -33,44 +33,29 @@ public class hardCorePorn extends areaUnderTheCurve
 
       System.out.println(aMultiplier + "x^2+" + bMultiplier + "x+" + cConstant);
 
-      System.out.println("Input the range formatted like \"[2,3]\"");
+      System.out.println("Input the starting x value");
       //Hint: input the range
-      String range = stdin.nextLine();
-
-      StringTokenizer st = new StringTokenizer(range, "{},");
-      startingX = Integer.getInteger(st.nextToken());
-      endingX = Integer.getInteger(st.nextToken());
+      startingX = stdin.nextInt();
+      System.out.println("Input the starting ending x value");
+      endingX =  stdin.nextInt();
+      System.out.println(calcIntegral());
    }
 
    //Make (a) method(s) to calculate the area.
-   public float calcIntegral()
+   public double calcIntegral()
    {
       try
       {
          double cubicIntegralVal = aMultiplier / 3;
          double squaredIntegralVal = bMultiplier / 2;
-         int x = whatever;
-         double startingintegral = cubicIntegralVal * (startingX * startingX * startingX) + ;
-
-         return cubicIntegralVal + x ^ 3;
+         double startingIntegral = cubicIntegralVal * (startingX * startingX * startingX) + squaredIntegralVal * (startingX * startingX) + cConstant * (startingX);
+         double endingIntegral = cubicIntegralVal * (endingX * endingX * endingX) + squaredIntegralVal * (endingX * endingX) + cConstant * (endingX);
+         return endingIntegral - startingIntegral;
       }
       catch (Exception e)
       {
          return -1f;
       }
 
-   }
-
-   public float findArea() throws Exception
-   {
-      try
-      {
-
-         return -1f;
-      }
-      catch (Exception e)
-      {
-         throw e;
-      }
    }
 }
