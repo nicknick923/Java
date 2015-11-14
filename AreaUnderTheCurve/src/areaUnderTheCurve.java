@@ -20,5 +20,10 @@ public class areaUnderTheCurve
       stdin = new Scanner(System.in);
       for(int i =0; i < 10; i++)
          System.out.println(stdin.next());
+      
+      
+      //ax^2+bx+c
+      
+      
    }
 }
