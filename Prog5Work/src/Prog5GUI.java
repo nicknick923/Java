@@ -1,27 +1,29 @@
 
 import java.awt.event.ActionEvent;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
 
- @author Jake Ira
- @author Nick Sosinski
+ @author Nick
  */
-public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.ActionListener
+public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
+private final teddyFig Teddy;
 
-   private javax.swing.Timer moveTimer = new javax.swing.Timer(500, this);
-   private final PicFig picfig;
-   private final StickFig stickfig;
+private javax.swing.Timer moveTimer = new javax.swing.Timer(50, this);
 
    /**
-    Creates new form My_Lab4_Frame
+    Creates new form Prog5GUI
     */
-   public My_Lab4_Frame()
+   public Prog5GUI()
    {
       initComponents();
-      setSize(550, 450);  // change numbers here if you don't like size
-      picfig = new PicFig(figPanel);
-      stickfig = new StickFig(figPanel);
+      Teddy = new teddyFig(gamePanel);
       moveTimer.start();
    }
 
@@ -34,10 +36,9 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
    private void initComponents()
    {
 
-      figPanel = new java.awt.Panel();
+      gamePanel = new java.awt.Panel();
 
       setMinimumSize(new java.awt.Dimension(500, 500));
-      setTitle("Prog5Prop");
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -46,10 +47,8 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
          }
       });
       setLayout(null);
-
-      figPanel.setName("figPanel"); // NOI18N
-      add(figPanel);
-      figPanel.setBounds(10, 30, 380, 260);
+      add(gamePanel);
+      gamePanel.setBounds(20, 30, 360, 270);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -70,22 +69,19 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
       {
          public void run()
          {
-            new My_Lab4_Frame().setVisible(true);
+            new Prog5GUI().setVisible(true);
          }
       });
    }
-
    @Override
    public void actionPerformed(ActionEvent ae)
    {
-      picfig.hide();
-      picfig.move();
-      picfig.draw();
-      stickfig.draw();
+      Teddy.hide();
+      Teddy.move();
+      Teddy.draw();
    }
 
-
    // Variables declaration - do not modify//GEN-BEGIN:variables
-   private java.awt.Panel figPanel;
+   private java.awt.Panel gamePanel;
    // End of variables declaration//GEN-END:variables
 }

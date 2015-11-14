@@ -5,7 +5,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[500, 500]"/>
     </Property>
-    <Property name="title" type="java.lang.String" value="Prog5Prop"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -31,13 +30,10 @@
     <Property name="useNullLayout" type="boolean" value="true"/>
   </Layout>
   <SubComponents>
-    <Container class="java.awt.Panel" name="figPanel">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="figPanel" noResource="true"/>
-      </Properties>
+    <Container class="java.awt.Panel" name="gamePanel">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="30" width="380" height="260"/>
+          <AbsoluteConstraints x="20" y="30" width="360" height="270"/>
         </Constraint>
       </Constraints>
 
