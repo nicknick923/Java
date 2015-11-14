@@ -3,7 +3,8 @@ import java.awt.event.ActionEvent;
 
 /**
 
- @author Nick
+ @author Nick Sosinski
+ @author Jake Ira
  */
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
