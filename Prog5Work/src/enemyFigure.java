@@ -9,7 +9,6 @@ import java.util.Random;
  */
 public abstract class enemyFigure extends PFigure
 {
-
    protected int xVelocity;
    protected int yVelocity;
 
@@ -21,25 +20,17 @@ public abstract class enemyFigure extends PFigure
       super(xStart, yStart, inWidth, inHeight, enemyStrenght, p);
    }
 
-   protected int getRandom(int min, int max)
-   {
-      double randVal = randGen.nextDouble();
-      randVal = randVal * (double) (max - min);
-      randVal = randVal + (double) (min - 1);
-      return (((int) randVal) + 1);
-   }
-
    @Override
    public void move()
    {
       super.move(xVelocity, yVelocity);
       if (x < 0)
-         xVelocity = -xVelocity;
+         xVelocity = -1*xVelocity;
       else if ((x + width) > panel.getSize().width)
-         xVelocity = -xVelocity;
+         xVelocity = -1*xVelocity;
       if (y < 0)
-         yVelocity = -yVelocity;
+         yVelocity = (-1*yVelocity);
       else if ((y + height) >= panel.getSize().height)
-         yVelocity = -yVelocity;
+         yVelocity = (-1*yVelocity);
    }
 }
