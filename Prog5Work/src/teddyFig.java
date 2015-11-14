@@ -39,7 +39,7 @@ public class teddyFig extends PFigure
    public void draw()
    {
       Graphics g = panel.getGraphics();
-      g.setColor(Color.yellow);
+      g.setColor(Color.red);
       g.drawRect(x, y, width, height);
       g.setColor(Color.blue);
       g.drawOval(x, y, width/2, height/2);
