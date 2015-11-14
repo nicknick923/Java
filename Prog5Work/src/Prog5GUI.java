@@ -15,7 +15,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 {
 private final teddyFig Teddy;
 
-private javax.swing.Timer moveTimer = new javax.swing.Timer(50, this);
+private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
    /**
     Creates new form Prog5GUI
