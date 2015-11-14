@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
  */
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
-private final teddyFig Teddy;
+//private final teddyFig Teddy;
 private listOfPFigures figureList = new listOfPFigures();
 private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
@@ -23,8 +23,8 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    public Prog5GUI()
    {
       initComponents();
-      Teddy = new teddyFig(gamePanel);
-      figureList.addFigure(Teddy);
+      //Teddy = new teddyFig(gamePanel);
+      //figureList.addFigure(Teddy);
       moveTimer.start();
    }
 

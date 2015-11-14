@@ -8,11 +8,6 @@ public class teddyFig extends PFigure
    {
       super(200, 100, 80, 80, 1, p);
    }
-
-   public Point getLocation()
-   {
-      return new Point(x,y);
-   }
    
    @Override
    public void move(int deltaX, int deltaY)
