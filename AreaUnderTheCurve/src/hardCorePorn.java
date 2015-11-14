@@ -18,7 +18,6 @@ public class hardCorePorn extends areaUnderTheCurve
 
    public void run()
    {
-
       System.out.println("Example Equation Formula: ax^2+bx+c");
       //ax^2+bx+c
       //Hint: Don't forget to prompt the user!!!
