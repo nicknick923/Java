@@ -40,5 +40,14 @@ private int startingX;
    }
    
    //Make (a) method(s) to calculate the area.
+   public float calcIntegral()
+   {
+      
+      return -1f;
+   }
    
+   public float findArea()
+   {
+      
+   }
 }
