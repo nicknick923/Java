@@ -23,6 +23,7 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
       picfig = new PicFig(figPanel);
       stickfig = new StickFig(figPanel);
       moveTimer.start();
+      figPanel.requestFocus();
    }
 
    /**
@@ -35,6 +36,8 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
    {
 
       figPanel = new java.awt.Panel();
+      speedUpButton = new java.awt.Button();
+      slowDownButton = new java.awt.Button();
 
       setMinimumSize(new java.awt.Dimension(500, 500));
       setTitle("Prog5Prop");
@@ -48,8 +51,39 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
       setLayout(null);
 
       figPanel.setName("figPanel"); // NOI18N
+      figPanel.addKeyListener(new java.awt.event.KeyAdapter()
+      {
+         public void keyPressed(java.awt.event.KeyEvent evt)
+         {
+            myKeyAdapter(evt);
+         }
+      });
       add(figPanel);
       figPanel.setBounds(10, 30, 380, 260);
+
+      speedUpButton.setLabel("Speed Up");
+      speedUpButton.setName(""); // NOI18N
+      speedUpButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            speedUpButtonActionPerformed(evt);
+         }
+      });
+      add(speedUpButton);
+      speedUpButton.setBounds(20, 300, 80, 24);
+
+      slowDownButton.setActionCommand("slowDownButton");
+      slowDownButton.setLabel("Slow Down");
+      slowDownButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            slowDownButtonActionPerformed(evt);
+         }
+      });
+      add(slowDownButton);
+      slowDownButton.setBounds(120, 300, 80, 24);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -60,6 +94,44 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
        System.exit(0);
     }//GEN-LAST:event_exitForm
+
+   private void myKeyAdapter(java.awt.event.KeyEvent evt)//GEN-FIRST:event_myKeyAdapter
+   {//GEN-HEADEREND:event_myKeyAdapter
+      stickfig.hide();
+      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN)
+         stickfig.move(0, 10);
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP)
+         stickfig.move(0, -10);
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT)
+         stickfig.move(-10, 0);
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT)
+         stickfig.move(10, 0);
+      stickfig.draw();
+      picfig.draw();
+   }//GEN-LAST:event_myKeyAdapter
+
+   private void speedUpButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_speedUpButtonActionPerformed
+   {//GEN-HEADEREND:event_speedUpButtonActionPerformed
+      if (moveTimer.getDelay() > 50)
+      {
+         moveTimer.stop();
+         moveTimer.setDelay((moveTimer.getDelay() - 50));
+         moveTimer.start();
+      }
+      figPanel.requestFocus();
+
+   }//GEN-LAST:event_speedUpButtonActionPerformed
+
+   private void slowDownButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_slowDownButtonActionPerformed
+   {//GEN-HEADEREND:event_slowDownButtonActionPerformed
+      if (moveTimer.getDelay() < 1000)
+      {
+         moveTimer.stop();
+         moveTimer.setDelay((moveTimer.getDelay() + 50));
+         moveTimer.start();
+      }
+      figPanel.requestFocus();
+   }//GEN-LAST:event_slowDownButtonActionPerformed
 
    /**
     @param args the command line arguments
@@ -82,10 +154,32 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
       picfig.move();
       picfig.draw();
       stickfig.draw();
+      try
+      {
+         if (picfig.collidedWith(stickfig))
+         {
+            java.io.File soundFile = new java.io.File(
+                  "C:\\Windows\\Media\\Windows Critical Stop.wav");
+            javax.sound.sampled.AudioInputStream audioIn
+                  = javax.sound.sampled.AudioSystem.getAudioInputStream(
+                        soundFile);
+            javax.sound.sampled.Clip clip
+                  = javax.sound.sampled.AudioSystem.getClip();
+
+            clip.open(audioIn);
+            clip.start();
+         }
+      }
+      catch (Exception ex)
+      {
+         System.out.println(ex);
+      }
    }
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.Panel figPanel;
+   private java.awt.Button slowDownButton;
+   private java.awt.Button speedUpButton;
    // End of variables declaration//GEN-END:variables
 }
