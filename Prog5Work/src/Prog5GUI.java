@@ -104,7 +104,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
    private void clearAllFigsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllFigsActionPerformed
    {//GEN-HEADEREND:event_clearAllFigsActionPerformed
-      figureList.removeAllFigures();
+      figureList.removeAllFigures(gamePanel);
    }//GEN-LAST:event_clearAllFigsActionPerformed
 
    private void addFigureActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addFigureActionPerformed
