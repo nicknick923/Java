@@ -12,27 +12,23 @@ import java.awt.Polygon;
 public class xBoxDeathBox extends enemyFigure
 {
 
-   private static final int boxWidth = 300;
-   private static final int boxHeight = 354;
+   private static final int boxWidth = 100;
+   private static final int boxHeight = 118;
 
    public xBoxDeathBox(Panel p)
    {
       super(0, 0, boxWidth, boxHeight, 1, p);
       int startingX = super.getRandom(0, p.getWidth() - boxWidth);
       int startingY = super.getRandom(0, p.getHeight() - boxHeight);
-      //move(startingX, startingY);
+      move(startingX, startingY);
       xVelocity = super.getRandom(-10, 10);
       yVelocity = super.getRandom(-10, 10);
-      xVelocity = 0;
-      yVelocity = 0;
    }
 
    @Override
    public void draw()
    {
       Graphics g = panel.getGraphics();
-      g.setColor(Color.red);
-      g.drawRect(x, y, width, height);
       g.setColor(Color.green);
       //Draw the Body
       g.fillRoundRect(
