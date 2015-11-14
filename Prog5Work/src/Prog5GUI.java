@@ -8,8 +8,8 @@ import java.awt.event.ActionEvent;
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 //private final teddyFig Teddy;
-private listOfPFigures figureList;
-private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
+private final listOfPFigures figureList;
+private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
    /**
     Creates new form Prog5GUI
@@ -18,8 +18,6 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    {
       initComponents();
       figureList  = new listOfPFigures(gamePanel);
-      //Teddy = new teddyFig(gamePanel);
-      //figureList.addFigure(Teddy);
       moveTimer.start();
    }
 
