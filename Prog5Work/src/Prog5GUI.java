@@ -34,6 +34,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
       clearAllFigs = new java.awt.Button();
       addFigure = new java.awt.Button();
       addEnemy = new java.awt.Button();
+      addxBoxDeathBox = new java.awt.Button();
 
       setMinimumSize(new java.awt.Dimension(1000, 1000));
       addWindowListener(new java.awt.event.WindowAdapter()
@@ -85,6 +86,18 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
       add(addEnemy);
       addEnemy.setBounds(210, 600, 70, 24);
 
+      addxBoxDeathBox.setActionCommand("addxBoxDeathBox");
+      addxBoxDeathBox.setLabel("Add xBoxDeathBox");
+      addxBoxDeathBox.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            addxBoxDeathBoxActionPerformed(evt);
+         }
+      });
+      add(addxBoxDeathBox);
+      addxBoxDeathBox.setBounds(300, 600, 130, 24);
+
       pack();
    }// </editor-fold>//GEN-END:initComponents
 
@@ -110,6 +123,11 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
       figureList.addFigure(new deathBox(gamePanel));
    }//GEN-LAST:event_addEnemyActionPerformed
 
+   private void addxBoxDeathBoxActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addxBoxDeathBoxActionPerformed
+   {//GEN-HEADEREND:event_addxBoxDeathBoxActionPerformed
+      figureList.addFigure(new xBoxDeathBox(gamePanel));
+   }//GEN-LAST:event_addxBoxDeathBoxActionPerformed
+
    /**
     @param args the command line arguments
     */
@@ -132,6 +150,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.Button addEnemy;
    private java.awt.Button addFigure;
+   private java.awt.Button addxBoxDeathBox;
    private java.awt.Button clearAllFigs;
    private java.awt.Panel gamePanel;
    // End of variables declaration//GEN-END:variables

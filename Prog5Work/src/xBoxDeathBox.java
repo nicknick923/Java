@@ -2,19 +2,18 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Panel;
-import java.util.Random;
 
 /**
 
  @author Nick Sosinski
  @author Jake Ira
  */
-public class deathBox extends enemyFigure
+public class xBoxDeathBox extends enemyFigure
 {
 
    private static final int boxLength = 100;
    
-   public deathBox(Panel p)
+   public xBoxDeathBox(Panel p)
    {
       super(0, 0, boxLength, boxLength, 1, p);
       int startingX = super.getRandom(0, p.getWidth()-boxLength);
@@ -28,8 +27,8 @@ public class deathBox extends enemyFigure
    public void draw()
    {
       Graphics g = panel.getGraphics();
-      g.setColor(Color.orange);
-      g.fillRect(x, y, width, height);
+      g.setColor(Color.red);
+      g.drawRect(x, y, width, height);
    }
 
 }
