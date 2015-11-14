@@ -48,7 +48,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
       gamePanel.setBackground(new java.awt.Color(200, 200, 200));
       add(gamePanel);
-      gamePanel.setBounds(20, 30, 750, 560);
+      gamePanel.setBounds(20, 40, 750, 560);
 
       clearAllFigs.setActionCommand("clearAllFigs");
       clearAllFigs.setLabel("Clear All Figures");
@@ -60,7 +60,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
          }
       });
       add(clearAllFigs);
-      clearAllFigs.setBounds(100, 600, 100, 24);
+      clearAllFigs.setBounds(100, 610, 100, 24);
 
       addFigure.setActionCommand("addFig");
       addFigure.setLabel("Add Teddy");
@@ -72,7 +72,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
          }
       });
       add(addFigure);
-      addFigure.setBounds(20, 600, 73, 24);
+      addFigure.setBounds(20, 610, 73, 24);
 
       addEnemy.setActionCommand("addEnemy");
       addEnemy.setLabel("Add Enemy");
@@ -84,7 +84,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
          }
       });
       add(addEnemy);
-      addEnemy.setBounds(210, 600, 70, 24);
+      addEnemy.setBounds(210, 610, 70, 24);
 
       addxBoxDeathBox.setActionCommand("addxBoxDeathBox");
       addxBoxDeathBox.setLabel("Add xBoxDeathBox");
@@ -96,7 +96,7 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
          }
       });
       add(addxBoxDeathBox);
-      addxBoxDeathBox.setBounds(300, 600, 130, 24);
+      addxBoxDeathBox.setBounds(300, 610, 130, 24);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
