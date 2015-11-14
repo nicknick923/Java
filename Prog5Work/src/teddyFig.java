@@ -9,6 +9,7 @@ public class teddyFig extends PFigure
       super(200, 100, 80, 80, 1, p);
    }
 
+   @Override
    public void move(int deltaX, int deltaY)
    {
       super.move(deltaX, deltaY);
@@ -22,6 +23,7 @@ public class teddyFig extends PFigure
          y = -height / 2;
    }
 
+   @Override
    public void move()
    {
       super.move(-5, -5);
@@ -35,6 +37,7 @@ public class teddyFig extends PFigure
          y = 0;
    }
 
+   @Override
    public void draw()
    {
       Graphics g = panel.getGraphics();
@@ -48,17 +51,6 @@ public class teddyFig extends PFigure
       g.drawOval(x, y + height / 2, width / 2, height / 2);
       g.setColor(Color.cyan);
       g.drawOval(x + width / 2, y + height / 2, width / 2, height / 2);
-      /*
-       g.drawOval(x + (width / 4) , y + (1), width / 2, height / 2);
-       g.setColor(Color.red);
-       g.drawLine( x + width / 2, y + height / 2 + 1, x + width / 2, y + 3 * height / 4 );
-       g.setColor(Color.green);
-       g.drawLine( x + width / 4, y + 5 * height / 8 + 1, x + 3 * width / 4, y + 5 * height / 8 + 1);
-       g.setColor(Color.blue);
-       g.drawLine( x + width / 2, y + 3 * height / 4, x + width / 4, y + 7 * height / 8 );
-       g.drawLine( x + width / 2, y + 3 * height / 4, x + 3 * width / 4, y + 7 * height / 8 );
-       */
-
    }
 
 }
