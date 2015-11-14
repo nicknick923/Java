@@ -1,5 +1,6 @@
 
 import java.awt.Panel;
+import java.util.Random;
 
 /**
 
@@ -12,20 +13,20 @@ public abstract class enemyFigure extends PFigure
    protected int xVelocity;
    protected int yVelocity;
 
+   protected Random randGen = new Random();
+
    public enemyFigure(int xStart, int yStart, int width, int height,
          int enemyStrenght, Panel p)
    {
       super(xStart, yStart, width, height, enemyStrenght, p);
-      x = getRandom(0, p.getWidth());
-      y = getRandom(0, p.getHeight());
    }
 
    protected int getRandom(int min, int max)
    {
-      double randVal = Math.random();
-      randVal *= (max - min);
-      randVal += (min - 1);
-      return ((int) randVal) + 1;
+      double randVal = randGen.nextDouble();
+      randVal = randVal * (double) (max - min);
+      randVal = randVal + (double) (min - 1);
+      return (((int) randVal) + 1);
    }
 
    @Override
