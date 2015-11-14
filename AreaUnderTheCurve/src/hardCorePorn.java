@@ -3,6 +3,7 @@
  @author Jake Ira
  @author Nick Sosinski
  */
+import java.util.StringTokenizer;
 public class hardCorePorn extends areaUnderTheCurve
 {
 private int startingX;
@@ -29,7 +30,13 @@ private int startingX;
       
       System.out.println(aMultiplier + "x^2+"+bMultiplier+"x+"+cConstant);
       
+      System.out.println("Input the range formatted like \"[2,3]\"");
       //Hint: input the range
+      String range = stdin.nextLine();
+      
+      StringTokenizer st = new StringTokenizer(range, "{},");
+      startingX = Integer.getInteger(st.nextToken());
+      endingX = Integer.getInteger(st.nextToken());
    }
    
 }
