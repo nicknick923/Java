@@ -4,14 +4,19 @@
  @author Nick Sosinski
  @author Jake Ira
  */
+import java.util.Scanner;
+
 public class areaUnderTheCurve
 {
+
+   private static Scanner stdin;
+   
    private int startingX;
    private int endingX;
    private int numberOfRectangles = 100000;
-   
+
    public static void main(String args[])
    {
-      
-   }
+         stdin = new Scanner(System.in);
+   }  
 }
