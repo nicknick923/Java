@@ -1,6 +1,4 @@
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Panel;
 
 /**
@@ -42,15 +40,5 @@ public abstract class enemyFigure extends PFigure
          yVelocity = -yVelocity;
       else if ((y + height) > panel.getSize().height)
          yVelocity = -yVelocity;
-   }
-   
-    @Override
-   public void hide()
-   {
-      Graphics g = panel.getGraphics();
-      Color oldColor = g.getColor();
-      g.setColor(panel.getBackground());
-      g.fillRect(x, y, width, height);
-      g.setColor(oldColor);
    }
 }

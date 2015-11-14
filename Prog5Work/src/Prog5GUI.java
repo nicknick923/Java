@@ -54,7 +54,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
       gamePanel.setBackground(new java.awt.Color(200, 200, 200));
       add(gamePanel);
-      gamePanel.setBounds(20, 30, 360, 270);
+      gamePanel.setBounds(20, 30, 440, 330);
 
       clearAllFigs.setActionCommand("clearAllFigs");
       clearAllFigs.setLabel("Clear All Figures");
@@ -66,7 +66,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
          }
       });
       add(clearAllFigs);
-      clearAllFigs.setBounds(100, 310, 100, 24);
+      clearAllFigs.setBounds(90, 400, 100, 24);
 
       addFigure.setActionCommand("addFig");
       addFigure.setLabel("Add Teddy");
@@ -78,7 +78,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
          }
       });
       add(addFigure);
-      addFigure.setBounds(20, 310, 73, 24);
+      addFigure.setBounds(10, 400, 73, 24);
 
       addEnemy.setActionCommand("addEnemy");
       addEnemy.setLabel("Add Enemy");
@@ -90,7 +90,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
          }
       });
       add(addEnemy);
-      addEnemy.setBounds(210, 310, 70, 24);
+      addEnemy.setBounds(200, 400, 70, 24);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
