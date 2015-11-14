@@ -1,4 +1,5 @@
 
+import com.sun.javafx.Utils;
 import java.awt.*;
 
 public class teddyFig extends PFigure
@@ -43,7 +44,12 @@ public class teddyFig extends PFigure
       g.drawRect(x, y, width, height);
       g.setColor(Color.blue);
       g.drawOval(x, y, width/2, height/2);
-      
+      g.setColor(Color.green);
+      g.drawOval(x+width/2, y, width/2, height/2);
+      g.setColor(Color.magenta);
+      g.drawOval(x, y+height/2, width/2, height/2);
+      g.setColor(Color.cyan);
+      g.drawOval(x+width/2, y+height/2, width/2, height/2);
       /*
        g.drawOval(x + (width / 4) , y + (1), width / 2, height / 2);
        g.setColor(Color.red);
