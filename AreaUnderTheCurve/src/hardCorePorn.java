@@ -14,9 +14,7 @@ private int startingX;
    
    public void run()
    {
-      for(int i =0; i < 10; i++)
-         System.out.println(stdin.next());
-      
+   
       System.out.println("Example Equation Formula: ax^2+bx+c");
       //ax^2+bx+c
       //Hint: Don't forget to prompt the user!!!
@@ -28,6 +26,8 @@ private int startingX;
       
       System.err.println("Input c: ");
       cConstant = stdin.nextFloat();
+      
+      System.out.println(aMultiplier + "x^2+"+bMultiplier+"x+"+cConstant);
    }
    
 }
