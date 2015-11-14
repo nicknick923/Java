@@ -9,6 +9,8 @@ private int startingX;
    private int endingX;
    private int numberOfRectangles = 100000;
    private float aMultiplier;
+   private float bMultiplier;
+   private float cConstant;
    
    public void run()
    {
@@ -22,10 +24,10 @@ private int startingX;
       aMultiplier = stdin.nextFloat();
       
       System.err.println("Input b: ");
-      int bMultiplier = stdin.nextInt();
+      bMultiplier = stdin.nextFloat();
       
       System.err.println("Input c: ");
-      int cConstant = stdin.nextInt();
+      cConstant = stdin.nextFloat();
    }
    
 }

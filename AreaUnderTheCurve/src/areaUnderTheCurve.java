@@ -15,7 +15,7 @@ public class areaUnderTheCurve
    {
       stdin = new Scanner(System.in);
       hardCorePorn sexyPorn = new hardCorePorn();
-      
+      sexyPorn.run();
       
    }
 }
