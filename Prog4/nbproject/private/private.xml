@@ -12,7 +12,10 @@
         </group>
         <group name="Java"/>
         <group name="Jake"/>
-        <group/>
         <group name="NickAndJake"/>
+        <group>
+            <file>file:/C:/Users/Jacob/GitHub/NickAndJake/Prog4/src/ConsoleSimulation.java</file>
+            <file>file:/C:/Users/Jacob/GitHub/NickAndJake/Prog4/src/Customer.java</file>
+        </group>
     </open-files>
 </project-private>
