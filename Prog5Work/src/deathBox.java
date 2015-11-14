@@ -16,9 +16,9 @@ public class deathBox extends enemyFigure
       super(0, 0, 80, 80, 1, p);
       int startingX = getRandom(0, p.getWidth());
       int startingY = getRandom(0, p.getHeight());
-      move(startingX, startingY);
       xVelocity = getRandom(-10, 10);
       yVelocity = getRandom(-10, 10);
+      move(startingX, startingY);
    }
 
    @Override
