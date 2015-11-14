@@ -51,7 +51,7 @@ public abstract class PFigure implements Comparable
       x = x + deltaX;
       y = y + deltaY;
    }
-   
+
    public void hide()
    {
       Graphics g = panel.getGraphics();
