@@ -4,7 +4,7 @@ import java.awt.*;
 public class teddyFig extends PFigure
 {
 
-   //i will suck your tits
+   //i will suck your big tits
    
    public teddyFig(Panel p)
    {
