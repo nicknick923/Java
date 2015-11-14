@@ -40,6 +40,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
       gamePanel = new java.awt.Panel();
       clearAllFigs = new java.awt.Button();
       addFigure = new java.awt.Button();
+      addEnemy = new java.awt.Button();
 
       setMinimumSize(new java.awt.Dimension(500, 500));
       addWindowListener(new java.awt.event.WindowAdapter()
@@ -79,6 +80,18 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
       add(addFigure);
       addFigure.setBounds(20, 310, 73, 24);
 
+      addEnemy.setActionCommand("addEnemy");
+      addEnemy.setLabel("Add Enemy");
+      addEnemy.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            addEnemyActionPerformed(evt);
+         }
+      });
+      add(addEnemy);
+      addEnemy.setBounds(210, 310, 70, 24);
+
       pack();
    }// </editor-fold>//GEN-END:initComponents
 
@@ -98,6 +111,11 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    {//GEN-HEADEREND:event_addFigureActionPerformed
       figureList.addFigure(new teddyFig(gamePanel));
    }//GEN-LAST:event_addFigureActionPerformed
+
+   private void addEnemyActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addEnemyActionPerformed
+   {//GEN-HEADEREND:event_addEnemyActionPerformed
+      figureList.addFigure(new deathBox(gamePanel));
+   }//GEN-LAST:event_addEnemyActionPerformed
 
    /**
     @param args the command line arguments
@@ -119,6 +137,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private java.awt.Button addEnemy;
    private java.awt.Button addFigure;
    private java.awt.Button clearAllFigs;
    private java.awt.Panel gamePanel;

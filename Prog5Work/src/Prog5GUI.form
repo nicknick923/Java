@@ -72,5 +72,19 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="java.awt.Button" name="addEnemy">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value="addEnemy"/>
+        <Property name="label" type="java.lang.String" value="Add Enemy"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addEnemyActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="210" y="310" width="70" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>
