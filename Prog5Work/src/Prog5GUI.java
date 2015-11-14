@@ -24,6 +24,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    {
       initComponents();
       Teddy = new teddyFig(gamePanel);
+      
       moveTimer.start();
    }
 
