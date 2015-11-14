@@ -1,0 +1,86 @@
+CS 2430 - Lab 1 - To Get you started on Program 1  
+
+For this lab, you will be starting Program 1.  
+
+0. You must use CSSE Hub to keep an up-to-date log of the time spent working.
+   You must use the automatic punch in and punch out when possible.
+
+   Make sure that you log your time for project named: Prog1.
+
+   Provide specific comments about what you worked on during that period.
+   Access CSSE Hub from http://www.uwplatt.edu/csse page, choose Resources,
+   then CSSE Course Materials and then "CSSE Hub".
+
+
+1. On your J drive, make a Prog1 folder.   
+
+2. Follow the directions as in the Program 0 description to make  project 
+   and add Prog1.java to it by copying it into the src folder. 
+
+3. The next 2 steps help you to create two files:
+       Device.java and DeviceManager.java
+
+4. Start the class for DeviceManager.java.  Use File/New File to create it.
+   Select Java for Cagegory and Java Class for File type.
+   Click Next button and for Class Name type in:    DeviceManager
+
+   Copy and paste the following into your class.  
+   Make sure to NOT have 2 lines of "public class DeviceManager"
+   and correct number of matching curly braces.
+
+import java.util.Scanner;
+public class DeviceManager
+{
+       
+   public void run()
+   {
+      System.out.println("In the run method");
+   }
+}
+
+This is a "STUB" for the run method.  Later, we will use the run method as 
+a "DRIVER" to test methods in Device.java.  Save, then add this file 
+to your project.  
+
+Build & run Prog1.  
+                                             
+5. Start the class for Device.java as done in the step above.
+
+
+public class Device
+{
+   private String name;         // name of the Device
+   private float readings[];    // array of readings
+   private int curIndex;        // index where next reading goes
+
+   // Initialize name to deviceName, curindex to zero
+   // Create an array of numReadings float value [Hint: use new] 
+   // Initialize all elements of the array to zero.
+   public Device ( String deviceName, int numReadings, float initValue  )
+   {
+
+
+
+
+
+
+
+   }
+
+}
+
+Build and run.  
+
+6. Adding in methods one at a time.  Do the toString method first.
+      a. Add a toString method to Device (see Prog1 description &
+         see the notes.)
+      b. Add the following code to the DeviceManager run method:
+         Device myDevice = new Device( "Speedometer", 5, 0.0 );
+         System.out.println(myDevice);      
+      c. Compile until all errors are gone, then RUN it.
+
+7. Add in the other 2 methods one at a time, as in 6 above. See the
+Program 1 description for hints as to what the code does.
+For each method you write, add a call in the DeviceManager run method 
+to call the method and write the results (a simple TEST of the method).  
+Then compile, run to see that each one works. 
