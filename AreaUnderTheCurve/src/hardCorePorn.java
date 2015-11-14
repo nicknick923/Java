@@ -29,7 +29,7 @@ private int startingX;
       cConstant = stdin.nextFloat();
       
       System.out.println(aMultiplier + "x^2+"+bMultiplier+"x+"+cConstant);
-      
+
       System.out.println("Input the range formatted like \"[2,3]\"");
       //Hint: input the range
       String range = stdin.nextLine();
@@ -38,5 +38,7 @@ private int startingX;
       startingX = Integer.getInteger(st.nextToken());
       endingX = Integer.getInteger(st.nextToken());
    }
+   
+   //Make (a) method(s) to calculate the area.
    
 }
