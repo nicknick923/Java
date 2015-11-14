@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 private final teddyFig Teddy;
-
+private listOfPFigures figureList = new listOfPFigures();
 private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
    /**
@@ -24,7 +24,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    {
       initComponents();
       Teddy = new teddyFig(gamePanel);
-      
+      figureList.addFigure(Teddy);
       moveTimer.start();
    }
 
@@ -38,6 +38,8 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    {
 
       gamePanel = new java.awt.Panel();
+      clearAllFigs = new java.awt.Button();
+      addFigure = new java.awt.Button();
 
       setMinimumSize(new java.awt.Dimension(500, 500));
       addWindowListener(new java.awt.event.WindowAdapter()
@@ -53,6 +55,30 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
       add(gamePanel);
       gamePanel.setBounds(20, 30, 360, 270);
 
+      clearAllFigs.setActionCommand("clearAllFigs");
+      clearAllFigs.setLabel("Clear All Figures");
+      clearAllFigs.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            clearAllFigsActionPerformed(evt);
+         }
+      });
+      add(clearAllFigs);
+      clearAllFigs.setBounds(100, 310, 100, 24);
+
+      addFigure.setActionCommand("addFig");
+      addFigure.setLabel("Add Teddy");
+      addFigure.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            addFigureActionPerformed(evt);
+         }
+      });
+      add(addFigure);
+      addFigure.setBounds(20, 310, 73, 24);
+
       pack();
    }// </editor-fold>//GEN-END:initComponents
 
@@ -62,6 +88,16 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
        System.exit(0);
     }//GEN-LAST:event_exitForm
+
+   private void clearAllFigsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllFigsActionPerformed
+   {//GEN-HEADEREND:event_clearAllFigsActionPerformed
+      figureList.removeAllFigures();
+   }//GEN-LAST:event_clearAllFigsActionPerformed
+
+   private void addFigureActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addFigureActionPerformed
+   {//GEN-HEADEREND:event_addFigureActionPerformed
+      figureList.addFigure(new teddyFig(gamePanel));
+   }//GEN-LAST:event_addFigureActionPerformed
 
    /**
     @param args the command line arguments
@@ -79,12 +115,12 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    @Override
    public void actionPerformed(ActionEvent ae)
    {
-      Teddy.hide();
-      Teddy.move();
-      Teddy.draw();
+      figureList.drawAll();
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private java.awt.Button addFigure;
+   private java.awt.Button clearAllFigs;
    private java.awt.Panel gamePanel;
    // End of variables declaration//GEN-END:variables
 }
