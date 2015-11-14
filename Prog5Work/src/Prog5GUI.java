@@ -1,12 +1,6 @@
 
 import java.awt.event.ActionEvent;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
 
  @author Nick
@@ -14,8 +8,8 @@ import java.awt.event.ActionEvent;
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 //private final teddyFig Teddy;
-private listOfPFigures figureList = new listOfPFigures();
-private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
+private final listOfPFigures figureList;
+private final javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
    /**
     Creates new form Prog5GUI
@@ -23,8 +17,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
    public Prog5GUI()
    {
       initComponents();
-      //Teddy = new teddyFig(gamePanel);
-      //figureList.addFigure(Teddy);
+      figureList  = new listOfPFigures(gamePanel);
       moveTimer.start();
    }
 
@@ -104,7 +97,7 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(200, this);
 
    private void clearAllFigsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllFigsActionPerformed
    {//GEN-HEADEREND:event_clearAllFigsActionPerformed
-      figureList.removeAllFigures(gamePanel);
+      figureList.removeAllFigures();
    }//GEN-LAST:event_clearAllFigsActionPerformed
 
    private void addFigureActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addFigureActionPerformed

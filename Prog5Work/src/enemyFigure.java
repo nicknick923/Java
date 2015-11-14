@@ -15,10 +15,10 @@ public abstract class enemyFigure extends PFigure
 
    protected Random randGen = new Random();
 
-   public enemyFigure(int xStart, int yStart, int width, int height,
+   public enemyFigure(int xStart, int yStart, int inWidth, int inHeight,
          int enemyStrenght, Panel p)
    {
-      super(xStart, yStart, width, height, enemyStrenght, p);
+      super(xStart, yStart, inWidth, inHeight, enemyStrenght, p);
    }
 
    protected int getRandom(int min, int max)
@@ -39,7 +39,7 @@ public abstract class enemyFigure extends PFigure
          xVelocity = -xVelocity;
       if (y < 0)
          yVelocity = -yVelocity;
-      else if ((y + height) > panel.getSize().height)
+      else if ((y + height) >= panel.getSize().height)
          yVelocity = -yVelocity;
    }
 }
