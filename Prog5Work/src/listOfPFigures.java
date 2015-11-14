@@ -1,5 +1,4 @@
 
-import java.awt.*;
 
 /**
 
@@ -12,9 +11,9 @@ public class listOfPFigures
 {
 
    private final int figMax = 50;
-   private PFigure[] listOfFigures = new PFigure[figMax];
+   private final PFigure[] listOfFigures = new PFigure[figMax];
    private int figCount = 0;
-   private Panel workingPanel;
+   private final Panel workingPanel;
 
    public listOfPFigures(Panel p)
    {

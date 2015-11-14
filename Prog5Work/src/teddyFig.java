@@ -26,15 +26,16 @@ public class teddyFig extends PFigure
    @Override
    public void move()
    {
-      super.move(-5, -5);
+      Point userData = Prog5GUI.getUserInputData();
+      super.move(5*userData.x, 5*userData.y);
       if (x < 0)
-         x = panel.getSize().width - width;
-      else if ((x + width) > panel.getSize().width)
          x = 0;
+      else if ((x + width) > panel.getWidth())
+         x = panel.getWidth()-width;
       if (y < 0)
-         y = panel.getSize().height - height;
-      else if ((y + height) > panel.getSize().height)
          y = 0;
+      else if ((y + height) > panel.getHeight())
+         y = panel.getHeight()-height;
    }
 
    @Override

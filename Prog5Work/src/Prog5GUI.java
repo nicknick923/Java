@@ -1,6 +1,8 @@
 
 import java.awt.event.ActionEvent;
 
+import java.awt.*;
+
 /**
 
  @author Nick Sosinski
@@ -10,6 +12,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 {
 private final listOfPFigures figureList;
 private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
+private static final Point userInputData = new Point(0,0);
 
    /**
     Creates new form Prog5GUI
@@ -31,12 +34,16 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
    {
 
       gamePanel = new java.awt.Panel();
-      clearAllFigs = new java.awt.Button();
-      addFigure = new java.awt.Button();
-      addEnemy = new java.awt.Button();
-      addxBoxDeathBox = new java.awt.Button();
 
-      setMinimumSize(new java.awt.Dimension(1000, 1000));
+      setMinimumSize(new java.awt.Dimension(500, 500));
+      setPreferredSize(new java.awt.Dimension(500, 500));
+      addComponentListener(new java.awt.event.ComponentAdapter()
+      {
+         public void componentResized(java.awt.event.ComponentEvent evt)
+         {
+            componetResized(evt);
+         }
+      });
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -47,56 +54,19 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
       setLayout(null);
 
       gamePanel.setBackground(new java.awt.Color(200, 200, 200));
+      gamePanel.addKeyListener(new java.awt.event.KeyAdapter()
+      {
+         public void keyPressed(java.awt.event.KeyEvent evt)
+         {
+            gamePanelKeyDown(evt);
+         }
+         public void keyReleased(java.awt.event.KeyEvent evt)
+         {
+            gamePanelKeyUp(evt);
+         }
+      });
       add(gamePanel);
-      gamePanel.setBounds(20, 40, 750, 560);
-
-      clearAllFigs.setActionCommand("clearAllFigs");
-      clearAllFigs.setLabel("Clear All Figures");
-      clearAllFigs.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            clearAllFigsActionPerformed(evt);
-         }
-      });
-      add(clearAllFigs);
-      clearAllFigs.setBounds(100, 610, 100, 24);
-
-      addFigure.setActionCommand("addFig");
-      addFigure.setLabel("Add Teddy");
-      addFigure.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            addFigureActionPerformed(evt);
-         }
-      });
-      add(addFigure);
-      addFigure.setBounds(20, 610, 73, 24);
-
-      addEnemy.setActionCommand("addEnemy");
-      addEnemy.setLabel("Add Enemy");
-      addEnemy.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            addEnemyActionPerformed(evt);
-         }
-      });
-      add(addEnemy);
-      addEnemy.setBounds(210, 610, 70, 24);
-
-      addxBoxDeathBox.setActionCommand("addxBoxDeathBox");
-      addxBoxDeathBox.setLabel("Add xBoxDeathBox");
-      addxBoxDeathBox.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            addxBoxDeathBoxActionPerformed(evt);
-         }
-      });
-      add(addxBoxDeathBox);
-      addxBoxDeathBox.setBounds(300, 610, 130, 24);
+      gamePanel.setBounds(10, 40, 760, 230);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -108,26 +78,43 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
        System.exit(0);
     }//GEN-LAST:event_exitForm
 
-   private void clearAllFigsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllFigsActionPerformed
-   {//GEN-HEADEREND:event_clearAllFigsActionPerformed
-      figureList.removeAllFigures();
-   }//GEN-LAST:event_clearAllFigsActionPerformed
+   private void gamePanelKeyDown(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyDown
+   {//GEN-HEADEREND:event_gamePanelKeyDown
+      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN)
+         userInputData.y = 1;
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP)
+         userInputData.y = -1;
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT)
+         userInputData.x = -1;
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT)
+         userInputData.x = 1;
+      
+      
+   }//GEN-LAST:event_gamePanelKeyDown
 
-   private void addFigureActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addFigureActionPerformed
-   {//GEN-HEADEREND:event_addFigureActionPerformed
-      figureList.addFigure(new teddyFig(gamePanel));
-   }//GEN-LAST:event_addFigureActionPerformed
+   private void gamePanelKeyUp(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyUp
+   {//GEN-HEADEREND:event_gamePanelKeyUp
+      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN)
+         userInputData.y = 0;
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP)
+         userInputData.y = 0;
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT)
+         userInputData.x = 0;
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT)
+         userInputData.x = 0;
+   }//GEN-LAST:event_gamePanelKeyUp
 
-   private void addEnemyActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addEnemyActionPerformed
-   {//GEN-HEADEREND:event_addEnemyActionPerformed
-      figureList.addFigure(new deathBox(gamePanel));
-   }//GEN-LAST:event_addEnemyActionPerformed
+   private void componetResized(java.awt.event.ComponentEvent evt)//GEN-FIRST:event_componetResized
+   {//GEN-HEADEREND:event_componetResized
+      gamePanel.setSize(this.getSize().width-20, this.getSize().height -50);
+   }//GEN-LAST:event_componetResized
 
-   private void addxBoxDeathBoxActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_addxBoxDeathBoxActionPerformed
-   {//GEN-HEADEREND:event_addxBoxDeathBoxActionPerformed
-      figureList.addFigure(new deathDroid(gamePanel));
-   }//GEN-LAST:event_addxBoxDeathBoxActionPerformed
-
+   public static Point getUserInputData()
+   {
+      //gamePanel.setSize(this.getSize().width-20, this.getSize().height -50);
+      return userInputData;
+   }
+   
    /**
     @param args the command line arguments
     */
@@ -148,10 +135,6 @@ private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
-   private java.awt.Button addEnemy;
-   private java.awt.Button addFigure;
-   private java.awt.Button addxBoxDeathBox;
-   private java.awt.Button clearAllFigs;
    private java.awt.Panel gamePanel;
    // End of variables declaration//GEN-END:variables
 }
