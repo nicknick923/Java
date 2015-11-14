@@ -47,6 +47,8 @@ private javax.swing.Timer moveTimer = new javax.swing.Timer(50, this);
          }
       });
       setLayout(null);
+
+      gamePanel.setBackground(new java.awt.Color(200, 200, 200));
       add(gamePanel);
       gamePanel.setBounds(20, 30, 360, 270);
 
