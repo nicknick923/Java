@@ -9,12 +9,11 @@ import java.util.Random;
  */
 public abstract class enemyFigure extends PFigure
 {
- 
-   
-   
+
+   //The velocities for each enemyFigure
    protected int xVelocity;
    protected int yVelocity;
-
+   //The safeZone is a zone where enemyFigures are not allowed to spawn
    private final int safeZoneX = 180;
    private final int safeZoneY = 220;
 
@@ -25,9 +24,11 @@ public abstract class enemyFigure extends PFigure
       int startingX = getRandom(0, p.getWidth() - inWidth);
       int startingY = getRandom(0, p.getHeight() - inHeight);
       while (startingY <= safeZoneY && startingX <= safeZoneX)
+      {
          startingX = getRandom(0, p.getWidth() - inWidth);
-      while (startingY <= safeZoneY && startingX <= safeZoneX)
          startingY = getRandom(0, p.getHeight() - inHeight);
+
+      }
       move(startingX, startingY);
       xVelocity = randVelocity(maxVel);
       yVelocity = randVelocity(maxVel);
