@@ -173,7 +173,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       for (int i = 0; i < level; i++)
       {
          figureList.addFigure(new deathDroid(gamePanel));
-         figureList.addFigure(new deathBox(gamePanel));
+         figureList.addFigure(new deathApple(gamePanel));
       }
    }
 

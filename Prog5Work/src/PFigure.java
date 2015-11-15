@@ -78,10 +78,10 @@ public abstract class PFigure implements Comparable
    {
    }
 
-   // Draw the figure.
-   // Each derived class will write their own drawing method.
-   // The first line should be:
-   //    Graphics g = panel.getGraphics();
+   /**
+    This method will draw the figure at location x,y with the respective width
+    and height values stored in this class.
+    */
    abstract public void draw();
 
 }
