@@ -33,12 +33,24 @@ public abstract class enemyFigure extends PFigure
    {
       super.move(xVelocity, yVelocity);
       if (x < 0)
-         xVelocity = -1 * xVelocity;
+      {
+         xVelocity = Math.abs(xVelocity);
+         x = 0;
+      }
       else if ((x + width) > panel.getWidth())
-         xVelocity = -1 * xVelocity;
+      {
+         xVelocity = -1 * Math.abs(xVelocity);
+         x = panel.getWidth() - width;
+      }
       if (y < 0)
-         yVelocity = -1 * yVelocity;
+      {
+         yVelocity = Math.abs(xVelocity);
+         y = 0;
+      }
       else if ((y + height) >= panel.getHeight())
-         yVelocity = -1 * yVelocity;
+      {
+         yVelocity = -1 * Math.abs(xVelocity);
+         y = panel.getHeight() - height;
+      }
    }
 }

@@ -23,17 +23,7 @@ public class PicFig extends PFig
        }
    }
 
-   public void move()
-   {
-      if ( xVel < 0 && x <= 0 ||
-           xVel > 0 && x + width >= panel.getSize().width )
-         xVel = - xVel;
-      if ( yVel < 0 && y <= 0 ||
-           yVel > 0 && y + height >= panel.getSize().height )
-         yVel = - yVel;
-      x = x + xVel;
-      y = y + yVel;
-   }
+ 
 
    public void draw()
    {
@@ -44,5 +34,16 @@ public class PicFig extends PFig
       }
    }
 
+     public void move()
+   {
+      if ( xVel < 0 && x <= 0 ||
+           xVel > 0 && x + width >= panel.getSize().width )
+         xVel = - xVel;
+      if ( yVel < 0 && y <= 0 ||
+           yVel > 0 && y + height >= panel.getSize().height )
+         yVel = - yVel;
+      x = x + xVel;
+      y = y + yVel;
+   }
 
 }

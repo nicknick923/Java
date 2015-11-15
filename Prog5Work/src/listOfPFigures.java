@@ -1,5 +1,4 @@
 
-
 /**
 
  @author Nick Sosinski
@@ -20,13 +19,24 @@ public class listOfPFigures
       workingPanel = p;
    }
 
-   public void removeAllFigures()
+   public boolean userHitGoal()
+   {
+      return listOfFigures[0].collidedWith(listOfFigures[1]);
+   }
+
+   public boolean userHitDeathObject()
+   {
+      for (int i = 2; i < figCount; i++)
+         if (listOfFigures[1].collidedWith(listOfFigures[i]))
+            return true;
+      return false;
+   }
+
+   public void resetList()
    {
       for (int i = 0; i < figCount; i++)
          listOfFigures[i].hide();
       figCount = 0;
-
-      hideAll();
    }
 
    public void drawAll()
@@ -40,7 +50,7 @@ public class listOfPFigures
       avoidFlicker();
    }
 
-   private void hideAll()
+   public void hideAll()
    {
       Graphics g = workingPanel.getGraphics();
       Color oldColor = g.getColor();
