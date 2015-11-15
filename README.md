@@ -1,2 +1,0 @@
-# NickAndJake
-Our Java Programs
