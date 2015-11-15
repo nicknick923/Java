@@ -17,12 +17,7 @@ public class deathDroid extends enemyFigure
 
    public deathDroid(Panel p)
    {
-      super(0, 0, boxWidth, boxHeight, 1, p);
-      int startingX = super.getRandom(0, p.getWidth() - boxWidth);
-      int startingY = super.getRandom(0, p.getHeight() - boxHeight);
-      move(startingX, startingY);
-      xVelocity = super.getRandom(-5, 5);
-      yVelocity = super.getRandom(-5, 5);
+      super(0, 0, boxWidth, boxHeight, 1, p, 5);
    }
 
    @Override

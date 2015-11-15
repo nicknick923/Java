@@ -15,7 +15,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final listOfPFigures figureList;
    private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
    private static final Point userInputData = new Point(0, 0);
-   private static int level = 0;
+   private static int level = 5;
 
    /**
     Creates new form Prog5GUI
@@ -108,7 +108,11 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          userInputData.x = -1;
       else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT)
          userInputData.x = 1;
-
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
+         if (moveTimer.isRunning())
+            moveTimer.stop();
+         else
+            moveTimer.start();
 
    }//GEN-LAST:event_gamePanelKeyDown
 
@@ -142,6 +146,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private void userWonLevel()
    {
       level++;
+      componetResized(null);
       setLevel();
    }
 

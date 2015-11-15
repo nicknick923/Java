@@ -13,13 +13,30 @@ public abstract class enemyFigure extends PFigure
    protected int xVelocity;
    protected int yVelocity;
 
+   
+   private final int safeZoneX = 180;
+   private final int safeZoneY = 220;
    public enemyFigure(int xStart, int yStart, int inWidth, int inHeight,
-         int enemyStrenght, Panel p)
+         int enemyStrenght, Panel p, int maxVel)
    {
       super(xStart, yStart, inWidth, inHeight, enemyStrenght, p);
+      int startingX = getRandom(0, p.getWidth() - inWidth);
+      int startingY = getRandom(0, p.getHeight() - inHeight);
+      while (startingY <= safeZoneY && startingX <= safeZoneX)
+         startingX = getRandom(0, p.getWidth() - inWidth);
+      while (startingY <= safeZoneY && startingX <= safeZoneX)
+         startingY = getRandom(0, p.getHeight() - inHeight);
+      move(startingX, startingY);
+      xVelocity = randVelocity(maxVel);
+      yVelocity = randVelocity(maxVel);
    }
 
-   protected int getRandom(int min, int max)
+   private int randVelocity(int value)
+   {
+      return getRandom(-value, value);
+   }
+   
+   private int getRandom(int min, int max)
    {
       Random randGen = new Random();
       double randVal = randGen.nextDouble();

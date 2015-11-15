@@ -21,12 +21,7 @@ public class deathBox extends enemyFigure
 
    public deathBox(Panel p)
    {
-      super(50, 50, boxLength, boxLength, 1, p);
-      int startingX = super.getRandom(0, p.getWidth() - boxLength);
-      int startingY = super.getRandom(0, p.getHeight() - boxLength);
-      move(startingX, startingY);
-      xVelocity = super.getRandom(-10, 10);
-      yVelocity = super.getRandom(-10, 10);
+      super(50, 50, boxLength, boxLength, 1, p, 5);
       try
       {
          File file = new File("apple logo.png");
