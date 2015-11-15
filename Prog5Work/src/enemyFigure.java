@@ -52,7 +52,7 @@ public abstract class enemyFigure extends PFigure
     @param max The maximum inclusive value.
     @return A randomized integer between min and max inclusive of min and max.
     */
-   public static int getRandom(int min, int max)
+   private static int getRandom(int min, int max)
    {
       Random randGen = new Random();
       double randVal = randGen.nextDouble();
