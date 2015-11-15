@@ -9,10 +9,11 @@ import java.awt.*;
 public class listOfPFigures
 {
 
-   private final int figMax = 100;
-   private final PFigure[] listOfFigures;
+   private final int figMax = 1000;
+   private PFigure[] listOfFigures;
    private int figCount;
    private final Panel workingPanel;
+   
 
    /**
     This constructor prepares listOfPFigures for use and gets the panel the
@@ -37,20 +38,31 @@ public class listOfPFigures
 
    public void resetList()
    {
-      for (int i = 0; i < figCount; i++)
-         listOfFigures[i].hide();
+      hideAll();
       figCount = 0;
+      listOfFigures = new PFigure[figMax];
    }
 
-   public void drawAll()
+   public void drawAll(boolean alternateDrawMethod)
    {
-      hideAll();
-      for (int i = 0; i < figCount; i++)
+
+      if (alternateDrawMethod)
       {
-         listOfFigures[i].move();
-         listOfFigures[i].draw();
+         hideAll();
+         for (int i = 0; i < figCount; i++)
+         {
+            listOfFigures[i].move();
+            listOfFigures[i].draw();
+         }
+         avoidFlicker();
       }
-      avoidFlicker();
+      else
+         for (int i = 0; i < figCount; i++)
+         {
+            listOfFigures[i].hide();
+            listOfFigures[i].move();
+            listOfFigures[i].draw();
+         }
    }
 
    public void hideAll()

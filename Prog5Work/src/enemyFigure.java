@@ -46,11 +46,11 @@ public abstract class enemyFigure extends PFigure
 
    /**
     This method generates a random integer between the passed values of min
-    and max including the values min and max.
+    and max excluding the values min and max.
 
-    @param min The minimum inclusive value.
-    @param max The maximum inclusive value.
-    @return A randomized integer between min and max inclusive of min and max.
+    @param min The minimum excluding value.
+    @param max The maximum excluding value.
+    @return A randomized integer between min and max exclusive of min and max.
     */
    private static int getRandom(int min, int max)
    {
@@ -83,12 +83,12 @@ public abstract class enemyFigure extends PFigure
       }
       if (y < 0)
       {
-         yVelocity = Math.abs(xVelocity);
+         yVelocity = Math.abs(yVelocity);
          y = 0;
       }
       else if ((y + height) >= panel.getHeight())
       {
-         yVelocity = -Math.abs(xVelocity);
+         yVelocity = -Math.abs(yVelocity);
          y = panel.getHeight() - height;
       }
    }

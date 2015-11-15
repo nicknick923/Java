@@ -1,3 +1,4 @@
 **/build
 **/private
 **/*.class
+/RandomGenTest/nbproject/private/

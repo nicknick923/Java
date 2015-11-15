@@ -1,9 +1,7 @@
 
-import java.awt.event.ActionEvent;
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.Random;
 
 /**
 
@@ -17,8 +15,10 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final listOfPFigures figureList;
    private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
    private static final Point userInputData = new Point(0, 0);
-   private static int level = 4;
-   private static int enemiesPerLevel = 2;
+   private final int levelOffset = 4;
+   private int level = 1;  //start user at level 1
+   private final int enemiesPerLevel = 2;
+   private final boolean alternateDrawMethod = true;
 
    /**
     Creates new form Prog5GUI
@@ -29,7 +29,8 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       initComponents();
       figureList = new listOfPFigures(gamePanel);
       moveTimer.start();
-      userWonLevel();
+      componetResized(null);
+      setLevel();
    }
 
    /**
@@ -160,28 +161,24 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private void userWonLevel()
    {
       level++;
-      componetResized(null);
       setLevel();
    }
 
    private void setLevel()
    {
       if (deaths == 1)
-         deathCountField.setText("Level " + (level - 4) + ", 1 Death");
+         deathCountField.setText("Level " + (level) + ", 1 Death");
       else
-         deathCountField.setText("Level " + (level - 4) + ", " + deaths + " Deaths");
+         deathCountField.setText("Level " + (level) + ", " + deaths + " Deaths");
       figureList.resetList();
-      figureList.hideAll();
       figureList.addFigure(new scanMan(gamePanel));
       figureList.addFigure(new goalFigure(gamePanel));
-      for (int i = 0; i < level * enemiesPerLevel; i++)
+      for (int i = 0; i < (level + levelOffset) * enemiesPerLevel; i++)
          if (Math.random() > .5)
             figureList.addFigure(new deathDroid(gamePanel));
          else
             figureList.addFigure(new deathApple(gamePanel));
    }
-
-   
 
    /**
     @param args the command line arguments
@@ -200,7 +197,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    @Override
    public void actionPerformed(ActionEvent ae)
    {
-      figureList.drawAll();
+      figureList.drawAll(alternateDrawMethod);
       userCollideCheck();
    }
 
