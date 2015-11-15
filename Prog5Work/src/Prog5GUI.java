@@ -41,7 +41,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       deathCountField = new java.awt.TextField();
 
       setMinimumSize(new java.awt.Dimension(1130, 700));
-      setPreferredSize(new java.awt.Dimension(1130, 700));
       addComponentListener(new java.awt.event.ComponentAdapter()
       {
          public void componentResized(java.awt.event.ComponentEvent evt)
@@ -74,16 +73,22 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
       deathCountField.setEditable(false);
       deathCountField.setName("deathCountField"); // NOI18N
-      deathCountField.setText("0 Deaths");
       deathCountField.addFocusListener(new java.awt.event.FocusAdapter()
       {
          public void focusGained(java.awt.event.FocusEvent evt)
          {
-            transferFocus(evt);
+            deathCountFieldtransferFocus(evt);
+         }
+      });
+      deathCountField.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            deathCountFieldActionPerformed(evt);
          }
       });
       gamePanel.add(deathCountField);
-      deathCountField.setBounds(10, 10, 70, 20);
+      deathCountField.setBounds(10, 10, 120, 20);
 
       add(gamePanel);
       gamePanel.setBounds(10, 40, 760, 230);
@@ -130,13 +135,18 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
    private void componetResized(java.awt.event.ComponentEvent evt)//GEN-FIRST:event_componetResized
    {//GEN-HEADEREND:event_componetResized
-      gamePanel.setSize(this.getSize().width - 20, this.getSize().height - 50);
+      gamePanel.setSize(getSize().width - 20, getSize().height - 50);
    }//GEN-LAST:event_componetResized
 
-   private void transferFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_transferFocus
-   {//GEN-HEADEREND:event_transferFocus
+   private void deathCountFieldtransferFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_deathCountFieldtransferFocus
+   {//GEN-HEADEREND:event_deathCountFieldtransferFocus
       gamePanel.requestFocus();
-   }//GEN-LAST:event_transferFocus
+   }//GEN-LAST:event_deathCountFieldtransferFocus
+
+   private void deathCountFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_deathCountFieldActionPerformed
+   {//GEN-HEADEREND:event_deathCountFieldActionPerformed
+      // TODO add your handling code here:
+   }//GEN-LAST:event_deathCountFieldActionPerformed
 
    public static Point getUserInputData()
    {
@@ -152,6 +162,10 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
    private void setLevel()
    {
+      if (deaths == 1)
+         deathCountField.setText("Level " + (level - 5) + ", 1 Death");
+      else
+         deathCountField.setText("Level " + (level - 5) + ", " + deaths + " Deaths");
       figureList.resetList();
       figureList.hideAll();
       figureList.addFigure(new goalFigure(gamePanel));
@@ -200,10 +214,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
                clip.open(audioIn);
                clip.start();
                setLevel();
-               if (deaths == 1)
-                  deathCountField.setText("1 Death");
-               else
-                  deathCountField.setText(deaths + " Deaths");
             }
             catch (Exception e)
             {
