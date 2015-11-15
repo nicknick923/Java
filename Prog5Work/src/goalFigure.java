@@ -32,7 +32,10 @@ public class goalFigure extends PFigure
    {
       if (p == null)
          return false;
-      return (x + width / 2) >= p.x && (p.x + p.width / 2) >= x && (y + height / 2) >= p.y && (p.y + p.height / 2) >= y;
+      return (x + width / 2) >= p.x
+            && (p.x + p.width / 2) >= x
+            && (y + height / 2) >= p.y
+            && (p.y + p.height / 2) >= y;
    }
 
    @Override
