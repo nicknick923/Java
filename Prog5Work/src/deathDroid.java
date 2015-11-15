@@ -14,10 +14,11 @@ public class deathDroid extends enemyFigure
 
    private static final int figureWidth = 75;
    private static final int figureHeight = 90;
+   private static final int deathDroidMaxVelocity = 5;
 
    public deathDroid(Panel p)
    {
-      super(figureWidth, figureHeight, 1, p, 5);
+      super(figureWidth, figureHeight, deathDroidMaxVelocity, p);
    }
 
    /**

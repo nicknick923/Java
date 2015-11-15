@@ -2,6 +2,8 @@
 import java.awt.event.ActionEvent;
 
 import java.awt.*;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
 
 /**
 
@@ -216,10 +218,16 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
                clip.start();
                setLevel();
             }
+            catch (IOException e)
+            {
+               System.err.println("Minor problem: File could not be played:");
+               System.err.println(e.toString() + "\n");
+            }
             catch (Exception e)
             {
-
+               System.err.println("Other problem:\n" + e.toString());
             }
+
    }
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.TextField deathCountField;
