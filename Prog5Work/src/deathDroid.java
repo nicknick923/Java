@@ -17,7 +17,7 @@ public class deathDroid extends enemyFigure
 
    public deathDroid(Panel p)
    {
-      super(0, 0, figureWidth, figureHeight, 1, p, 5);
+      super(figureWidth, figureHeight, 1, p, 5);
    }
 
    /**

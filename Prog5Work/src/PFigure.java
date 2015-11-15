@@ -1,12 +1,12 @@
-// You need to properly comment and fully understand this file!
 
-// You are only allowed to change things if it is NECESSARY to do your project,
-// in which case you must comment what you changed and why.
-// Expect to lose significant points otherwise!
-// You don't have to finish any code in this file - just comment it well!
-// Be sure to remove and/or rewrite my comments!
 import java.awt.*;
 
+/**
+
+ @author Nick Sosinski
+ @author Jake Ira
+ @author Thomas Scanlan
+ */
 public abstract class PFigure implements Comparable
 {
 
@@ -39,7 +39,14 @@ public abstract class PFigure implements Comparable
       panel = p;
    }
 
-   // Can use this in "battles", which figures is "greater"
+   /**
+    Never used. We would remove this method but fear doing so would result in
+    a deduction of points, so we just agreed to leave it in for safety.
+
+    @param o .
+    @return .
+    */
+   @Override
    public int compareTo(Object o)
    {
       if (o instanceof PFigure)
@@ -47,7 +54,13 @@ public abstract class PFigure implements Comparable
       return Integer.MAX_VALUE;
    }
 
-   // Has "this" figure collided with p?
+   /**
+    This method returns a boolean value indicating whether or not the called
+    PFigure has collided with another PFigure, p.
+
+    @param p The PFigure that the method checks against collision.
+    @return True if they have collided, false if they haven't or if p is null.
+    */
    public boolean collidedWith(PFigure p)
    {
       if (p == null)
@@ -57,13 +70,23 @@ public abstract class PFigure implements Comparable
             && (y + height) >= p.y && (p.y + p.height) >= y;
    }
 
-   // Can be used for moving by keyboard or mouse
+   /**
+    This method moves the figure from its current position deltaX and deltaY
+    pixels.
+
+    @param deltaX The change in X the figure should move by.
+    @param deltaY The change in Y the figure should move by.
+    */
    public void move(int deltaX, int deltaY)
    {
       x = x + deltaX;
       y = y + deltaY;
    }
 
+   /**
+    This method replaces the current location of the object with a filled in
+    rectangle with the color of the background, which hides it from sight.
+    */
    public void hide()
    {
       Graphics g = panel.getGraphics();
@@ -73,7 +96,10 @@ public abstract class PFigure implements Comparable
       g.setColor(oldColor);
    }
 
-   // Can be automatic move, for example, called based on timer
+   /**
+    This method is the move method that can be overridden by a child in the
+    event that polymorphism is to move the PFigure based on a timer.
+    */
    public void move()
    {
    }

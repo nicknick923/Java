@@ -14,12 +14,11 @@ public class deathApple extends enemyFigure
 {
 
    private Image img;
-
    private static final int boxLength = 75;
 
    public deathApple(Panel p)
    {
-      super(50, 50, boxLength, boxLength, 1, p, 5);
+      super(boxLength, boxLength, 1, p, 5);
       try
       {
          File file = new File("apple logo.png");

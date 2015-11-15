@@ -13,13 +13,13 @@ public abstract class enemyFigure extends PFigure
    protected int xVelocity;
    protected int yVelocity;
 
-   
    private final int safeZoneX = 180;
    private final int safeZoneY = 220;
-   public enemyFigure(int xStart, int yStart, int inWidth, int inHeight,
+
+   public enemyFigure(int inWidth, int inHeight,
          int enemyStrenght, Panel p, int maxVel)
    {
-      super(xStart, yStart, inWidth, inHeight, enemyStrenght, p);
+      super(0, 0, inWidth, inHeight, enemyStrenght, p);
       int startingX = getRandom(0, p.getWidth() - inWidth);
       int startingY = getRandom(0, p.getHeight() - inHeight);
       while (startingY <= safeZoneY && startingX <= safeZoneX)
@@ -35,7 +35,7 @@ public abstract class enemyFigure extends PFigure
    {
       return getRandom(-value, value);
    }
-   
+
    private int getRandom(int min, int max)
    {
       Random randGen = new Random();
@@ -56,7 +56,7 @@ public abstract class enemyFigure extends PFigure
       }
       else if ((x + width) > panel.getWidth())
       {
-         xVelocity = -1 * Math.abs(xVelocity);
+         xVelocity = -Math.abs(xVelocity);
          x = panel.getWidth() - width;
       }
       if (y < 0)
@@ -66,7 +66,7 @@ public abstract class enemyFigure extends PFigure
       }
       else if ((y + height) >= panel.getHeight())
       {
-         yVelocity = -1 * Math.abs(xVelocity);
+         yVelocity = -Math.abs(xVelocity);
          y = panel.getHeight() - height;
       }
    }
