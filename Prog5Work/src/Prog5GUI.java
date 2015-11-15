@@ -14,7 +14,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private int deaths = 0;
    private final listOfPFigures figureList;
    private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
-   private static final Point userInputData = new Point(0, 0);
+   
    private final int levelOffset = 4;
    private int level = 1;  //start user at level 1
    private final int enemiesPerLevel = 2;
@@ -110,32 +110,20 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
    private void gamePanelKeyDown(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyDown
    {//GEN-HEADEREND:event_gamePanelKeyDown
-      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN)
-         userInputData.y = 1;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP)
-         userInputData.y = -1;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT)
-         userInputData.x = -1;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT)
-         userInputData.x = 1;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
+     
+      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
          if (moveTimer.isRunning())
             moveTimer.stop();
          else
             moveTimer.start();
+      else
+         scanMan.keyDownReciver(evt);
 
    }//GEN-LAST:event_gamePanelKeyDown
 
    private void gamePanelKeyUp(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyUp
    {//GEN-HEADEREND:event_gamePanelKeyUp
-      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN)
-         userInputData.y = 0;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP)
-         userInputData.y = 0;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT)
-         userInputData.x = 0;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT)
-         userInputData.x = 0;
+      scanMan.keyUpReciver(evt);
    }//GEN-LAST:event_gamePanelKeyUp
 
    private void componetResized(java.awt.event.ComponentEvent evt)//GEN-FIRST:event_componetResized
@@ -152,11 +140,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    {//GEN-HEADEREND:event_deathCountFieldActionPerformed
       // TODO add your handling code here:
    }//GEN-LAST:event_deathCountFieldActionPerformed
-
-   public static Point getUserInputData()
-   {
-      return userInputData;
-   }
 
    private void userWonLevel()
    {
