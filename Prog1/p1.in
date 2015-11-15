@@ -1,0 +1,58 @@
+P
+A Speedometer  5 0.0
+A Altimeter  3 0.0
+U Altimeter 50.0
+U Speedometer 39.7 
+U Altimeter 98.7
+U Speedometer 93.2 
+O Altimeter
+U Altimeter 340.5
+O Altimeter
+U Altimeter 198.7
+U Speedometer 99.2 
+A Tachometer 4 3000.0
+A TempSensor 5 72.5
+A FuelGauge 2 990.0
+U Speedometer 193.2 
+O Speedometer
+P
+U Speedometer 110.2 
+U Tachometer 3105.7
+U Altimeter 422.6
+U TempSensor 90.0
+U FuelGauge 930.0
+O Tachometer
+O TempSensor
+O FuelGauge
+A PressureSensor 4 95.0
+O Altimeter
+P
+D Speedometer
+D PressureSensor 
+U Altimeter 450.0
+P 
+U TempSensor 65.0
+U FuelGauge 920.0
+U Speedometer 93.2 
+U TempSensor 88.0
+U TempSensor 94.0
+U TempSensor 99.0
+U TempSensor 122.0
+U TempSensor 222.0
+O TempSensor
+O FuelGauge
+O Speedometer
+D Altimeter
+D FuelGauge
+D FuelGauge
+P
+D TempSensor
+D Tachometer
+D TempSensor
+P
+A GeigerCounter 3 5000.0
+O GeigerCounter
+P
+Q
+A Dummie  3 0.0
+S

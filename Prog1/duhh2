@@ -1,0 +1,299 @@
+CS 2430 - Object Oriented Programming and Data Structures I   F15
+
+Program:     1 - Java Intro & CS 1430 review
+Due Date:    Wednesday, September 23, 10:00 p.m.
+Grace Date:  Friday, September 25, 10:00 p.m.
+Points:      20
+
+You are going to write a computer program to manage some device readings.
+To "smooth" out the readings, averages over the last N readings are used
+to obtain the value reported, where N varies depending on the device.
+Sometimes this process is referred to as hysteresis, a "slowing" that
+keeps the gauges from "jumping all over".
+
+Make a Prog1 folder on your J drive, copy Prog1.java and
+P1.in from the class web site into that folder, and proceed as in Program 0
+to set up a project.  
+
+
+Next, you will be making two more new files.
+You must comment them appropriately.  Follow the programming ground 
+rules which are given on the CS 2430 web site.
+Make sure you remove any of my comments that tell you how to proceed. You
+will lose 1 point each time I see my "how-to-proceed" comments that 
+are NOT removed.
+
+The first is a Device.java file.  It can't import anything.  It can't read
+or write anything [-5 if you read and or write].  
+And the comments for it should not reference anything related to the commands 
+discussed later in DeviceManager [-5 if you do].
+
+I am restricting you to what is described below to force you to use
+some concepts covered in class.  You will LOSE significant points if you
+do NOT follow the restrictions given.
+
+------------------------------------------------------------------------------
+
+Next, you will be making a DeviceManager.java file which maintains a list
+of Devices and responds to commands.  It will import java.util.Scanner.
+
+import java.util.Scanner;
+
+public class DeviceManager
+{
+   final int MAX_DEVICES = 5;
+
+   // Array of devices
+   private Device list[] = new Device[MAX_DEVICES];
+
+   // Number of Devices currently in the list
+   // "Valid" Devices are stored in cells 0 - (numDevices - 1)
+   private int numDevices = 0;
+
+   Scanner stdin;  // read from stdin
+
+
+   public void run() throws java.io.IOException
+   {
+      stdin = new Scanner(System.in);
+      .  .  .  // see below
+
+   }
+
+/*
+   ??? No other object data are allowed! [-4 for each extra object data]
+
+   ???You MUST have several good methods, including run.
+      If you don't have several GOOD methods, expect to loose several points!
+      The run method MUST be public and ALL others private!
+*/
+
+}
+
+-----------------------------------------------------------------------------
+
+You will maintain the list of devices using commands to add, delete, output,
+update, and print devices in the list.
+Most likely, you will have methods corresponding to these tasks.
+
+You will read and process commands from the standard input, quitting if
+the Q command is read.  For simplicity, you can assume that all commands
+will be good and that the Q command will be given.
+
+Commands consist of a single character followed by parameters.
+See requirement 5 below.
+The commands you are to implement are of the form:
+
+        A  name  num_readings  initial_value
+        D  name
+        O  name
+        P
+        Q
+        U  name  reading
+
+  1. For the A command, construct a device using the given data and
+     add it to the end of the list.  If the list is full, still read in
+     the data; however, don't do anything with the data read in (toss it!),
+     and print out an appropriate message.
+     The name will be a contiguous sequence of non-white-space characters.
+
+  2. For the D command, delete the device whose name is specified.
+     If the device doesn't exist, print an appropriate message.
+
+  3. For the O command, output the reading for that device.
+     If the device doesn't exist, print an appropriate message.
+
+  4. For the P command, just print out the data for all
+     devices in the format specified in the sample output given below.
+
+  5. For the Q command, quit and print a normal termination message.
+
+  6. For the U command, update the device with the given reading.
+     If the device doesn't exist, print an appropriate message.
+
+See the sample output for the exact wording of all the messages.
+
+--------------------------------------------------------------------
+                      Programming Requirements
+
+1. The program source files must be called Device.java and DeviceManager.java
+   and Prog1.java (the one that I gave).
+
+2. You must follow the software development ground rules.
+
+3. You must use the declarations as given above.
+
+4. You program must be modular.  The methods must be "natural".
+   All methods must be less than or equal to 30 lines in length.
+
+5. Your "run" method should mostly be a driving loop with method calls.
+   You will use if - else if - else if ... statement,
+   to make the method calls based on the command character[String] read.
+   However, declare your command variable as a String and use
+   the equalsIgnoreCase method to compare against "A", "D", "O", "P",
+   "U" or "Q".
+
+6. Note that the output isn't formatted very well.  That's okay.
+   We'll be switching to GUIs after a couple more programs.
+   Recall that the GRADER requires that you match the output exactly.
+   In this case, it shouldn't be too difficult,
+   since I am not having you do any special or fancy formatting.
+
+7. You must use CSSE Hub to keep an up-to-date log of the time spent working.
+   You must use the automatic punch in and punch out when possible.
+
+   Make sure that you log your time for project named: Prog1.
+
+   Provide specific comments about what you worked on during that period.
+   Access CSSE Hub from http://www.uwplatt.edu/csse page, choose Resources,
+   then CSSE Course Materials and then "CSSE Hub".
+
+      [up to -4 points if you do NOT log all your time
+       or you do NOT provide specific comments as to what you were working on.]
+
+
+--------------------------------------------------------------------------
+                      Procedural Hints/Requirements
+
+1. You can open this file and copy over the declarations to your java files.
+
+2. Build and test the program in pieces, one method at a time.
+   Write a small method.  Then compile and run and test it.
+
+3. Use the next() method of Scanner to read in a String, use nextInt() 
+   method to read an integer and use nextFloat() to read in a float.
+
+4. You can start testing by typing in data.  Later, to save typing,
+   you can read data from a file.  You can make an input file, say
+   P1.in, with some data in it (such as the sample input) and then
+   read from the file by putting the following in the run method:
+
+     //stdin = new Scanner(System.in);
+     stdin = new Scanner( new java.io.File("P1.in") );
+
+   After your program is well-tested and it is awaiting the
+   running of the Grader, change it to:
+
+     stdin = new Scanner(System.in);
+     //stdin = new Scanner( new java.io.File("P1.in") );
+
+   DON'T FORGET, or your grade won't be very high!!! 
+   Make sure the file, P1.in is in the Prog1 solution folder and NOT
+   in any subfolders.
+
+5. For several commands, you need to "find" a device in the
+   list corresponding to a given name.  This is a good indication
+   that you should make a method to do it.  This would be 
+   what we called a linear search in CS1430 -- so you should have
+   this method/function and call it as many times as necessary.
+
+6. Run your program in NetBeans as in Prog0.
+
+7. Submit to the grader the following files:
+        Prog1.java, Device.java, DeviceManager.java
+
+8. If you have questions OR problems, put a copy of the ENTIRE java project in
+   an S drive folder given by:
+
+             K:\Courses\CSSE\scanlan\cs2430\Your_user_Name
+
+   Then I can look at your code.
+
+--------------------------------------------------------------------------
+
+Sample Input:
+
+P
+A Speedometer  5 0.0
+A Altimeter  3 0.0
+U Altimeter 50.0
+U Speedometer 39.7
+U Altimeter 98.7
+U Speedometer 93.2
+O Altimeter
+U Altimeter 340.5
+O Altimeter
+A Tachometer 4 3000.0
+A TempSensor 5 72.5
+A FuelGauge 2 990.0
+U Speedometer 193.2
+O Speedometer
+P
+U Tachometer 3105.7
+U Altimeter 422.6
+U TempSensor 90.0
+U FuelGauge 930.0
+O Tachometer
+O TempSensor
+O FuelGauge
+A PressureSensor 4 95.0
+O Altimeter
+P
+D Speedometer
+D PressureSensor
+U Altimeter 450.0
+P
+U TempSensor 65.0
+U FuelGauge 920.0
+U Speedometer 93.2
+O TempSensor
+O FuelGauge
+O Speedometer
+Q
+A Dummie  3 0.0
+S
+
+
+Corresponding Sample Output:
+
+The list of Devices is:
+Speedometer device has been added to the list.
+Altimeter device has been added to the list.
+Device Altimeter updated with 50.0
+Device Speedometer updated with 39.7
+Device Altimeter updated with 98.7
+Device Speedometer updated with 93.2
+Device Altimeter reads 49.566666
+Device Altimeter updated with 340.5
+Device Altimeter reads 163.06667
+Tachometer device has been added to the list.
+TempSensor device has been added to the list.
+FuelGauge device has been added to the list.
+Device Speedometer updated with 193.2
+Device Speedometer reads 65.21999
+The list of Devices is:
+Speedometer: 3,39.7,93.2,193.2,0.0,0.0
+Altimeter: 0,50.0,98.7,340.5
+Tachometer: 0,3000.0,3000.0,3000.0,3000.0
+TempSensor: 0,72.5,72.5,72.5,72.5,72.5
+FuelGauge: 0,990.0,990.0
+Device Tachometer updated with 3105.7
+Device Altimeter updated with 422.6
+Device TempSensor updated with 90.0
+Device FuelGauge updated with 930.0
+Device Tachometer reads 3026.425
+Device TempSensor reads 76.0
+Device FuelGauge reads 960.0
+The list was full. PressureSensor not added to the list.
+Device Altimeter reads 287.26666
+The list of Devices is:
+Speedometer: 3,39.7,93.2,193.2,0.0,0.0
+Altimeter: 1,422.6,98.7,340.5
+Tachometer: 1,3105.7,3000.0,3000.0,3000.0
+TempSensor: 1,90.0,72.5,72.5,72.5,72.5
+FuelGauge: 1,930.0,990.0
+Speedometer was deleted from the list.
+PressureSensor not deleted.  It is not in the list.
+Device Altimeter updated with 450.0
+The list of Devices is:
+Altimeter: 2,422.6,450.0,340.5
+Tachometer: 1,3105.7,3000.0,3000.0,3000.0
+TempSensor: 1,90.0,72.5,72.5,72.5,72.5
+FuelGauge: 1,930.0,990.0
+Device TempSensor updated with 65.0
+Device FuelGauge updated with 920.0
+Speedometer not updated.  It is not in the list.
+Device TempSensor reads 74.5
+Device FuelGauge reads 925.0
+Speedometer not outputted.  It is not in the list.
+Normal Termination of Program 1

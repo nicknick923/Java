@@ -1,0 +1,214 @@
+CS 2430 - Object-Oriented Programming & Data Structures I  F15 Scanlan
+
+Program:             3
+Points:              25
+Important Dates
+Due Date for Test document and Test Plan:
+             October 16, 2015 10 pm 
+            (no Grace date; 
+             put Test document in dropbox
+             put Plan in CSSE Hub)
+
+Program Due Date:        October 21, 2015 (10:00 pm)
+Program Grace Date:      October 23, 2015 (10:00 pm)
+
+-----------------------------------------------------------------------
+
+Evaluate Fraction RPN expressions using a stack as indicated in class.
+In addition, store the intermediate results in a queue.
+When done evaluating, print out the value of the RPN expression
+and a list of intermediate results.
+Intermediate results are those numbers which are computed
+and pushed back on the stack when an operator is encountered.
+You must use both a stack and a queue, although there are other
+ways it could be done.  I will provide Prog3.java. 
+
+1.  The Queue and Stack classes must have testbed mains that
+    test EVERY method and constructor.  You can use a modified
+    version of your Fraction class from Program 2.  It should
+    already have a testbed main;  if you did NOT write one for 
+    Program 2, then you must write one now for Program 3.
+
+2.  You must write a system level test specification that does a good 
+    job of testing all the different possibilities.  It must test all
+    the "bad" conditions we discussed in class and test different
+    operator combinations as well as single operators.  You must 
+    specify explicit tests, with explicit inputs and expected outputs.
+    The test document MUST be done in MSWord.
+    You must name it as <user_name>_p3Test.DOC, for example, johnsonj_p3Test.doc
+    When you have completed your test document (on or before the 
+    due date for the test document), put/drop it into the 
+
+    K:\Courses\CSSE\scanlan\cs2430\1Dropbox    folder.
+    
+    Failure to do so will result in up to a 5 point deduction.
+
+3.  Work Plan in CSSE Hub: It must show dates/times you will work on this 
+    program, together with what you plan to work on at that time, and how 
+    you plan to finish by the due date or before.  It must show that you
+    have a GOOD understanding of what needs to be done and have specific
+    parts of the program you plan to work on and when, e.g.
+  
+    Plan for Prog3  -- must be entered into CSSE HUB/SE Tools
+    Oct. 9  1-2 pm Read program description  
+    Oct. 9  7-8 pm Prepare Plan
+    ...  et cetera
+
+
+    Failure to do a plan will result in up to a 5 point deduction.
+
+
+4.  Submit the following files to the grader:
+    Fraction.java, Stack.java, Queue.java, RpnEvaluator.java and Prog3.java
+
+5.  IF YOU NEED HELP, then place your code and project in your share folder: 
+         K:\Courses\CSSE\scanlan\2430\your_user_id.
+       Then I can access it from my office when you stop by for help.
+
+6.  You must use CSSE_Hub to keep an up-to-date log of the time spent working.
+    You must use the automatic punch in and punch out when possible.
+    You could lose up to 4 points for incomplete log data and uncommented entries.
+
+
+The extra "requirements" are given below.
+
+-----------------------------------------------------------------------
+
+You must use the Prog3.java class that I provide.
+You will also need to make an appropriate RpnEvaluator class.
+
+I am requiring the following for the Stack and Queue classes:
+
+  Stack - must use Object.
+          You must use the elements and top implementation.
+          It must have a main testbed that exercises all methods.
+          I suggest that you use String objects to test it.
+
+  Queue - must use Object.
+          You must implement with "circular" array, front, rear, count.
+          It must have a main testbed that exercises all methods.
+
+Besides the normal Stack and Queue methods we made, you may
+want to make "clear" methods for them, that empty them out.
+You can't make a "count" method for Stack or any abnormal methods,
+such as "areThereTwo"!
+
+For the Fraction class, you can use the Fraction class of program 2 
+with the following modifications:
+
+1. For constructor with a string parameter, use "/()" to designate
+   as the delimiter argument instead of "/".
+2. Change the toString method to write a fraction like 1/2 as
+
+     (1/2)
+
+3. Check that you have a test bed main; if not complete one that
+   tests all public and private methods.
+
+
+The input file will consist of RPN expressions, with the # character
+delineating the end of each expression. The RPN expressions
+will consist of Fraction operands and the operators: + - *
+You do not have to handle / [division]
+Assume there will be spaces between all tokens (operators, operands, #).
+You can use the Scanner method, next(),  to read tokens.
+You can use String's charAt and/or equals methods for comparisons.
+Ask about this in class.
+
+For each RPN expression, read in the expression and:
+
+   1) write out the expression number
+   2) write out the expression with no spaces between the tokens
+   3) evaluate the expression, putting intermediate results on the queue
+   4) print out the value of the expression or a message if it is invalid
+   5) print out the queue of intermediate results
+
+If the expression is invalid, print out an error message indicating that.
+The expression up to the point where it was determined to be invalid
+must be printed out.
+
+----------------------------------------------------------------------
+Other Requirements / Restrictions :
+
+1. I expect that you will use good OO decomposition techniques.
+2. As always, match the output exactly and follow the Programming
+   Ground Rules.
+-----------------------------------------------------------------------
+
+Sample Input:
+
+ (4/12)  (2/10) - (40/1) * #
+   (2/2)  (34/4) + #
+(12/12)  (3/4) + (1/9) #
+(2/3) (3/10) (-1/2) * -  #
+(1/-1) (0/1) * (8/12) -     #
+ (9/3)  #
+   #
+ (2/9)  (4/3) * (14/-12) - #
+(2/9) B (4/3) / #
+(1/2) (-1/3) (3/2) (-1/11) * * - #
+  (1/2) + (2/2) #
+(2/3)  (3/4) #
+ (2/3) (8/9) - (3/2) * #
+(12/2) (21/2) + +            #
+(1/2) (-2/1) + (6/5) - #
+  (2/3)  (472/1245)  (3434/12345) * - #
+(10/20) (-20/10) + (65/-34) - (1212/1313) + #
+
+-----------------------------------------------------------------------
+Corresponding Sample Output:  (Note:  Some lines are long, but
+they do not wrap.) 
+
+Expression 1 is: (1/3)(1/5)-(40/1)*
+The value is: (16/3)
+Intermediate results: (2/15)(16/3)
+Expression 2 is: (1/1)(17/2)+
+The value is: (19/2)
+Intermediate results: (19/2)
+Expression 3 is: (1/1)(3/4)+(1/9)
+Invalid Expression
+Intermediate results: (7/4)
+Expression 4 is: (2/3)(3/10)(-1/2)*-
+The value is: (49/60)
+Intermediate results: (-3/20)(49/60)
+Expression 5 is: (-1/1)(0/1)*(2/3)-
+The value is: (-2/3)
+Intermediate results: (0/1)(-2/3)
+Expression 6 is: (3/1)
+The value is: (3/1)
+Intermediate results:
+Expression 7 is:
+Invalid Expression
+Intermediate results:
+Expression 8 is: (2/9)(4/3)*(-7/6)-
+The value is: (79/54)
+Intermediate results: (8/27)(79/54)
+Expression 9 is: (2/9)B
+Invalid Expression
+Intermediate results:
+Expression 10 is: (1/2)(-1/3)(3/2)(-1/11)**-
+The value is: (5/11)
+Intermediate results: (-3/22)(1/22)(5/11)
+Expression 11 is: (1/2)+
+Invalid Expression
+Intermediate results:
+Expression 12 is: (2/3)(3/4)
+Invalid Expression
+Intermediate results:
+Expression 13 is: (2/3)(8/9)-(3/2)*
+The value is: (-1/3)
+Intermediate results: (-2/9)(-1/3)
+Expression 14 is: (6/1)(21/2)++
+Invalid Expression
+Intermediate results: (33/2)
+Expression 15 is: (1/2)(-2/1)+(6/5)-
+The value is: (-27/10)
+Intermediate results: (-3/2)(-27/10)
+Expression 16 is: (2/3)(472/1245)(3434/12345)*-
+The value is: (8625502/15369525)
+Intermediate results: (1620848/15369525)(8625502/15369525)
+Expression 17 is: (1/2)(-2/1)+(-65/34)-(12/13)+
+The value is: (295/221)
+Intermediate results: (-3/2)(7/17)(295/221)
+Normal Termination of Program 3.
+
