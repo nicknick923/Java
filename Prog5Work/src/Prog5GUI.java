@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 
 import java.awt.*;
 import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
+import java.util.Random;
 
 /**
 
@@ -17,7 +17,8 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final listOfPFigures figureList;
    private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
    private static final Point userInputData = new Point(0, 0);
-   private static int level = 5;
+   private static int level = 4;
+   private static int enemiesPerLevel = 2;
 
    /**
     Creates new form Prog5GUI
@@ -166,19 +167,21 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private void setLevel()
    {
       if (deaths == 1)
-         deathCountField.setText("Level " + (level - 5) + ", 1 Death");
+         deathCountField.setText("Level " + (level - 4) + ", 1 Death");
       else
-         deathCountField.setText("Level " + (level - 5) + ", " + deaths + " Deaths");
+         deathCountField.setText("Level " + (level - 4) + ", " + deaths + " Deaths");
       figureList.resetList();
       figureList.hideAll();
-      figureList.addFigure(new goalFigure(gamePanel));
       figureList.addFigure(new scanMan(gamePanel));
-      for (int i = 0; i < level; i++)
-      {
-         figureList.addFigure(new deathDroid(gamePanel));
-         figureList.addFigure(new deathApple(gamePanel));
-      }
+      figureList.addFigure(new goalFigure(gamePanel));
+      for (int i = 0; i < level * enemiesPerLevel; i++)
+         if (Math.random() > .5)
+            figureList.addFigure(new deathDroid(gamePanel));
+         else
+            figureList.addFigure(new deathApple(gamePanel));
    }
+
+   
 
    /**
     @param args the command line arguments

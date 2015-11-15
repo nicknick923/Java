@@ -9,21 +9,28 @@ import java.awt.*;
 public class listOfPFigures
 {
 
-   private final int figMax = 1000;
-   private final PFigure[] listOfFigures = new PFigure[figMax];
-   private int figCount = 0;
+   private final int figMax = 100;
+   private final PFigure[] listOfFigures;
+   private int figCount;
    private final Panel workingPanel;
 
+   /**
+    This constructor prepares listOfPFigures for use and gets the panel the
+    game will play on.
+
+    @param p The panel the game will be played on.
+    */
    public listOfPFigures(Panel p)
    {
-
+      listOfFigures = new PFigure[figMax];
+      figCount = 0;
       workingPanel = p;
    }
 
    public PFigure userHitObject()
    {
-      for (int i = 0; i < figCount; i++)
-         if (listOfFigures[i].collidedWith(listOfFigures[1]) && i != 1)
+      for (int i = 1; i < figCount; i++)
+         if (listOfFigures[i].collidedWith(listOfFigures[0]))
             return listOfFigures[i];
       return null;
    }
