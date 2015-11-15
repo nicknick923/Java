@@ -16,7 +16,7 @@ public class listOfPFigures
 
    public listOfPFigures(Panel p)
    {
-      
+
       workingPanel = p;
    }
 
