@@ -29,11 +29,11 @@ public class teddyFig extends PFigure
       super.move(-5, -5);
       if (x < 0)
          x = panel.getSize().width - width;
-      else if ((x + width) > panel.getSize().width)
+      else if ((x + width) > panel.getWidth())
          x = 0;
       if (y < 0)
          y = panel.getSize().height - height;
-      else if ((y + height) > panel.getSize().height)
+      else if ((y + height) > panel.getHeight())
          y = 0;
    }
 
