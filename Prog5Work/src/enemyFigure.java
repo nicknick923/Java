@@ -9,7 +9,9 @@ import java.util.Random;
  */
 public abstract class enemyFigure extends PFigure
 {
-
+ 
+   
+   
    protected int xVelocity;
    protected int yVelocity;
 
