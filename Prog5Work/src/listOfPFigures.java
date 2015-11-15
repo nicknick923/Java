@@ -1,6 +1,4 @@
 
-import java.awt.*;
-
 /**
 
  @author Nick Sosinski
@@ -12,22 +10,28 @@ public class listOfPFigures
 {
 
    private final int figMax = 50;
-   private PFigure[] listOfFigures = new PFigure[figMax];
+   private final PFigure[] listOfFigures = new PFigure[figMax];
    private int figCount = 0;
-   private Panel workingPanel;
+   private final Panel workingPanel;
 
    public listOfPFigures(Panel p)
    {
       workingPanel = p;
    }
 
-   public void removeAllFigures()
+   public PFigure userHitObject()
+   {
+      for (int i = 0; i < figCount; i++)
+         if (listOfFigures[i].collidedWith(listOfFigures[1]) && i != 1)
+            return listOfFigures[i];
+      return null;
+   }
+
+   public void resetList()
    {
       for (int i = 0; i < figCount; i++)
          listOfFigures[i].hide();
       figCount = 0;
-
-      hideAll();
    }
 
    public void drawAll()
@@ -41,7 +45,7 @@ public class listOfPFigures
       avoidFlicker();
    }
 
-   private void hideAll()
+   public void hideAll()
    {
       Graphics g = workingPanel.getGraphics();
       Color oldColor = g.getColor();
