@@ -22,6 +22,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    public Prog5GUI()
    {
+      
       initComponents();
       figureList = new listOfPFigures(gamePanel);
       moveTimer.start();

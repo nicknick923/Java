@@ -10,6 +10,7 @@ import java.awt.*;
 public abstract class PFigure implements Comparable
 {
 
+   
    protected int x, y;           // Current position of the figure
    protected int width, height;  // Drawn (displayed) this size
    protected int priority;       // Can use to determine "winner"

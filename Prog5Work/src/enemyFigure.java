@@ -10,6 +10,7 @@ import java.util.Random;
 public abstract class enemyFigure extends PFigure
 {
 
+   
    //The velocities for each enemyFigure
    protected int xVelocity;
    protected int yVelocity;

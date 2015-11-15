@@ -12,6 +12,7 @@ import java.awt.Polygon;
 public class deathDroid extends enemyFigure
 {
 
+   
    private static final int figureWidth = 75;
    private static final int figureHeight = 90;
 

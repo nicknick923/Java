@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 public class deathApple extends enemyFigure
 {
 
+   
    private Image img;
    private static final int boxLength = 75;
 

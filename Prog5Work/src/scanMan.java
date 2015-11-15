@@ -25,6 +25,7 @@ public class scanMan extends PFigure
    @Override
    public void draw()
    {
+      
       if (img != null)
       {
          Graphics g = panel.getGraphics();
