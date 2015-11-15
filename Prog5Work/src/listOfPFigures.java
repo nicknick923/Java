@@ -19,17 +19,12 @@ public class listOfPFigures
       workingPanel = p;
    }
 
-   public boolean userHitGoal()
+   public PFigure userHitObject()
    {
-      return listOfFigures[0].collidedWith(listOfFigures[1]);
-   }
-
-   public boolean userHitDeathObject()
-   {
-      for (int i = 2; i < figCount; i++)
-         if (listOfFigures[1].collidedWith(listOfFigures[i]))
-            return true;
-      return false;
+      for (int i = 0; i < figCount; i++)
+         if (listOfFigures[i].collidedWith(listOfFigures[1]) && i != 1)
+            return listOfFigures[i];
+      return null;
    }
 
    public void resetList()

@@ -10,6 +10,7 @@ import java.awt.*;
  */
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
+
    private int deaths = 0;
    private final listOfPFigures figureList;
    private final javax.swing.Timer moveTimer = new javax.swing.Timer(100, this);
@@ -180,33 +181,30 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
    private void userCollideCheck()
    {
+      PFigure hitObject = figureList.userHitObject();
+      if (hitObject != null)
+         if (hitObject instanceof goalFigure)
+            userWonLevel();
+         else if (hitObject instanceof enemyFigure)
+            try
+            {
+               deaths++;
+               java.io.File soundFile = new java.io.File("C:\\Windows\\Media\\Windows Critical Stop.wav");
+               javax.sound.sampled.AudioInputStream audioIn = javax.sound.sampled.AudioSystem.getAudioInputStream(soundFile);
+               javax.sound.sampled.Clip clip = javax.sound.sampled.AudioSystem.getClip();
+               clip.open(audioIn);
+               clip.start();
+               setLevel();
+               if (deaths == 1)
+                  deathCountField.setText("1 Death");
+               else
+                  deathCountField.setText(deaths + " Deaths");
+            }
+            catch (Exception e)
+            {
 
-      if (figureList.userHitGoal())
-         userWonLevel();
-
-      try
-      {
-         if (figureList.userHitDeathObject())
-         {
-            deaths++;
-            java.io.File soundFile = new java.io.File("C:\\Windows\\Media\\Windows Critical Stop.wav");
-            javax.sound.sampled.AudioInputStream audioIn = javax.sound.sampled.AudioSystem.getAudioInputStream(soundFile);
-            javax.sound.sampled.Clip clip = javax.sound.sampled.AudioSystem.getClip();
-            clip.open(audioIn);
-            clip.start();
-            setLevel();
-            if (deaths == 1)
-               deathCountField.setText("1 Death");
-            else
-               deathCountField.setText(deaths+" Deaths");
-         }
-      }
-      catch (Exception e)
-      {
-
-      }
+            }
    }
-
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.TextField deathCountField;
    private java.awt.Panel gamePanel;
