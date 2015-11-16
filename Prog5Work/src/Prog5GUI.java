@@ -6,12 +6,13 @@
  */
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.io.*;
 
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 
-   public static boolean funnyDraw = false;
    private int deaths = 0;
+   private int deathsThisLevel = 0;
    private int level = 1;  //start user at level 1
    private int timeSpentOnLevel = 0;
    private int timePlayed = 0;
@@ -22,10 +23,13 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final boolean alternateDrawMethod = true;
    private final listOfPFigures figureList;
    private final javax.swing.Timer moveTimer = new javax.swing.Timer(gameSpeed, this);
-   private final String levelWinSoundFile = "C:\\Windows\\Media\\tada.wav";
-   private final String playerDeathSoundFile = "C:\\Windows\\Media\\Windows Critical Stop.wav";
-   private final String pauseSoundFile = "C:\\Windows\\Media\\Speech Sleep.wav";
-   private final String unpauseSoundFile = "C:\\Windows\\Media\\Speech On.wav";
+   private final String levelWinSoundFile = "tada.wav";
+   private final String playerDeathSoundFile = "Windows Critical Stop.wav";
+   private final String pauseSoundFile = "Speech Sleep.wav";
+   private final String unpauseSoundFile = "Speech On.wav";
+   private final String highScoreFile = "HS.dat";
+   private String user = "default";
+   private PrintWriter pw;
 
    /**
     This constructor creates and displays the Prog5GUI then sets up the figure
@@ -33,8 +37,15 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    public Prog5GUI()
    {
-
       initComponents();
+      try
+      {
+         pw = new PrintWriter(new FileWriter(highScoreFile, true));
+      }
+      catch (Exception e)
+      {
+      }
+
       figureList = new listOfPFigures(gamePanel);
       moveTimer.start();
       componetResized(null);
@@ -120,6 +131,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     Exit the Application
     */
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
+       pw.close();
        System.exit(0);
     }//GEN-LAST:event_exitForm
 
@@ -136,9 +148,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
             moveTimer.start();
             playSound(unpauseSoundFile);
          }
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_J)
-         funnyDraw = !funnyDraw;
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_H)
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_HOME)
          userWonLevel();
       else
          scanMan.keyDownReciver(evt);
@@ -196,10 +206,10 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    private void userWonLevel()
    {
-      System.out.println("Level Beat: " + level + " Deaths: " + deaths
-            + " Time On Level:" + timeSpentOnLevel);
+      pw.println(user + ", " + level + ", " + deathsThisLevel + ", " + (timeSpentOnLevel / milisecondsInASecond));
       level++;
       timeSpentOnLevel = 0;
+      deathsThisLevel = 0;
       updateDeathInfo();
       setLevel();
    }
@@ -309,6 +319,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          else if (hitObject instanceof enemyFigure)
          {
             deaths++;
+            deathsThisLevel++;
             updateDeathInfo();
             playSound(playerDeathSoundFile);
             setLevel();

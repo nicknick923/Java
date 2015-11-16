@@ -68,8 +68,7 @@ public class listOfPFigures
    {
       if (alternateDrawMethod)
       {
-         if (!Prog5GUI.funnyDraw)
-            hideAll();
+         hideAll();
          for (int i = 0; i < figCount; i++)
          {
             listOfFigures[i].move();
