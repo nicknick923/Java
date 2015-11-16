@@ -59,6 +59,13 @@ public class goalFigure extends PFigure
             && (p.y + p.height / 2) >= y;
    }
 
+   @Override
+   public void move()
+   {
+      x = panel.getSize().width - width - pxDistanceFromRightEdge;
+      y = panel.getSize().height / 2 - height / 2;
+   }
+   
    /**
     This method will draw the goal at location x,y with the respective width
     and height values stored in this class, if the image was opened.

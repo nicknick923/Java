@@ -10,6 +10,7 @@ import java.io.IOException;
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 
+   public static boolean funnyDraw = false;
    private int deaths = 0;
    private int level = 1;  //start user at level 1
    private int timeSpentOnLevel = 0;
@@ -135,6 +136,10 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
             moveTimer.start();
             playSound(unpauseSoundFile);
          }
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_J)
+         funnyDraw = !funnyDraw;
+      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_H)
+         userWonLevel();
       else
          scanMan.keyDownReciver(evt);
    }//GEN-LAST:event_gamePanelKeyDown
@@ -191,8 +196,11 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    private void userWonLevel()
    {
+      System.out.println("Level Beat: " + level + " Deaths: " + deaths
+            + " Time On Level:" + timeSpentOnLevel);
       level++;
       timeSpentOnLevel = 0;
+      updateDeathInfo();
       setLevel();
    }
 
