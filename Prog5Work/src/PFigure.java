@@ -1,12 +1,12 @@
 
-import java.awt.*;
-
 /**
 
  @author Nick Sosinski
  @author Jake Ira
  @author Thomas Scanlan
  */
+import java.awt.*;
+
 public abstract class PFigure implements Comparable
 {
 

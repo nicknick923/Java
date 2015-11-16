@@ -1,4 +1,9 @@
 
+/**
+
+ @author Nick Sosinski
+ @author Jake Ira
+ */
 import java.awt.*;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -15,9 +20,9 @@ public class scanMan extends PFigure
    private Image img;
 
    /**
-    This constructor creates a scanMan PFigure with the with the starting
-    location and size specified by the constants that lives on the panel that
-    is passed as a parameter.
+    This constructor creates a scanMan PFigure with the starting location and
+    size specified by the constants that lives on the panel which is passed as
+    a parameter.
 
     @param p The panel for which the game is played on.
     */
@@ -76,7 +81,7 @@ public class scanMan extends PFigure
 
    /**
     This method will draw scanMan at location x,y with the respective width
-    and height values stored in this class.
+    and height values stored in this class, if the image was opened.
     */
    @Override
    public void draw()

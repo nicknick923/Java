@@ -1,7 +1,5 @@
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Panel;
+import java.awt.*;
 import java.io.File;
 import javax.imageio.ImageIO;
 
@@ -13,13 +11,21 @@ import javax.imageio.ImageIO;
 public class deathApple extends enemyFigure
 {
 
-   private Image img;
-   private static final int boxLength = 75;
+   private static final int deathAppleBaseDimension = 75;
    private static final int deathAppleMaxVelocity = 5;
+   private Image img;
 
+   /**
+    This constructor creates a deathApple with the size and max velocity
+    specified by the constants that lives on the panel which is passed as a
+    parameter.
+
+    @param p The panel for which the game is played on.
+    */
    public deathApple(Panel p)
    {
-      super(boxLength, boxLength, deathAppleMaxVelocity, p);
+      super(deathAppleBaseDimension, deathAppleBaseDimension,
+            deathAppleMaxVelocity, p);
       try
       {
          File file = new File("apple logo.png");
@@ -27,10 +33,14 @@ public class deathApple extends enemyFigure
       }
       catch (Exception e)
       {
-         System.out.println("Crashing: " + e);
+         System.err.println("Error: " + e);
       }
    }
 
+   /**
+    This method will draw the deathApple at location x,y with the respective
+    width and height values stored in this class, if the image was opened.
+    */
    @Override
    public void draw()
    {

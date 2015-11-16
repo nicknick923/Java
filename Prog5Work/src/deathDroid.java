@@ -1,14 +1,11 @@
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Panel;
-import java.awt.Polygon;
-
 /**
 
  @author Nick Sosinski
  @author Jake Ira
  */
+import java.awt.*;
+
 public class deathDroid extends enemyFigure
 {
 
@@ -16,6 +13,13 @@ public class deathDroid extends enemyFigure
    private static final int figureHeight = 90;
    private static final int deathDroidMaxVelocity = 5;
 
+   /**
+    This constructor creates a deathDroid with the size and max velocity
+    specified by the constants that lives on the panel which is passed as a
+    parameter.
+
+    @param p The panel for which the game is played on.
+    */
    public deathDroid(Panel p)
    {
       super(figureWidth, figureHeight, deathDroidMaxVelocity, p);

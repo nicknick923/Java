@@ -1,12 +1,12 @@
 
-import java.awt.Panel;
-import java.util.Random;
-
 /**
 
  @author Nick Sosinski
  @author Jake Ira
  */
+import java.awt.Panel;
+import java.util.Random;
+
 public abstract class enemyFigure extends PFigure
 {
 
