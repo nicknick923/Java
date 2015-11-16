@@ -126,8 +126,8 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       add(timeField);
       timeField.setBounds(140, 40, 150, 20);
 
+      userNameTextField.setBackground(new java.awt.Color(240, 240, 240));
       userNameTextField.setName("userNameTextField"); // NOI18N
-      userNameTextField.setText("User Name");
       userNameTextField.addFocusListener(new java.awt.event.FocusAdapter()
       {
          public void focusGained(java.awt.event.FocusEvent evt)
@@ -136,14 +136,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          }
          public void focusLost(java.awt.event.FocusEvent evt)
          {
-            userTextLostFocus(evt);
-         }
-      });
-      userNameTextField.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            userNameTextFieldActionPerformed(evt);
+            userNameTextLostFocus(evt);
          }
       });
       userNameTextField.addTextListener(new java.awt.event.TextListener()
@@ -212,11 +205,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       gamePanel.requestFocus();
    }//GEN-LAST:event_timeFieldTransferFocus
 
-   private void userNameTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userNameTextFieldActionPerformed
-   {//GEN-HEADEREND:event_userNameTextFieldActionPerformed
-      // TODO add your handling code here:
-   }//GEN-LAST:event_userNameTextFieldActionPerformed
-
    private void userNameTextChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_userNameTextChanged
    {//GEN-HEADEREND:event_userNameTextChanged
       if (!userNameTextField.getText().equals(""))
@@ -230,11 +218,11 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          pause();
    }//GEN-LAST:event_userNameTextFocused
 
-   private void userTextLostFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_userTextLostFocus
-   {//GEN-HEADEREND:event_userTextLostFocus
+   private void userNameTextLostFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_userNameTextLostFocus
+   {//GEN-HEADEREND:event_userNameTextLostFocus
       if (!wasPaused)
          unpause();
-   }//GEN-LAST:event_userTextLostFocus
+   }//GEN-LAST:event_userNameTextLostFocus
    /**
     This method tries to play the sound file that is passed in, and if it
     cant, it outputs the error to the error output.
