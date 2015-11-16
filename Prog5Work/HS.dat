@@ -1,4 +1,4 @@
-#user, levelBeat, deathsOnLevel, timeOnLevel
+#userName, levelBeat, deathsOnLevel, timeOnLevel
 Travis, 1, 1, 21.5
 Travis, 2, 0, 34.4
 Travis, 3, 0, 14.5
@@ -12,9 +12,4 @@ Travis, 10, 0, 52.7
 Travis, 11, 1, 34.5
 Travis, 12, 24, 347.5
 Travis, 13, 12, 148.81, 0, 14
-default, 2, 2, 14
-default, 1, 0, 11
-default, 2, 0, 13
-default, 1, 0, 13
-default, 1, 3, 23
-default, 2, 1, 11
+

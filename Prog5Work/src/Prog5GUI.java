@@ -30,6 +30,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final String highScoreFile = "HS.dat";
    private String user = "default";
    private PrintWriter pw;
+   private boolean wasPaused;
 
    /**
     This constructor creates and displays the Prog5GUI then sets up the figure
@@ -45,7 +46,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       catch (Exception e)
       {
       }
-
+      userNameTextField.setText(user);
       figureList = new listOfPFigures(gamePanel);
       moveTimer.start();
       componetResized(null);
@@ -65,6 +66,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       gamePanel = new java.awt.Panel();
       deathCountField = new java.awt.TextField();
       timeField = new java.awt.TextField();
+      userNameTextField = new java.awt.TextField();
 
       setMinimumSize(new java.awt.Dimension(1130, 700));
       addComponentListener(new java.awt.event.ComponentAdapter()
@@ -124,6 +126,36 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       add(timeField);
       timeField.setBounds(140, 40, 150, 20);
 
+      userNameTextField.setName("userNameTextField"); // NOI18N
+      userNameTextField.setText("User Name");
+      userNameTextField.addFocusListener(new java.awt.event.FocusAdapter()
+      {
+         public void focusGained(java.awt.event.FocusEvent evt)
+         {
+            userNameTextFocused(evt);
+         }
+         public void focusLost(java.awt.event.FocusEvent evt)
+         {
+            userTextLostFocus(evt);
+         }
+      });
+      userNameTextField.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            userNameTextFieldActionPerformed(evt);
+         }
+      });
+      userNameTextField.addTextListener(new java.awt.event.TextListener()
+      {
+         public void textValueChanged(java.awt.event.TextEvent evt)
+         {
+            userNameTextChanged(evt);
+         }
+      });
+      add(userNameTextField);
+      userNameTextField.setBounds(300, 40, 70, 20);
+
       pack();
    }// </editor-fold>//GEN-END:initComponents
 
@@ -135,19 +167,25 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
        System.exit(0);
     }//GEN-LAST:event_exitForm
 
+   private void pause()
+   {
+      moveTimer.stop();
+      playSound(pauseSoundFile);
+   }
+
+   private void unpause()
+   {
+      moveTimer.start();
+      playSound(unpauseSoundFile);
+   }
+
    private void gamePanelKeyDown(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyDown
    {//GEN-HEADEREND:event_gamePanelKeyDown
       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
          if (moveTimer.isRunning())
-         {
-            moveTimer.stop();
-            playSound(pauseSoundFile);
-         }
+            pause();
          else
-         {
-            moveTimer.start();
-            playSound(unpauseSoundFile);
-         }
+            unpause();
       else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_HOME)
          userWonLevel();
       else
@@ -173,6 +211,30 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    {//GEN-HEADEREND:event_timeFieldTransferFocus
       gamePanel.requestFocus();
    }//GEN-LAST:event_timeFieldTransferFocus
+
+   private void userNameTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_userNameTextFieldActionPerformed
+   {//GEN-HEADEREND:event_userNameTextFieldActionPerformed
+      // TODO add your handling code here:
+   }//GEN-LAST:event_userNameTextFieldActionPerformed
+
+   private void userNameTextChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_userNameTextChanged
+   {//GEN-HEADEREND:event_userNameTextChanged
+      if (!userNameTextField.getText().equals(""))
+         user = userNameTextField.getText();
+   }//GEN-LAST:event_userNameTextChanged
+
+   private void userNameTextFocused(java.awt.event.FocusEvent evt)//GEN-FIRST:event_userNameTextFocused
+   {//GEN-HEADEREND:event_userNameTextFocused
+      wasPaused = !moveTimer.isRunning();
+      if (moveTimer.isRunning())
+         pause();
+   }//GEN-LAST:event_userNameTextFocused
+
+   private void userTextLostFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_userTextLostFocus
+   {//GEN-HEADEREND:event_userTextLostFocus
+      if (!wasPaused)
+         unpause();
+   }//GEN-LAST:event_userTextLostFocus
    /**
     This method tries to play the sound file that is passed in, and if it
     cant, it outputs the error to the error output.
@@ -329,5 +391,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private java.awt.TextField deathCountField;
    private java.awt.Panel gamePanel;
    private java.awt.TextField timeField;
+   private java.awt.TextField userNameTextField;
    // End of variables declaration//GEN-END:variables
 }
