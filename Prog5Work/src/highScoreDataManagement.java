@@ -24,19 +24,7 @@ public class highScoreDataManagement
       try
       {
          highScoreScanner = new Scanner(new File("HS.dat"));
-         readData();
-      }
-      catch (Exception e)
-      {
-         System.err.println("Cound not open High Score File");
-      }
-   }
-
-   private static void openHS()
-   {
-      try
-      {
-         pw = new PrintWriter(new FileWriter(highScoreFile, true));
+               readData();
       }
       catch (Exception e)
       {
@@ -53,7 +41,7 @@ public class highScoreDataManagement
          if (score.charAt(0) != '#')
          {
             tokenizer = new StringTokenizer(score, ",");
-            //userName, gameMode, levelBeat, deathsOnLevel, timeOnLevel
+            //userName,gameMode,levelBeat,deathsOnLevel,timeOnLevel
             String name = tokenizer.nextToken();
             String gameMode = tokenizer.nextToken();
             int levelBeat = Integer.parseInt(tokenizer.nextToken());
@@ -63,16 +51,23 @@ public class highScoreDataManagement
          }
       }
       for (int i = 0; i < highScoreCount; i++)
-      {
          System.out.println(highScores[i].getLevel());
-      }
    }
 
    public void writeScore(String user, String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
    {
-      openHS();
-      pw.println(user + ", " + gameMode + ", " + level + ", " + numDeathsOnLevel + ", " + timeOnLevel);
-      pw.close();
+      try
+      {
+         pw = new PrintWriter(new FileWriter(highScoreFile, true));
+         pw.println();
+         pw.print(user + "," + gameMode + "," + level + "," + numDeathsOnLevel + "," + timeOnLevel);
+         pw.close();
+      }
+      catch (Exception e)
+      {
+         System.err.println("Cound not open High Score File");
+      }
+
    }
 
 }

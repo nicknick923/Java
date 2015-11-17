@@ -27,7 +27,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final String playerDeathSoundFile = "Windows Critical Stop.wav";
    private final String pauseSoundFile = "Speech Sleep.wav";
    private final String unpauseSoundFile = "Speech On.wav";
-   private final highScoreDataManagement highScoreManager = new highScoreDataManagement();
+   private static final highScoreDataManagement highScoreManager = new highScoreDataManagement();
    private static String gameMode;
 
    private String user = "default";
@@ -350,23 +350,28 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
       if (args[0].equals("rounds"))
       {
+         System.out.println("Rounds");
          gameMode = "rounds";
          rounds = true;
       }
       else
       {
+         System.out.println("Endless");
          gameMode = "endless";
          rounds = false;
-
       }
-
+      
+      
+      
       java.awt.EventQueue.invokeLater(new Runnable()
       {
          public void run()
          {
             new Prog5GUI().setVisible(true);
          }
-      });
+      }
+      
+      );
    }
 
    /**
