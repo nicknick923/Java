@@ -6,7 +6,8 @@
 
 /**
 
- @author Jacob
+ @author Jake Ira
+ @author Nick Sosinski
  */
 public class StartingGUI extends java.awt.Frame
 {
@@ -28,6 +29,12 @@ public class StartingGUI extends java.awt.Frame
    private void initComponents()
    {
 
+      titleLabel = new java.awt.Label();
+      survivalButton = new java.awt.Button();
+      roundsButton = new java.awt.Button();
+      highScoresButton = new java.awt.Button();
+
+      setBackground(java.awt.Color.red);
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -35,6 +42,47 @@ public class StartingGUI extends java.awt.Frame
             exitForm(evt);
          }
       });
+      setLayout(null);
+
+      titleLabel.setAlignment(java.awt.Label.CENTER);
+      titleLabel.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+      titleLabel.setName(""); // NOI18N
+      titleLabel.setText("Cowboy ScanMan ");
+      add(titleLabel);
+      titleLabel.setBounds(10, 60, 550, 50);
+
+      survivalButton.setLabel("Survival Mode");
+      survivalButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            survivalButtonActionPerformed(evt);
+         }
+      });
+      add(survivalButton);
+      survivalButton.setBounds(221, 250, 90, 24);
+
+      roundsButton.setLabel("Rounds");
+      roundsButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            roundsButtonActionPerformed(evt);
+         }
+      });
+      add(roundsButton);
+      roundsButton.setBounds(220, 190, 90, 24);
+
+      highScoresButton.setLabel("High Scores");
+      highScoresButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            highScoresButtonActionPerformed(evt);
+         }
+      });
+      add(highScoresButton);
+      highScoresButton.setBounds(220, 310, 90, 24);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -45,6 +93,21 @@ public class StartingGUI extends java.awt.Frame
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
        System.exit(0);
     }//GEN-LAST:event_exitForm
+
+   private void survivalButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalButtonActionPerformed
+   {//GEN-HEADEREND:event_survivalButtonActionPerformed
+      
+   }//GEN-LAST:event_survivalButtonActionPerformed
+
+   private void roundsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundsButtonActionPerformed
+   {//GEN-HEADEREND:event_roundsButtonActionPerformed
+
+   }//GEN-LAST:event_roundsButtonActionPerformed
+
+   private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
+   {//GEN-HEADEREND:event_highScoresButtonActionPerformed
+      
+   }//GEN-LAST:event_highScoresButtonActionPerformed
 
    /**
     @param args the command line arguments
@@ -62,5 +125,9 @@ public class StartingGUI extends java.awt.Frame
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private java.awt.Button highScoresButton;
+   private java.awt.Button roundsButton;
+   private java.awt.Button survivalButton;
+   private java.awt.Label titleLabel;
    // End of variables declaration//GEN-END:variables
 }
