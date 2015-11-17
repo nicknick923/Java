@@ -62,8 +62,6 @@ public class highScoreDataManagement
             highScores[highScoreCount++] = new highScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
          }
       }
-
-      
       for (int i = 0; i < highScoreCount; i++)
       {
          System.out.println(highScores[i].getLevel());
