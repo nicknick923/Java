@@ -104,7 +104,6 @@ public class StartingGUI extends java.awt.Frame
       Prog5GUI.stopGameMusic();
       Prog5GUI.playGameMusic("The Drift.wav");
       Prog5GUI game = new Prog5GUI();
-      this.hide();
       commandString[0] = "survival";
       game.main(commandString);
    }//GEN-LAST:event_survivalButtonActionPerformed
@@ -114,7 +113,6 @@ public class StartingGUI extends java.awt.Frame
       Prog5GUI.stopGameMusic();
       Prog5GUI.playGameMusic("The Drift.wav");
       Prog5GUI game = new Prog5GUI();
-      this.hide();
       commandString[0] = "rounds";
       game.main(commandString);
    }//GEN-LAST:event_roundsButtonActionPerformed
