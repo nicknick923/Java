@@ -27,10 +27,11 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final String playerDeathSoundFile = "Windows Critical Stop.wav";
    private final String pauseSoundFile = "Speech Sleep.wav";
    private final String unpauseSoundFile = "Speech On.wav";
-   private final String highScoreFile = "HS.dat";
+   private static final String highScoreFile = "HS.dat";
    private String user = "default";
-   private PrintWriter pw;
+   private static PrintWriter pw;
    private boolean wasPaused;
+   private static boolean HSFileOpen = false;
 
    /**
     This constructor creates and displays the Prog5GUI then sets up the figure
@@ -39,13 +40,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    public Prog5GUI()
    {
       initComponents();
-      try
-      {
-         pw = new PrintWriter(new FileWriter(highScoreFile, true));
-      }
-      catch (Exception e)
-      {
-      }
+      openHS();
       userNameTextField.setText(user);
       figureList = new listOfPFigures(gamePanel);
       moveTimer.start();
@@ -155,10 +150,36 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    /**
     Exit the Application
     */
-    private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
+    private void exitForm(java.awt.event.WindowEvent evt)
+	{//GEN-FIRST:event_exitForm
        pw.close();
        System.exit(0);
     }//GEN-LAST:event_exitForm
+
+   public static void openHS()
+   {
+      try
+      {
+         pw = new PrintWriter(new FileWriter(highScoreFile, true));
+         HSFileOpen = true;
+      }
+      catch (Exception e)
+      {
+         HSFileOpen = false;
+      }
+   }
+
+   public static void closeHS()
+   {
+      if (HSFileOpen)
+         pw.close();
+      HSFileOpen = false;
+   }
+
+   public static boolean isHSFileOpen()
+   {
+      return HSFileOpen;
+   }
 
    private void pause()
    {
