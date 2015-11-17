@@ -27,11 +27,12 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final String playerDeathSoundFile = "Windows Critical Stop.wav";
    private final String pauseSoundFile = "Speech Sleep.wav";
    private final String unpauseSoundFile = "Speech On.wav";
-   private static final String highScoreFile = "HS.dat";
+   private final highScoreDataManagement highScoreManager = new highScoreDataManagement();
+   private static String gameMode;
+
    private String user = "default";
-   private static PrintWriter pw;
+
    private boolean wasPaused;
-   private static boolean HSFileOpen = false;
    private static boolean rounds = true;
    private static javax.sound.sampled.Clip gameMusic;
 
@@ -42,7 +43,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    public Prog5GUI()
    {
       initComponents();
-      openHS();
       userNameTextField.setText(user);
       figureList = new listOfPFigures(gamePanel, rounds);
       moveTimer.start();
@@ -154,34 +154,8 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    private void exitForm(java.awt.event.WindowEvent evt)
 	{//GEN-FIRST:event_exitForm
-      pw.close();
       System.exit(0);
     }//GEN-LAST:event_exitForm
-
-   public static void openHS()
-   {
-      try
-      {
-         pw = new PrintWriter(new FileWriter(highScoreFile, true));
-         HSFileOpen = true;
-      }
-      catch (Exception e)
-      {
-         HSFileOpen = false;
-      }
-   }
-
-   public static void closeHS()
-   {
-      if (HSFileOpen)
-         pw.close();
-      HSFileOpen = false;
-   }
-
-   public static boolean isHSFileOpen()
-   {
-      return HSFileOpen;
-   }
 
    private void pause()
    {
@@ -305,7 +279,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    private void userWonLevel()
    {
-      pw.println(user + ", " + level + ", " + deathsThisLevel + ", " + (timeSpentOnLevel / milisecondsInASecond));
+      highScoreManager.writeScore(user, gameMode, level, deathsThisLevel, timeSpentOnLevel);
       level++;
       timeSpentOnLevel = 0;
       deathsThisLevel = 0;
@@ -373,15 +347,17 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    public static void main(String args[])
    {
-      try
+
+      if (args[0].equals("rounds"))
       {
-         if (args[0].equals("rounds"))
-            rounds = true;
-         else
-            rounds = false;
+         gameMode = "rounds";
+         rounds = true;
       }
-      catch (Exception e)
+      else
       {
+         gameMode = "endless";
+         rounds = false;
+
       }
 
       java.awt.EventQueue.invokeLater(new Runnable()
