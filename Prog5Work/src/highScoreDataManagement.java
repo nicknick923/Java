@@ -44,7 +44,7 @@ public class highScoreDataManagement
       }
    }
 
-   private static void readData()
+   private void readData()
    {
       StringTokenizer tokenizer;
       while (highScoreScanner.hasNext())
@@ -54,10 +54,20 @@ public class highScoreDataManagement
          {
             tokenizer = new StringTokenizer(score, ",");
             //userName, gameMode, levelBeat, deathsOnLevel, timeOnLevel
-            highScores[0]
+            String name = tokenizer.nextToken();
+            String gameMode = tokenizer.nextToken();
+            int levelBeat = Integer.parseInt(tokenizer.nextToken());
+            int deathsOnLevel = Integer.parseInt(tokenizer.nextToken());
+            int timeOnLevel = Integer.parseInt(tokenizer.nextToken());
+            highScores[highScoreCount++] = new highScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
          }
       }
 
+      
+      for (int i = 0; i < highScoreCount; i++)
+      {
+         System.out.println(highScores[i].getLevel());
+      }
    }
 
    public void writeScore(String user, String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
