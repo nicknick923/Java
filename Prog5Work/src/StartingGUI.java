@@ -11,6 +11,9 @@
  */
 public class StartingGUI extends java.awt.Frame
 {
+	//*********************************TODO**********************************//
+   //**************Add a username field for the leaderboard*****************//
+   //*********************************TODO**********************************//
 
    private String[] commandString = new String[1];
 
