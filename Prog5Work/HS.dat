@@ -1,14 +1,14 @@
-#userName, levelBeat, deathsOnLevel, timeOnLevel
-Travis, 1, 1, 21
-Travis, 2, 0, 34
-Travis, 3, 0, 14
-Travis, 4, 5, 15
-Travis, 5, 0, 106
-Travis, 6, 0, 26
-Travis, 7, 13, 120
-Travis, 8, 15, 191
-Travis, 9, 8, 116
-Travis, 10, 0, 52
-Travis, 11, 1, 34
-Travis, 12, 24, 347
-Travis, 13, 12, 148
+#userName, gameMode, levelBeat, deathsOnLevel, timeOnLevel
+Travis, rounds, 1, 1, 21
+Travis, rounds, 2, 0, 34
+Travis, rounds, 3, 0, 14
+Travis, rounds, 4, 5, 15
+Travis, rounds, 5, 0, 106
+Travis, rounds, 6, 0, 26
+Travis, rounds, 7, 13, 120
+Travis, rounds, 8, 15, 191
+Travis, rounds, 9, 8, 116
+Travis, rounds, 10, 0, 52
+Travis, rounds, 11, 1, 34
+Travis, rounds, 12, 24, 347
+Travis, rounds, 13, 12, 148

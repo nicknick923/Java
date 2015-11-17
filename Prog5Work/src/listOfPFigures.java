@@ -13,16 +13,20 @@ public class listOfPFigures
    private PFigure[] listOfFigures;
    private int figCount;
    private final Panel workingPanel;
+   private final boolean rounds;
 
    /**
     This constructor prepares listOfPFigures for use and gets the panel the
     game will play on.
 
+    @inRounds A true or false value of whether to play the game endlessly,
+    false, or with a goal, true.
     @param p The panel the game will be played on.
     */
-   public listOfPFigures(Panel p)
+   public listOfPFigures(Panel p, boolean inRounds)
    {
       listOfFigures = new PFigure[figMax];
+      rounds = inRounds;
       figCount = 0;
       workingPanel = p;
    }

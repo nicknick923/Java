@@ -31,6 +31,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private static PrintWriter pw;
    private boolean wasPaused;
    private static boolean HSFileOpen = false;
+   private static boolean rounds = true;
 
    /**
     This constructor creates and displays the Prog5GUI then sets up the figure
@@ -41,7 +42,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       initComponents();
       openHS();
       userNameTextField.setText(user);
-      figureList = new listOfPFigures(gamePanel);
+      figureList = new listOfPFigures(gamePanel, rounds);
       moveTimer.start();
       componetResized(null);
       setLevel();
@@ -344,6 +345,17 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    public static void main(String args[])
    {
+      try
+      {
+         if (args[0].equals("rounds"))
+         rounds = true;
+      else
+         rounds =  false;
+      }
+      catch (Exception e)
+      {
+      }
+      
       java.awt.EventQueue.invokeLater(new Runnable()
       {
          public void run()

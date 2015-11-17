@@ -12,6 +12,10 @@
 public class StartingGUI extends java.awt.Frame
 {
 
+   private final Prog5GUI game = new Prog5GUI();
+
+   private String[] commandString = new String[1];
+
    /**
     Creates new form StartingGUI
     */
@@ -35,6 +39,8 @@ public class StartingGUI extends java.awt.Frame
       highScoresButton = new java.awt.Button();
 
       setBackground(java.awt.Color.red);
+      setMaximumSize(new java.awt.Dimension(566, 416));
+      setMinimumSize(new java.awt.Dimension(566, 416));
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -96,17 +102,21 @@ public class StartingGUI extends java.awt.Frame
 
    private void survivalButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalButtonActionPerformed
    {//GEN-HEADEREND:event_survivalButtonActionPerformed
-      
+      this.hide();
+      commandString[0] = "survival";
+      game.main(commandString);
    }//GEN-LAST:event_survivalButtonActionPerformed
 
    private void roundsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundsButtonActionPerformed
    {//GEN-HEADEREND:event_roundsButtonActionPerformed
-
+      this.hide();
+      commandString[0] = "rounds";
+      game.main(commandString);
    }//GEN-LAST:event_roundsButtonActionPerformed
 
    private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
    {//GEN-HEADEREND:event_highScoresButtonActionPerformed
-      
+
    }//GEN-LAST:event_highScoresButtonActionPerformed
 
    /**
