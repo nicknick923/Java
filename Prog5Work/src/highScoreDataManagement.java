@@ -9,29 +9,29 @@ import java.util.StringTokenizer;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.awt.*;
 
 public class highScoreDataManagement
 {
-
+   
    private static Scanner highScoreScanner;
    private static final String highScoreFile = "HS.dat";
    private static PrintWriter pw;
    private highScoreData[] highScores = new highScoreData[100];
    private int highScoreCount = 0;
-
+   
    public highScoreDataManagement()
    {
       try
       {
          highScoreScanner = new Scanner(new File("HS.dat"));
-               readData();
       }
       catch (Exception e)
       {
          System.err.println("Cound not open High Score File");
       }
    }
-
+   
    private void readData()
    {
       StringTokenizer tokenizer;
@@ -53,7 +53,14 @@ public class highScoreDataManagement
       for (int i = 0; i < highScoreCount; i++)
          System.out.println(highScores[i].getLevel());
    }
-
+   
+   public void addScoresToList(List l)
+   {
+      readData();
+      for (int i = 0; i < highScoreCount; i++)
+         l.add(highScores[i].toString());
+   }
+   
    public void writeScore(String user, String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
    {
       try
@@ -67,7 +74,7 @@ public class highScoreDataManagement
       {
          System.err.println("Cound not open High Score File");
       }
-
+      
    }
-
+   
 }

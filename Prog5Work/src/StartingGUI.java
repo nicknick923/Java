@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
 
  @author Jake Ira
  @author Nick Sosinski
  */
+import java.awt.*;
+
 public class StartingGUI extends java.awt.Frame
 {
    //*********************************TODO**********************************//
@@ -22,7 +19,7 @@ public class StartingGUI extends java.awt.Frame
     */
    public StartingGUI()
    {
-      //Prog5GUI.playGameMusic("Hello.wav");
+      Prog5GUI.playGameMusic("Hello.wav");
       initComponents();
    }
 
@@ -35,11 +32,15 @@ public class StartingGUI extends java.awt.Frame
    private void initComponents()
    {
 
+      scoresPanel = new java.awt.Panel();
+      scoreList = new java.awt.List();
+      highScoreLabel = new java.awt.Label();
+      closeButton = new java.awt.Button();
       titleLabel = new java.awt.Label();
       survivalButton = new java.awt.Button();
       roundsButton = new java.awt.Button();
       highScoresButton = new java.awt.Button();
-      usernameTextField = new java.awt.TextField();
+      userNameTextField = new java.awt.TextField();
       label1 = new java.awt.Label();
 
       setBackground(java.awt.Color.red);
@@ -53,6 +54,37 @@ public class StartingGUI extends java.awt.Frame
          }
       });
       setLayout(null);
+
+      scoresPanel.setBackground(java.awt.Color.red);
+      scoresPanel.setName("scoresPanel"); // NOI18N
+      scoresPanel.setVisible(false);
+      scoresPanel.setLayout(null);
+      scoresPanel.add(scoreList);
+      scoreList.setBounds(40, 90, 480, 280);
+
+      highScoreLabel.setAlignment(java.awt.Label.CENTER);
+      highScoreLabel.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+      highScoreLabel.setName("highScoreLabel"); // NOI18N
+      highScoreLabel.setText("High Scores");
+      scoresPanel.add(highScoreLabel);
+      highScoreLabel.setBounds(0, 20, 560, 50);
+
+      closeButton.setActionCommand("closeButton");
+      closeButton.setLabel("Close");
+      closeButton.setName("closeButton"); // NOI18N
+      closeButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            closeButtonActionPerformed(evt);
+         }
+      });
+      scoresPanel.add(closeButton);
+      closeButton.setBounds(240, 380, 49, 24);
+      closeButton.getAccessibleContext().setAccessibleName("closeButton");
+
+      add(scoresPanel);
+      scoresPanel.setBounds(0, 0, 560, 410);
 
       titleLabel.setAlignment(java.awt.Label.CENTER);
       titleLabel.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
@@ -94,9 +126,16 @@ public class StartingGUI extends java.awt.Frame
       add(highScoresButton);
       highScoresButton.setBounds(340, 300, 90, 24);
 
-      usernameTextField.setText("Enter Name:");
-      add(usernameTextField);
-      usernameTextField.setBounds(340, 210, 90, 20);
+      userNameTextField.setText("Player Name");
+      userNameTextField.addTextListener(new java.awt.event.TextListener()
+      {
+         public void textValueChanged(java.awt.event.TextEvent evt)
+         {
+            playerNameChanged(evt);
+         }
+      });
+      add(userNameTextField);
+      userNameTextField.setBounds(340, 210, 90, 20);
 
       label1.setAlignment(java.awt.Label.CENTER);
       label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -116,24 +155,47 @@ public class StartingGUI extends java.awt.Frame
 
    private void survivalButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalButtonActionPerformed
    {//GEN-HEADEREND:event_survivalButtonActionPerformed
-      Prog5GUI.stopGameMusic();
-      Prog5GUI.playGameMusic("The Drift.wav");
-      commandString[0] = "survival";
-      Prog5GUI.main(commandString);
+      if (userNameTextField.getText().equals("Player Name"))
+         userNameTextField.setBackground(Color.yellow);
+      else
+      {
+         Prog5GUI.stopGameMusic();
+         Prog5GUI.playGameMusic("The Drift.wav");
+         commandString[0] = "survival";
+         Prog5GUI.main(commandString);
+      }
    }//GEN-LAST:event_survivalButtonActionPerformed
 
    private void roundsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundsButtonActionPerformed
    {//GEN-HEADEREND:event_roundsButtonActionPerformed
-      Prog5GUI.stopGameMusic();
-      Prog5GUI.playGameMusic("The Drift.wav");
-      commandString[0] = "rounds";
-      Prog5GUI.main(commandString);
+      if (userNameTextField.getText().equals("Player Name"))
+         userNameTextField.setBackground(Color.yellow);
+      else
+      {
+         Prog5GUI.stopGameMusic();
+         Prog5GUI.playGameMusic("The Drift.wav");
+         commandString[0] = "rounds";
+         Prog5GUI.main(commandString);
+      }
    }//GEN-LAST:event_roundsButtonActionPerformed
 
    private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
    {//GEN-HEADEREND:event_highScoresButtonActionPerformed
-
+      scoresPanel.setVisible(true);
+      highScoreDataManagement highScores = new highScoreDataManagement();
+      highScores.addScoresToList(scoreList);
    }//GEN-LAST:event_highScoresButtonActionPerformed
+
+   private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_closeButtonActionPerformed
+   {//GEN-HEADEREND:event_closeButtonActionPerformed
+      scoresPanel.setVisible(false);
+      scoreList.removeAll();
+   }//GEN-LAST:event_closeButtonActionPerformed
+
+   private void playerNameChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_playerNameChanged
+   {//GEN-HEADEREND:event_playerNameChanged
+      Prog5GUI.setScoreName(userNameTextField.getText());
+   }//GEN-LAST:event_playerNameChanged
 
    /**
     @param args the command line arguments
@@ -151,11 +213,15 @@ public class StartingGUI extends java.awt.Frame
 
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
+   private java.awt.Button closeButton;
+   private java.awt.Label highScoreLabel;
    private java.awt.Button highScoresButton;
    private java.awt.Label label1;
    private java.awt.Button roundsButton;
+   private java.awt.List scoreList;
+   private java.awt.Panel scoresPanel;
    private java.awt.Button survivalButton;
    private java.awt.Label titleLabel;
-   private java.awt.TextField usernameTextField;
+   private java.awt.TextField userNameTextField;
    // End of variables declaration//GEN-END:variables
 }

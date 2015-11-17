@@ -82,23 +82,5 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="java.awt.TextField" name="userNameTextField">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f0" green="f0" red="f0" type="rgb"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="userNameTextField" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="userNameTextFocused"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="userNameTextLostFocus"/>
-        <EventHandler event="textValueChanged" listener="java.awt.event.TextListener" parameters="java.awt.event.TextEvent" handler="userNameTextChanged"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="300" y="40" width="70" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
   </SubComponents>
 </Form>

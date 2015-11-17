@@ -30,7 +30,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private static final highScoreDataManagement highScoreManager = new highScoreDataManagement();
    private static String gameMode;
 
-   private String user = "default";
+   private static String user = "default";
 
    private boolean wasPaused;
    private static boolean rounds = true;
@@ -43,7 +43,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    public Prog5GUI()
    {
       initComponents();
-      userNameTextField.setText(user);
       figureList = new listOfPFigures(gamePanel, rounds);
       moveTimer.start();
       componetResized(null);
@@ -63,7 +62,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       gamePanel = new java.awt.Panel();
       deathCountField = new java.awt.TextField();
       timeField = new java.awt.TextField();
-      userNameTextField = new java.awt.TextField();
 
       setMinimumSize(new java.awt.Dimension(1130, 700));
       addComponentListener(new java.awt.event.ComponentAdapter()
@@ -123,29 +121,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       add(timeField);
       timeField.setBounds(140, 40, 150, 20);
 
-      userNameTextField.setBackground(new java.awt.Color(240, 240, 240));
-      userNameTextField.setName("userNameTextField"); // NOI18N
-      userNameTextField.addFocusListener(new java.awt.event.FocusAdapter()
-      {
-         public void focusGained(java.awt.event.FocusEvent evt)
-         {
-            userNameTextFocused(evt);
-         }
-         public void focusLost(java.awt.event.FocusEvent evt)
-         {
-            userNameTextLostFocus(evt);
-         }
-      });
-      userNameTextField.addTextListener(new java.awt.event.TextListener()
-      {
-         public void textValueChanged(java.awt.event.TextEvent evt)
-         {
-            userNameTextChanged(evt);
-         }
-      });
-      add(userNameTextField);
-      userNameTextField.setBounds(300, 40, 70, 20);
-
       pack();
    }// </editor-fold>//GEN-END:initComponents
 
@@ -157,6 +132,11 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       System.exit(0);
     }//GEN-LAST:event_exitForm
 
+   public static void setScoreName(String name)
+   {
+      user = name;
+   }
+   
    private void pause()
    {
       moveTimer.stop();
@@ -201,25 +181,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    {//GEN-HEADEREND:event_timeFieldTransferFocus
       gamePanel.requestFocus();
    }//GEN-LAST:event_timeFieldTransferFocus
-
-   private void userNameTextChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_userNameTextChanged
-   {//GEN-HEADEREND:event_userNameTextChanged
-      if (!userNameTextField.getText().equals(""))
-         user = userNameTextField.getText();
-   }//GEN-LAST:event_userNameTextChanged
-
-   private void userNameTextFocused(java.awt.event.FocusEvent evt)//GEN-FIRST:event_userNameTextFocused
-   {//GEN-HEADEREND:event_userNameTextFocused
-      wasPaused = !moveTimer.isRunning();
-      if (moveTimer.isRunning())
-         pause();
-   }//GEN-LAST:event_userNameTextFocused
-
-   private void userNameTextLostFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_userNameTextLostFocus
-   {//GEN-HEADEREND:event_userNameTextLostFocus
-      if (!wasPaused)
-         unpause();
-   }//GEN-LAST:event_userNameTextLostFocus
    /**
     This method tries to play the sound file that is passed in, and if it
     cant, it outputs the error to the error output.
@@ -420,6 +381,5 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private java.awt.TextField deathCountField;
    private java.awt.Panel gamePanel;
    private java.awt.TextField timeField;
-   private java.awt.TextField userNameTextField;
    // End of variables declaration//GEN-END:variables
 }
