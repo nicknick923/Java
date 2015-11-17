@@ -13,6 +13,6 @@ public class highScoreDataManagement
    {
       if (Prog5GUI.isHSFileOpen())
          Prog5GUI.closeHS();
-
    }
+
 }

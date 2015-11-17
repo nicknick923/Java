@@ -32,6 +32,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private boolean wasPaused;
    private static boolean HSFileOpen = false;
    private static boolean rounds = true;
+   private static javax.sound.sampled.Clip gameMusic;
 
    /**
     This constructor creates and displays the Prog5GUI then sets up the figure
@@ -262,6 +263,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          javax.sound.sampled.Clip clip = javax.sound.sampled.AudioSystem.getClip();
          clip.open(audioIn);
          clip.start();
+         clip.stop();
       }
       catch (IOException e)
       {
@@ -272,6 +274,32 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       {
          System.err.println("Other problem:\n" + e.toString());
       }
+   }
+   
+   public static void playGameMusic(String filePath)
+   {
+      try
+      {
+         java.io.File soundFile = new java.io.File(filePath);
+         javax.sound.sampled.AudioInputStream audioIn = javax.sound.sampled.AudioSystem.getAudioInputStream(soundFile);
+         gameMusic = javax.sound.sampled.AudioSystem.getClip();
+         gameMusic.open(audioIn);
+         gameMusic.start();
+      }
+      catch (IOException e)
+      {
+         System.err.println("Minor problem: File could not be played:");
+         System.err.println(e.toString() + "\n");
+      }
+      catch (Exception e)
+      {
+         System.err.println("Other problem:\n" + e.toString());
+      }
+   }
+   
+   public static void stopGameMusic()
+   {
+      gameMusic.stop();
    }
 
    /**

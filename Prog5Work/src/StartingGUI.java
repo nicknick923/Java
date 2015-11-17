@@ -12,14 +12,14 @@
 public class StartingGUI extends java.awt.Frame
 {
 
-   private final Prog5GUI game = new Prog5GUI();
    private String[] commandString = new String[1];
-   
+
    /**
     Creates new form StartingGUI
     */
    public StartingGUI()
    {
+      Prog5GUI.playGameMusic("Hello.wav");
       initComponents();
    }
 
@@ -101,6 +101,9 @@ public class StartingGUI extends java.awt.Frame
 
    private void survivalButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalButtonActionPerformed
    {//GEN-HEADEREND:event_survivalButtonActionPerformed
+      Prog5GUI.stopGameMusic();
+      Prog5GUI.playGameMusic("The Drift.wav");
+      Prog5GUI game = new Prog5GUI();
       this.hide();
       commandString[0] = "survival";
       game.main(commandString);
@@ -108,6 +111,9 @@ public class StartingGUI extends java.awt.Frame
 
    private void roundsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundsButtonActionPerformed
    {//GEN-HEADEREND:event_roundsButtonActionPerformed
+      Prog5GUI.stopGameMusic();
+      Prog5GUI.playGameMusic("The Drift.wav");
+      Prog5GUI game = new Prog5GUI();
       this.hide();
       commandString[0] = "rounds";
       game.main(commandString);
