@@ -14,6 +14,8 @@ public class StartingGUI extends java.awt.Frame
 	//*********************************TODO**********************************//
    //**************Add a username field for the leaderboard*****************//
    //*********************************TODO**********************************//
+   
+   
 
    private String[] commandString = new String[1];
 
@@ -39,6 +41,8 @@ public class StartingGUI extends java.awt.Frame
       survivalButton = new java.awt.Button();
       roundsButton = new java.awt.Button();
       highScoresButton = new java.awt.Button();
+      usernameTextField = new java.awt.TextField();
+      label1 = new java.awt.Label();
 
       setBackground(java.awt.Color.red);
       setMaximumSize(new java.awt.Dimension(566, 416));
@@ -68,7 +72,7 @@ public class StartingGUI extends java.awt.Frame
          }
       });
       add(survivalButton);
-      survivalButton.setBounds(221, 250, 90, 24);
+      survivalButton.setBounds(70, 300, 90, 24);
 
       roundsButton.setLabel("Rounds");
       roundsButton.addActionListener(new java.awt.event.ActionListener()
@@ -79,7 +83,7 @@ public class StartingGUI extends java.awt.Frame
          }
       });
       add(roundsButton);
-      roundsButton.setBounds(220, 190, 90, 24);
+      roundsButton.setBounds(70, 210, 90, 24);
 
       highScoresButton.setLabel("High Scores");
       highScoresButton.addActionListener(new java.awt.event.ActionListener()
@@ -90,7 +94,17 @@ public class StartingGUI extends java.awt.Frame
          }
       });
       add(highScoresButton);
-      highScoresButton.setBounds(220, 310, 90, 24);
+      highScoresButton.setBounds(340, 300, 90, 24);
+
+      usernameTextField.setText("Enter Name:");
+      add(usernameTextField);
+      usernameTextField.setBounds(340, 210, 90, 20);
+
+      label1.setAlignment(java.awt.Label.CENTER);
+      label1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+      label1.setText("(for best experience turn on sound)");
+      add(label1);
+      label1.setBounds(0, 120, 570, 30);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -142,8 +156,10 @@ public class StartingGUI extends java.awt.Frame
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.Button highScoresButton;
+   private java.awt.Label label1;
    private java.awt.Button roundsButton;
    private java.awt.Button survivalButton;
    private java.awt.Label titleLabel;
+   private java.awt.TextField usernameTextField;
    // End of variables declaration//GEN-END:variables
 }
