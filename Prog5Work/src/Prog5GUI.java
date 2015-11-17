@@ -250,7 +250,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
     @param filePath The sound files path.
     */
-   private static void playSound(String filePath)
+   public static void playSound(String filePath)
    {
       try
       {

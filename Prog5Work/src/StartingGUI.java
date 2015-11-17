@@ -13,9 +13,8 @@ public class StartingGUI extends java.awt.Frame
 {
 
    private final Prog5GUI game = new Prog5GUI();
-
    private String[] commandString = new String[1];
-
+   
    /**
     Creates new form StartingGUI
     */
