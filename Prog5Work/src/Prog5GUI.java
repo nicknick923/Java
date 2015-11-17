@@ -27,7 +27,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final String pauseSoundFile = "Speech Sleep.wav";
    private final String unpauseSoundFile = "Speech On.wav";
    private static final String highScoreFile = "HS.dat";
-   private String user = "default";
+   private static String user = "default";
    private static PrintWriter pw;
    private boolean wasPaused;
    private static boolean HSFileOpen = false;
@@ -87,6 +87,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          {
             gamePanelKeyDown(evt);
          }
+
          public void keyReleased(java.awt.event.KeyEvent evt)
          {
             gamePanelKeyUp(evt);
@@ -129,6 +130,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          {
             userNameTextFocused(evt);
          }
+
          public void focusLost(java.awt.event.FocusEvent evt)
          {
             userNameTextLostFocus(evt);
@@ -150,11 +152,11 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    /**
     Exit the Application
     */
-    private void exitForm(java.awt.event.WindowEvent evt)
-	{                          
-       pw.close();
-       System.exit(0);
-    }                         
+   private void exitForm(java.awt.event.WindowEvent evt)
+   {
+      pw.close();
+      System.exit(0);
+   }
 
    public static void openHS()
    {
@@ -193,8 +195,8 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       playSound(unpauseSoundFile);
    }
 
-   private void gamePanelKeyDown(java.awt.event.KeyEvent evt)                                  
-   {                                      
+   private void gamePanelKeyDown(java.awt.event.KeyEvent evt)
+   {
       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
          if (moveTimer.isRunning())
             pause();
@@ -204,46 +206,47 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          userWonLevel();
       else
          scanMan.keyDownReciver(evt);
-   }                                 
+   }
 
-   private void gamePanelKeyUp(java.awt.event.KeyEvent evt)                                
-   {                                    
+   private void gamePanelKeyUp(java.awt.event.KeyEvent evt)
+   {
       scanMan.keyUpReciver(evt);
-   }                               
+   }
 
-   private void componetResized(java.awt.event.ComponentEvent evt)                                 
-   {                                     
+   private void componetResized(java.awt.event.ComponentEvent evt)
+   {
       gamePanel.setSize(getWidth() - 20, getHeight() - 70);
-   }                                
+   }
 
-   private void deathCountFieldtransferFocus(java.awt.event.FocusEvent evt)                                              
-   {                                                  
+   private void deathCountFieldtransferFocus(java.awt.event.FocusEvent evt)
+   {
       gamePanel.requestFocus();
-   }                                             
+   }
 
-   private void timeFieldTransferFocus(java.awt.event.FocusEvent evt)                                        
-   {                                            
+   private void timeFieldTransferFocus(java.awt.event.FocusEvent evt)
+   {
       gamePanel.requestFocus();
-   }                                       
+   }
 
-   private void userNameTextChanged(java.awt.event.TextEvent evt)                                     
-   {                                         
+   private void userNameTextChanged(java.awt.event.TextEvent evt)
+   {
       if (!userNameTextField.getText().equals(""))
          user = userNameTextField.getText();
-   }                                    
+   }
 
-   private void userNameTextFocused(java.awt.event.FocusEvent evt)                                     
-   {                                         
+   private void userNameTextFocused(java.awt.event.FocusEvent evt)
+   {
       wasPaused = !moveTimer.isRunning();
       if (moveTimer.isRunning())
          pause();
-   }                                    
+   }
 
-   private void userNameTextLostFocus(java.awt.event.FocusEvent evt)                                       
-   {                                           
+   private void userNameTextLostFocus(java.awt.event.FocusEvent evt)
+   {
       if (!wasPaused)
          unpause();
-   }                                      
+   }
+
    /**
     This method tries to play the sound file that is passed in, and if it
     cant, it outputs the error to the error output.
@@ -348,14 +351,14 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       try
       {
          if (args[0].equals("rounds"))
-         rounds = true;
-      else
-         rounds =  false;
+            rounds = true;
+         else
+            rounds = false;
       }
       catch (Exception e)
       {
       }
-      
+
       java.awt.EventQueue.invokeLater(new Runnable()
       {
          public void run()
