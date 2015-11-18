@@ -12,10 +12,7 @@ Travis,rounds,10,0,52000
 Travis,rounds,11,1,34000
 Travis,rounds,12,24,347000
 Travis,rounds,13,12,148000
-Nick,endless,5,0,2600
-Nick,endless,5,0,13500
-Nick,endless,5,0,3900
-Jake,rounds,1,1,20100
+Jake,rounds,1,1,30500
 Jake,rounds,2,0,30500
 Jake,rounds,1,1,67800
 Jake,rounds,2,0,59700
@@ -59,3 +56,4 @@ Jake,rounds,18,0,41400
 Jake,rounds,19,15,369600
 Nick,endless,5,0,18100
 Nick,endless,5,0,105400
+Jake,rounds,19,15,369600
