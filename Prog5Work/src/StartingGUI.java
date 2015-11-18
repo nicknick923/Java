@@ -25,6 +25,11 @@ public class StartingGUI extends java.awt.Frame
       initComponents();
    }
 
+   public void closeGame()
+   {
+       
+   }
+   
    /**
     This method is called from within the constructor to initialize the form.
     WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +55,7 @@ public class StartingGUI extends java.awt.Frame
       setBackground(java.awt.Color.red);
       setMaximumSize(new java.awt.Dimension(566, 416));
       setMinimumSize(new java.awt.Dimension(566, 416));
+      setResizable(false);
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -159,13 +165,6 @@ public class StartingGUI extends java.awt.Frame
       highScoresButton.setBounds(340, 300, 90, 24);
 
       userNameTextField.setText("Player Name");
-      userNameTextField.addTextListener(new java.awt.event.TextListener()
-      {
-         public void textValueChanged(java.awt.event.TextEvent evt)
-         {
-            playerNameChanged(evt);
-         }
-      });
       add(userNameTextField);
       userNameTextField.setBounds(340, 210, 90, 20);
 
@@ -191,6 +190,7 @@ public class StartingGUI extends java.awt.Frame
          userNameTextField.setBackground(Color.yellow);
       else
       {
+         Prog5GUI.setScoreName(userNameTextField.getText());
          Prog5GUI.stopGameMusic();
          Prog5GUI.playGameMusic("The Drift.wav");
          commandString[0] = "survival";
@@ -222,11 +222,6 @@ public class StartingGUI extends java.awt.Frame
       scoresPanel.setVisible(false);
       scoreList.removeAll();
    }//GEN-LAST:event_closeButtonActionPerformed
-
-   private void playerNameChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_playerNameChanged
-   {//GEN-HEADEREND:event_playerNameChanged
-      Prog5GUI.setScoreName(userNameTextField.getText());
-   }//GEN-LAST:event_playerNameChanged
 
    private void roundScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundScoresButtonActionPerformed
    {//GEN-HEADEREND:event_roundScoresButtonActionPerformed

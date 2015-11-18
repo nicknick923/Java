@@ -40,16 +40,22 @@ public class highScoreDataManagement
       while (highScoreScanner.hasNext())
       {
          String score = highScoreScanner.nextLine();
-         if (score.charAt(0) != '#')
+         try
          {
-            tokenizer = new StringTokenizer(score, ",");
-            //userName,gameMode,levelBeat,deathsOnLevel,timeOnLevel
-            String name = tokenizer.nextToken();
-            String gameMode = tokenizer.nextToken();
-            int levelBeat = Integer.parseInt(tokenizer.nextToken());
-            int deathsOnLevel = Integer.parseInt(tokenizer.nextToken());
-            int timeOnLevel = Integer.parseInt(tokenizer.nextToken());
-            highScores[highScoreCount++] = new highScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
+            if (score.charAt(0) != '#')
+            {
+               tokenizer = new StringTokenizer(score, ",");
+               //userName,gameMode,levelBeat,deathsOnLevel,timeOnLevel
+               String name = tokenizer.nextToken();
+               String gameMode = tokenizer.nextToken();
+               int levelBeat = Integer.parseInt(tokenizer.nextToken());
+               int deathsOnLevel = Integer.parseInt(tokenizer.nextToken());
+               int timeOnLevel = Integer.parseInt(tokenizer.nextToken());
+               highScores[highScoreCount++] = new highScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
+            }
+         }
+         catch (Exception e)
+         {
          }
       }
       for (int i = 0; i < highScoreCount; i++)
