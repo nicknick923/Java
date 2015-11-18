@@ -5,14 +5,11 @@
  @author Jake Ira
  */
 import java.awt.event.ActionEvent;
-import java.io.IOException;
-import javax.sound.sampled.Clip;
 
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 
    private static Game gameManager;
-   private static Clip gameMusic;
    private static String gameMode;
 
    /**
@@ -142,32 +139,9 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       gamePanel.requestFocus();
    }//GEN-LAST:event_timeFieldTransferFocus
 
-   public static void playGameMusic(String filePath)
-   {
-      try
-      {
-         java.io.File soundFile = new java.io.File(filePath);
-         javax.sound.sampled.AudioInputStream audioIn = javax.sound.sampled.AudioSystem.getAudioInputStream(soundFile);
-         gameMusic = javax.sound.sampled.AudioSystem.getClip();
-         gameMusic.open(audioIn);
-         gameMusic.start();
-         gameMusic.loop(Clip.LOOP_CONTINUOUSLY);
-      }
-      catch (IOException e)
-      {
-         System.err.println("Minor problem: File could not be played:");
-         System.err.println(e.toString() + "\n");
-      }
-      catch (Exception e)
-      {
-         System.err.println("Other problem:\n" + e.toString());
-      }
-   }
+  
 
-   public static void stopGameMusic()
-   {
-      gameMusic.stop();
-   }
+   
 
    /**
     This method is the main method of the program and it creates and runs the

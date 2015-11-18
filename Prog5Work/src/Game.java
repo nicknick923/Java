@@ -85,13 +85,13 @@ public class Game implements java.awt.event.ActionListener
    private void pause()
    {
       moveTimer.stop();
-      playSound(PAUSE_SOUND_FILE);
+      Sound.playSound(PAUSE_SOUND_FILE);
    }
 
    private void unpause()
    {
       moveTimer.start();
-      playSound(UNPAUSE_SOUND_FILE);
+      Sound.playSound(UNPAUSE_SOUND_FILE);
    }
 
    public void keyDownHandler(java.awt.event.KeyEvent evt)
@@ -193,33 +193,6 @@ public class Game implements java.awt.event.ActionListener
    }
 
    /**
-    This method tries to play the sound file that is passed in, and if it
-    cant, it outputs the error to the error output.
-
-    @param filePath The sound files path.
-    */
-   private static void playSound(String filePath)
-   {
-      try
-      {
-         java.io.File soundFile = new java.io.File(filePath);
-         javax.sound.sampled.AudioInputStream audioIn = javax.sound.sampled.AudioSystem.getAudioInputStream(soundFile);
-         javax.sound.sampled.Clip clip = javax.sound.sampled.AudioSystem.getClip();
-         clip.open(audioIn);
-         clip.start();
-      }
-      catch (IOException e)
-      {
-         System.err.println("Minor problem: File could not be played:");
-         System.err.println(e.toString() + "\n");
-      }
-      catch (Exception e)
-      {
-         System.err.println("Other problem:\n" + e.toString());
-      }
-   }
-
-   /**
     This method is called every time the timer ticks and it increments both
     the time on the level and total time played by the timer interval, updates
     the time info, draws all of the figures, and checks for user collisions.
@@ -252,7 +225,7 @@ public class Game implements java.awt.event.ActionListener
       if (hitObject != null)
          if (hitObject instanceof goalFigure)
          {
-            playSound(LEVEL_WON_SOUND_FILE);
+            Sound.playSound(LEVEL_WON_SOUND_FILE);
             userWonLevel();
          }
          else if (hitObject instanceof enemyFigure)
@@ -269,7 +242,7 @@ public class Game implements java.awt.event.ActionListener
                      deathsThisLevel, timeSpentOnLevel);
                timeSpentOnLevel = 0;
             }
-            playSound(PLAYER_DEATH_SOUND_FILE);
+            Sound.playSound(PLAYER_DEATH_SOUND_FILE);
             setLevel();
          }
    }

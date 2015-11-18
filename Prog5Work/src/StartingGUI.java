@@ -10,6 +10,8 @@ public class StartingGUI extends java.awt.Frame
 {
 
    private final String[] COMMAND_ARGUMENTS = new String[1];
+   private final String MENU_MUSIC = "Hello.wav";
+   private final String GAME_MUSIC = "The Drift.wav";
 
    private final highScoreDataManagement HIGH_SCORES_DATA_MANAGER
          = new highScoreDataManagement();
@@ -19,7 +21,7 @@ public class StartingGUI extends java.awt.Frame
     */
    public StartingGUI()
    {
-      Prog5GUI.playGameMusic("Hello.wav");
+      Sound.playGameMusic(MENU_MUSIC);
       initComponents();
    }
 
@@ -183,9 +185,7 @@ public class StartingGUI extends java.awt.Frame
          userNameTextField.setBackground(Color.yellow);
       else
       {
-         Prog5GUI.setScoreName(userNameTextField.getText());
-         Prog5GUI.stopGameMusic();
-         Prog5GUI.playGameMusic("The Drift.wav");
+         prepGame();
          COMMAND_ARGUMENTS[0] = "survival";
          Prog5GUI.main(COMMAND_ARGUMENTS);
       }
@@ -197,13 +197,18 @@ public class StartingGUI extends java.awt.Frame
          userNameTextField.setBackground(Color.yellow);
       else
       {
-         Prog5GUI.stopGameMusic();
-         Prog5GUI.playGameMusic("The Drift.wav");
+         prepGame();
          COMMAND_ARGUMENTS[0] = "rounds";
          Prog5GUI.main(COMMAND_ARGUMENTS);
       }
    }//GEN-LAST:event_roundsButtonActionPerformed
 
+   private void prepGame()
+   {
+      Prog5GUI.setScoreName(userNameTextField.getText());
+      Sound.stopGameMusic();
+      Sound.playGameMusic(GAME_MUSIC);
+   }
    private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
    {//GEN-HEADEREND:event_highScoresButtonActionPerformed
       scoresPanel.setVisible(true);
