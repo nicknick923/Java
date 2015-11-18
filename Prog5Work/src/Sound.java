@@ -11,6 +11,7 @@ public class Sound
 {
 
    private static Clip gameMusic;
+   private static Clip sound;
 
    /**
     This method tries to play the sound file that is passed in, and if it cant
@@ -25,10 +26,10 @@ public class Sound
          java.io.File soundFile = new java.io.File(filePath);
          javax.sound.sampled.AudioInputStream audioIn
                = javax.sound.sampled.AudioSystem.getAudioInputStream(soundFile);
-         javax.sound.sampled.Clip clip
+         javax.sound.sampled.Clip sound
                = javax.sound.sampled.AudioSystem.getClip();
-         clip.open(audioIn);
-         clip.start();
+         sound.open(audioIn);
+         sound.start();
       }
       catch (IOException e)
       {

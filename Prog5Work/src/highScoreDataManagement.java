@@ -21,6 +21,7 @@ public class highScoreDataManagement
    private int highScoreCount = 0;
    private int numberOfScoresToShow = 5;
    private int endlessCount;
+   private static String user;
 
    public highScoreDataManagement()
    {
@@ -32,6 +33,11 @@ public class highScoreDataManagement
       {
          System.err.println("Cound not open High Score File");
       }
+   }
+
+   public static void setPlayerName(String inName)
+   {
+      user = inName;
    }
 
    private void readData()
@@ -130,7 +136,7 @@ public class highScoreDataManagement
          addScoresToList(l, getTopSurvival());
    }
 
-   public void writeScore(String user, String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
+   public void writeScore(String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
    {
       try
       {

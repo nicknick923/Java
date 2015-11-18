@@ -11,6 +11,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
    private static Game gameManager;
    private static String gameMode;
+   private final String MENU_MUSIC = "Hello.wav";
 
    /**
     This initalizes the components, resizes the gamePanel for the current
@@ -106,13 +107,10 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    private void exitForm(java.awt.event.WindowEvent evt)
 	{//GEN-FIRST:event_exitForm
+      Sound.stopGameMusic();
+      Sound.playGameMusic(MENU_MUSIC);
       this.dispose();
     }//GEN-LAST:event_exitForm
-
-   public static void setScoreName(String name)
-   {
-      Game.setScoreName(name);
-   }
 
    private void gamePanelKeyDown(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyDown
    {//GEN-HEADEREND:event_gamePanelKeyDown

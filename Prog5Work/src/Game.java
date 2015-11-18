@@ -107,18 +107,13 @@ public class Game implements java.awt.event.ActionListener
          scanMan.keyDownReciver(evt);
    }
 
-   public static void setScoreName(String name)
-   {
-      user = name;
-   }
-
    /**
     This method increments the level, resets the timeSpentOnLevel counter, and
     calls to set up the next level.
     */
    public void userWonLevel()
    {
-      highScoreManager.writeScore(user, gameMode, level, deathsThisLevel, timeSpentOnLevel);
+      highScoreManager.writeScore(gameMode, level, deathsThisLevel, timeSpentOnLevel);
       level++;
       timeSpentOnLevel = 0;
       deathsThisLevel = 0;
@@ -238,7 +233,7 @@ public class Game implements java.awt.event.ActionListener
             }
             else
             {
-               highScoreManager.writeScore(user, gameMode, level,
+               highScoreManager.writeScore(gameMode, level,
                      deathsThisLevel, timeSpentOnLevel);
                timeSpentOnLevel = 0;
             }

@@ -205,7 +205,7 @@ public class StartingGUI extends java.awt.Frame
 
    private void prepGame()
    {
-      Prog5GUI.setScoreName(userNameTextField.getText());
+      highScoreDataManagement.setPlayerName(userNameTextField.getText());
       Sound.stopGameMusic();
       Sound.playGameMusic(GAME_MUSIC);
    }
