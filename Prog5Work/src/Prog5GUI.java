@@ -11,20 +11,20 @@ import javax.sound.sampled.Clip;
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 
-   private static javax.sound.sampled.Clip gameMusic;
-   private static String gameMode;
    private static Game gameManager;
+   private static Clip gameMusic;
+   private static String gameMode;
 
    /**
-    This constructor creates and displays the Prog5GUI then sets up the figure
-    list, starts the timer, and sets up the first level.
+    This initalizes the components, resizes the gamePanel for the current
+    forms size, then creates the game manager which runs the game.
     */
    public Prog5GUI()
    {
       initComponents();
       componetResized(null);
-      gameManager = new Game(this, gamePanel, timeField, deathCountField, gameMode);
-
+      gameManager = new Game(this, gamePanel, timeField, deathCountField,
+            gameMode);
    }
 
    /**
@@ -104,6 +104,8 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    /**
     Exit the Application, causes a few errors, but those errors don't matter
     because the game has closed.
+
+    @param evt A Java window event that we don't use.
     */
    private void exitForm(java.awt.event.WindowEvent evt)
 	{//GEN-FIRST:event_exitForm

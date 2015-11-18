@@ -16,29 +16,44 @@ public class Game implements java.awt.event.ActionListener
    private int level = 1;  //start user at level 1
    private int timeSpentOnLevel = 0;
    private int timePlayed = 0;
-   private final int gameSpeed = 100;
-   private final int milisecondsInASecond = 1000;
-   private final int levelOffset = 5;
-   private final int enemiesPerLevel = 2;
-   private final boolean alternateDrawMethod = true;
-   private final PFigureList figureList;
-   private final String levelWinSoundFile = "tada.wav";
-   private final String playerDeathSoundFile = "Windows Critical Stop.wav";
-   private final String pauseSoundFile = "Speech Sleep.wav";
-   private final String unpauseSoundFile = "Speech On.wav";
-   private final highScoreDataManagement highScoreManager = new highScoreDataManagement();
-   private final String gameMode;
+   private final int GAME_SPEED = 100;
+   private final int MILISECONDS_FOR_EACH_ENDLESS_SPAWN = 5000;
+   private final int LEVEL_OFFSET = 5;
+   private final int ENIMIES_PER_LEVEL = 2;
+
+   public static final int MILISECONDS_IN_A_SECOND = 1000;
+
+   private final boolean USE_ALTERNATE_DRAW_METHOD = true;
+
+   private String gameMode;
+   private final String LEVEL_WON_SOUND_FILE = "tada.wav";
+   private final String PLAYER_DEATH_SOUND_FILE = "Windows Critical Stop.wav";
+   private final String PAUSE_SOUND_FILE = "Speech Sleep.wav";
+   private final String UNPAUSE_SOUND_FILE = "Speech On.wav";
    private static String user = "default";
 
-   private final javax.swing.Timer moveTimer;
-   private final Panel gamePanel;
-   private final TextField deathCountField;
-   private final TextField timeField;
+   private highScoreDataManagement highScoreManager = new highScoreDataManagement();
+   private PFigureList figureList;
 
+   private javax.swing.Timer moveTimer;
+   private Panel gamePanel;
+   private TextField deathCountField;
+   private TextField timeField;
+
+   /**
+    This constructor creates and displays the Prog5GUI then sets up the figure
+    list, starts the timer, and sets up the first level.
+
+    @param gui
+    @param p
+    @param inTimeField
+    @param deathField
+    @param inGameMode
+    */
    public Game(Prog5GUI gui, Panel p, java.awt.TextField inTimeField, java.awt.TextField deathField, String inGameMode)
    {
       gameMode = inGameMode;
-      moveTimer = new javax.swing.Timer(gameSpeed, gui);
+      moveTimer = new javax.swing.Timer(GAME_SPEED, gui);
       moveTimer.addActionListener(new java.awt.event.ActionListener()
       {
          /**
@@ -62,7 +77,7 @@ public class Game implements java.awt.event.ActionListener
       setLevel();
       updateDeathInfo();
    }
-   
+
    public void actionPerformed(ActionEvent ae)
    {
    }
@@ -70,13 +85,13 @@ public class Game implements java.awt.event.ActionListener
    private void pause()
    {
       moveTimer.stop();
-      playSound(pauseSoundFile);
+      playSound(PAUSE_SOUND_FILE);
    }
 
    private void unpause()
    {
       moveTimer.start();
-      playSound(unpauseSoundFile);
+      playSound(UNPAUSE_SOUND_FILE);
    }
 
    public void keyDownHandler(java.awt.event.KeyEvent evt)
@@ -124,8 +139,8 @@ public class Game implements java.awt.event.ActionListener
 
    private void updateTimeInfo()
    {
-      timeField.setText("Total:" + (timePlayed / milisecondsInASecond)
-            + "/This Level:" + (timeSpentOnLevel / milisecondsInASecond));
+      timeField.setText("Total:" + (timePlayed / MILISECONDS_IN_A_SECOND)
+            + "/This Level:" + (timeSpentOnLevel / MILISECONDS_IN_A_SECOND));
    }
 
    /**
@@ -137,12 +152,12 @@ public class Game implements java.awt.event.ActionListener
    private int numberOfEnimies()
    {
       /*
-       Examples if levelOffset = 5 and enemiesPerLevel = 2:
+       Examples if LEVEL_OFFSET = 5 and ENIMIES_PER_LEVEL = 2:
        level 1: ((1+5)*2)-2 = (6*2)-2 = 12-2 = 10
        level 2: ((2+5)*2)-2 = (7*2)-2 = 14-2 = 12
        level 3: ((3+5)*2)-2 = (8*2)-2 = 16-2 = 14
        */
-      return ((level + levelOffset) * enemiesPerLevel) - 2;
+      return ((level + LEVEL_OFFSET) * ENIMIES_PER_LEVEL) - 2;
    }
 
    /**
@@ -166,7 +181,7 @@ public class Game implements java.awt.event.ActionListener
       }
       else
       {
-         level = 5;
+         level = LEVEL_OFFSET;
          figureList.addFigure(new scanMan(gamePanel));
          for (int i = 0; i < numberOfEnimies(); i++)
             if (Math.random() > .5)
@@ -211,12 +226,13 @@ public class Game implements java.awt.event.ActionListener
     */
    public void timerTicked()
    {
-      timePlayed += gameSpeed;
-      timeSpentOnLevel += gameSpeed;
+      timePlayed += GAME_SPEED;
+      timeSpentOnLevel += GAME_SPEED;
       updateTimeInfo();
-      figureList.drawAll(alternateDrawMethod);
+      figureList.drawAll(USE_ALTERNATE_DRAW_METHOD);
       userCollideCheck();
-      if (timeSpentOnLevel % 5000 == 0 && !gameMode.equals("rounds"))
+      if (timeSpentOnLevel % MILISECONDS_FOR_EACH_ENDLESS_SPAWN == 0
+            && !gameMode.equals("rounds"))
          if (Math.random() > .5)
             figureList.addFigure(new deathDroid(gamePanel));
          else
@@ -236,7 +252,7 @@ public class Game implements java.awt.event.ActionListener
       if (hitObject != null)
          if (hitObject instanceof goalFigure)
          {
-            playSound(levelWinSoundFile);
+            playSound(LEVEL_WON_SOUND_FILE);
             userWonLevel();
          }
          else if (hitObject instanceof enemyFigure)
@@ -249,10 +265,11 @@ public class Game implements java.awt.event.ActionListener
             }
             else
             {
-               highScoreManager.writeScore(user, gameMode, level, deathsThisLevel, timeSpentOnLevel);
+               highScoreManager.writeScore(user, gameMode, level,
+                     deathsThisLevel, timeSpentOnLevel);
                timeSpentOnLevel = 0;
             }
-            playSound(playerDeathSoundFile);
+            playSound(PLAYER_DEATH_SOUND_FILE);
             setLevel();
          }
    }

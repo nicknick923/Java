@@ -9,14 +9,14 @@ import java.awt.*;
 public class PFigureList
 {
 
-   private final int figMax = 1000;
+   private final int figMax = 250;
    private PFigure[] listOfFigures;
    private int figCount;
    private final Panel workingPanel;
 
    /**
-    This constructor prepares PFigureList for use and gets the panel the
-    game will play on.
+    This constructor prepares PFigureList for use and gets the panel the game
+    will play on.
 
     @inRounds A true or false value of whether to play the game endlessly,
     false, or with a goal, true.
