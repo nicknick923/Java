@@ -14,6 +14,8 @@ public class StartingGUI extends java.awt.Frame
 
    private String[] commandString = new String[1];
 
+   highScoreDataManagement highScores = new highScoreDataManagement();
+
    /**
     Creates new form StartingGUI
     */
@@ -33,9 +35,11 @@ public class StartingGUI extends java.awt.Frame
    {
 
       scoresPanel = new java.awt.Panel();
-      scoreList = new java.awt.List();
       highScoreLabel = new java.awt.Label();
+      scoreList = new java.awt.List();
       closeButton = new java.awt.Button();
+      roundScoresButton = new java.awt.Button();
+      survivalScoresButton = new java.awt.Button();
       titleLabel = new java.awt.Label();
       survivalButton = new java.awt.Button();
       roundsButton = new java.awt.Button();
@@ -59,15 +63,15 @@ public class StartingGUI extends java.awt.Frame
       scoresPanel.setName("scoresPanel"); // NOI18N
       scoresPanel.setVisible(false);
       scoresPanel.setLayout(null);
-      scoresPanel.add(scoreList);
-      scoreList.setBounds(40, 90, 480, 280);
 
       highScoreLabel.setAlignment(java.awt.Label.CENTER);
       highScoreLabel.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
       highScoreLabel.setName("highScoreLabel"); // NOI18N
       highScoreLabel.setText("High Scores");
       scoresPanel.add(highScoreLabel);
-      highScoreLabel.setBounds(0, 20, 560, 50);
+      highScoreLabel.setBounds(0, 40, 560, 50);
+      scoresPanel.add(scoreList);
+      scoreList.setBounds(40, 90, 480, 280);
 
       closeButton.setActionCommand("closeButton");
       closeButton.setLabel("Close");
@@ -82,6 +86,34 @@ public class StartingGUI extends java.awt.Frame
       scoresPanel.add(closeButton);
       closeButton.setBounds(240, 380, 49, 24);
       closeButton.getAccessibleContext().setAccessibleName("closeButton");
+
+      roundScoresButton.setActionCommand("roundScoresButton");
+      roundScoresButton.setLabel("Round Scores");
+      roundScoresButton.setName("roundScoresButton"); // NOI18N
+      roundScoresButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            roundScoresButtonActionPerformed(evt);
+         }
+      });
+      scoresPanel.add(roundScoresButton);
+      roundScoresButton.setBounds(40, 380, 90, 24);
+      roundScoresButton.getAccessibleContext().setAccessibleName("roundScoresButton");
+
+      survivalScoresButton.setActionCommand("survivalScoresButton");
+      survivalScoresButton.setLabel("Survival Scores");
+      survivalScoresButton.setName("survivalScoresButton"); // NOI18N
+      survivalScoresButton.addActionListener(new java.awt.event.ActionListener()
+      {
+         public void actionPerformed(java.awt.event.ActionEvent evt)
+         {
+            survivalScoresButtonActionPerformed(evt);
+         }
+      });
+      scoresPanel.add(survivalScoresButton);
+      survivalScoresButton.setBounds(430, 380, 90, 24);
+      survivalScoresButton.getAccessibleContext().setAccessibleName("survivalScoresButton");
 
       add(scoresPanel);
       scoresPanel.setBounds(0, 0, 560, 410);
@@ -182,8 +214,7 @@ public class StartingGUI extends java.awt.Frame
    private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
    {//GEN-HEADEREND:event_highScoresButtonActionPerformed
       scoresPanel.setVisible(true);
-      highScoreDataManagement highScores = new highScoreDataManagement();
-      highScores.addScoresToList(scoreList);
+      highScores.addScoresToList(scoreList, "rounds");
    }//GEN-LAST:event_highScoresButtonActionPerformed
 
    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_closeButtonActionPerformed
@@ -196,6 +227,19 @@ public class StartingGUI extends java.awt.Frame
    {//GEN-HEADEREND:event_playerNameChanged
       Prog5GUI.setScoreName(userNameTextField.getText());
    }//GEN-LAST:event_playerNameChanged
+
+   private void roundScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundScoresButtonActionPerformed
+   {//GEN-HEADEREND:event_roundScoresButtonActionPerformed
+      scoreList.removeAll();
+      highScores.addScoresToList(scoreList, "rounds");
+   }//GEN-LAST:event_roundScoresButtonActionPerformed
+
+   private void survivalScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalScoresButtonActionPerformed
+   {//GEN-HEADEREND:event_survivalScoresButtonActionPerformed
+      scoreList.removeAll();
+      highScores.addScoresToList(scoreList, "survival");
+      
+   }//GEN-LAST:event_survivalScoresButtonActionPerformed
 
    /**
     @param args the command line arguments
@@ -217,10 +261,12 @@ public class StartingGUI extends java.awt.Frame
    private java.awt.Label highScoreLabel;
    private java.awt.Button highScoresButton;
    private java.awt.Label label1;
+   private java.awt.Button roundScoresButton;
    private java.awt.Button roundsButton;
    private java.awt.List scoreList;
    private java.awt.Panel scoresPanel;
    private java.awt.Button survivalButton;
+   private java.awt.Button survivalScoresButton;
    private java.awt.Label titleLabel;
    private java.awt.TextField userNameTextField;
    // End of variables declaration//GEN-END:variables

@@ -21,7 +21,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final int levelOffset = 5;
    private final int enemiesPerLevel = 2;
    private final boolean alternateDrawMethod = true;
-   private final listOfPFigures figureList;
+   private final PFigureList figureList;
    private final javax.swing.Timer moveTimer = new javax.swing.Timer(gameSpeed, this);
    private final String levelWinSoundFile = "tada.wav";
    private final String playerDeathSoundFile = "Windows Critical Stop.wav";
@@ -43,7 +43,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    public Prog5GUI()
    {
       initComponents();
-      figureList = new listOfPFigures(gamePanel, rounds);
+      figureList = new PFigureList(gamePanel);
       moveTimer.start();
       componetResized(null);
       setLevel();
@@ -136,7 +136,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    {
       user = name;
    }
-   
+
    private void pause()
    {
       moveTimer.stop();
@@ -291,13 +291,27 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private void setLevel()
    {
       figureList.resetList();
-      figureList.addFigure(new scanMan(gamePanel));
-      figureList.addFigure(new goalFigure(gamePanel));
-      for (int i = 0; i < numberOfEnimies(); i++)
-         if (Math.random() > .5)
-            figureList.addFigure(new deathDroid(gamePanel));
-         else
-            figureList.addFigure(new deathApple(gamePanel));
+      if (rounds)
+      {
+         figureList.addFigure(new scanMan(gamePanel));
+         figureList.addFigure(new goalFigure(gamePanel));
+         for (int i = 0; i < numberOfEnimies(); i++)
+            if (Math.random() > .5)
+               figureList.addFigure(new deathDroid(gamePanel));
+            else
+               figureList.addFigure(new deathApple(gamePanel));
+      }
+      else
+      {
+         level = 5;
+         figureList.addFigure(new scanMan(gamePanel));
+         for (int i = 0; i < numberOfEnimies(); i++)
+            if (Math.random() > .5)
+               figureList.addFigure(new deathDroid(gamePanel));
+            else
+               figureList.addFigure(new deathApple(gamePanel));
+      }
+
    }
 
    /**
@@ -321,9 +335,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          gameMode = "endless";
          rounds = false;
       }
-      
-      
-      
+
       java.awt.EventQueue.invokeLater(new Runnable()
       {
          public void run()
@@ -331,7 +343,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
             new Prog5GUI().setVisible(true);
          }
       }
-      
       );
    }
 
@@ -370,9 +381,17 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          }
          else if (hitObject instanceof enemyFigure)
          {
-            deaths++;
-            deathsThisLevel++;
-            updateDeathInfo();
+            if (rounds)
+            {
+               deaths++;
+               deathsThisLevel++;
+               updateDeathInfo();
+            }
+            else
+            {
+               highScoreManager.writeScore(user, gameMode, level, deathsThisLevel, timeSpentOnLevel);
+               timeSpentOnLevel = 0;
+            }
             playSound(playerDeathSoundFile);
             setLevel();
          }

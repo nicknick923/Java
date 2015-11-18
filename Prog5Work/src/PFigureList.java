@@ -6,27 +6,25 @@
  */
 import java.awt.*;
 
-public class listOfPFigures
+public class PFigureList
 {
 
    private final int figMax = 1000;
    private PFigure[] listOfFigures;
    private int figCount;
    private final Panel workingPanel;
-   private final boolean rounds;
 
    /**
-    This constructor prepares listOfPFigures for use and gets the panel the
+    This constructor prepares PFigureList for use and gets the panel the
     game will play on.
 
     @inRounds A true or false value of whether to play the game endlessly,
     false, or with a goal, true.
     @param p The panel the game will be played on.
     */
-   public listOfPFigures(Panel p, boolean inRounds)
+   public PFigureList(Panel p)
    {
       listOfFigures = new PFigure[figMax];
-      rounds = inRounds;
       figCount = 0;
       workingPanel = p;
    }

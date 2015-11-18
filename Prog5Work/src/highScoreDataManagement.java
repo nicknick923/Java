@@ -19,6 +19,8 @@ public class highScoreDataManagement
    private static PrintWriter pw;
    private highScoreData[] highScores = new highScoreData[100];
    private int highScoreCount = 0;
+   private int numberOfScoresToShow = 5;
+   private int endlessCount;
 
    public highScoreDataManagement()
    {
@@ -54,11 +56,72 @@ public class highScoreDataManagement
          System.out.println(highScores[i].getLevel());
    }
 
-   public void addScoresToList(List l)
+   public highScoreData getLeastDeathsForLevel(int level)
+   {
+      int leastDeathIndex = 0;
+      int leastDeaths = Integer.MAX_VALUE;
+      int leastTime = Integer.MAX_VALUE;
+      for (int i = 0; i < highScoreCount; i++)
+         if (highScores[i].getMode().equals("rounds") && highScores[i].getLevel() == level && highScores[i].getDeaths() <= leastDeaths && highScores[i].getTime() <= leastTime)
+         {
+            leastDeathIndex = i;
+            leastDeaths = highScores[i].getDeaths();
+            leastTime = highScores[i].getTime();
+         }
+      return highScores[leastDeathIndex];
+   }
+
+   private highScoreData[] getTopSurvival()
+   {
+      highScoreData[] data = new highScoreData[5];
+      endlessCount = 0;
+      for (int i = 0; i < highScoreCount; i++)
+         if (highScores[i].getMode().equals("endless"))
+            swap(endlessCount++, i);
+      for (int pass = 0; pass < endlessCount - 1; pass++)
+      {
+         int maxIndex = pass;
+         for (int count = pass + 1; count < endlessCount; count++)
+            if (highScores[count].getTime() > highScores[maxIndex].getTime())
+               maxIndex = count;
+         swap(maxIndex, pass);
+      }
+      for (int i = 0; i < numberOfScoresToShow && i < endlessCount; i++)
+         data[i] = highScores[i];
+      return data;
+   }
+
+   private void swap(int index1, int index2)
+   {
+      highScoreData temp = highScores[index1];
+      highScores[index1] = highScores[index2];
+      highScores[index2] = temp;
+   }
+
+   private void addScoresToList(List l, highScoreData[] data)
+   {
+      for (int i = 0; i < numberOfScoresToShow && i < endlessCount; i++)
+         l.add(data[i].endlessString());
+   }
+
+   private int getHighestLevel()
+   {
+      int highestLevel = Integer.MIN_VALUE;
+      for (int i = 0; i < highScoreCount; i++)
+         if (highScores[i].getLevel() > highestLevel)
+            highestLevel = highScores[i].getLevel();
+      return highestLevel;
+   }
+
+   public void addScoresToList(List l, String mode)
    {
       readData();
-      for (int i = 0; i < highScoreCount; i++)
-         l.add(highScores[i].toString());
+      int highestLevel = getHighestLevel();
+      if (mode.equals("rounds"))
+         for (int i = 1; i <= highestLevel; i++)
+            l.add(getLeastDeathsForLevel(i).toString());
+      else
+         addScoresToList(l, getTopSurvival());
    }
 
    public void writeScore(String user, String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)

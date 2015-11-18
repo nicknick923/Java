@@ -46,6 +46,11 @@ public class highScoreData
       return time;
    }
 
+   public String endlessString()
+   {
+      return (userName + " lasted " + ((double) time / milisecondsInASecond) + " seconds in endless mode.");
+   }
+   
    @Override
    public String toString()
    {
