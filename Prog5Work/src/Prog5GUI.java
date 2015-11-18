@@ -156,8 +156,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
             pause();
          else
             unpause();
-      else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_HOME)
-         userWonLevel();
       else
          scanMan.keyDownReciver(evt);
    }//GEN-LAST:event_gamePanelKeyDown
@@ -361,6 +359,11 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       updateTimeInfo();
       figureList.drawAll(alternateDrawMethod);
       userCollideCheck();
+      if (timeSpentOnLevel % 5000 == 0)
+         if (Math.random() > .5)
+            figureList.addFigure(new deathDroid(gamePanel));
+         else
+            figureList.addFigure(new deathApple(gamePanel));
    }
 
    /**
