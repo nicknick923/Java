@@ -12,7 +12,6 @@ public class Sound
 {
 
    private static Clip gameMusic;
-   private static Clip sound;
 
    /**
     This method tries to play the sound file that is passed in, and if it cant
@@ -73,9 +72,17 @@ public class Sound
       }
    }
 
+   /**
+    This method stops the background music that is playing.
+    */
    public static void stopGameMusic()
    {
-      gameMusic.stop();
+      try
+      {
+         gameMusic.stop();
+      }
+      catch (Exception e)
+      {
+      }
    }
-
 }

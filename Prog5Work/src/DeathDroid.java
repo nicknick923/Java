@@ -1,3 +1,4 @@
+
 /**
  This class is an enemy PFigure which is a graphically drawn image with a
  method that allows it to be drawn.
@@ -178,5 +179,4 @@ public class DeathDroid extends EnemyFigure
             360);
       //</editor-fold>
    }
-
 }

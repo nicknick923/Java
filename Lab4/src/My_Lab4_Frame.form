@@ -33,6 +33,9 @@
   <SubComponents>
     <Container class="java.awt.Panel" name="figPanel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="e1" green="e1" red="e1" type="rgb"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="figPanel" noResource="true"/>
       </Properties>
       <Events>

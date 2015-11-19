@@ -110,8 +110,8 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 
     @param evt A Java window event that we don't use.
     */
-   private void exitForm(java.awt.event.WindowEvent evt)
-	{//GEN-FIRST:event_exitForm
+   private void exitForm(java.awt.event.WindowEvent evt)//GEN-FIRST:event_exitForm
+	{//GEN-HEADEREND:event_exitForm
       Sound.stopGameMusic();
       Sound.playGameMusic(MENU_MUSIC);
       this.dispose();

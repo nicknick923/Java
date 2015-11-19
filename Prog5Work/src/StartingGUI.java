@@ -16,14 +16,14 @@ public class StartingGUI extends java.awt.Frame
    private final String MENU_MUSIC = "Hello.wav";
    private final String GAME_MUSIC = "The Drift.wav";
 
-   private final HighScoreDataManagement HIGH_SCORES_DATA_MANAGER
-         = new HighScoreDataManagement();
+   private HighScoreDataManagement highScoresDataManager;
 
    /**
     This constructor starts the games menu music and initializes components.
     */
    public StartingGUI()
    {
+      highScoresDataManager = new HighScoreDataManagement();
       Sound.playGameMusic(MENU_MUSIC);
       initComponents();
    }
@@ -180,8 +180,9 @@ public class StartingGUI extends java.awt.Frame
 
     @param evt The window event data (Not Used).
     */
-    private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
-       System.exit(0);
+    private void exitForm(java.awt.event.WindowEvent evt)//GEN-FIRST:event_exitForm
+	{//GEN-HEADEREND:event_exitForm
+      System.exit(0);
     }//GEN-LAST:event_exitForm
 
    /**
@@ -239,10 +240,10 @@ public class StartingGUI extends java.awt.Frame
     */
    private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
    {//GEN-HEADEREND:event_highScoresButtonActionPerformed
-
+      highScoresDataManager = new HighScoreDataManagement();
       scoreList.removeAll();
       scoresPanel.setVisible(true);
-      HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "rounds");
+      highScoresDataManager.addScoresToList(scoreList, "rounds");
    }//GEN-LAST:event_highScoresButtonActionPerformed
 
    /**
@@ -265,8 +266,9 @@ public class StartingGUI extends java.awt.Frame
     */
    private void roundScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundScoresButtonActionPerformed
    {//GEN-HEADEREND:event_roundScoresButtonActionPerformed
+      highScoresDataManager = new HighScoreDataManagement();
       scoreList.removeAll();
-      HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "rounds");
+      highScoresDataManager.addScoresToList(scoreList, "rounds");
    }//GEN-LAST:event_roundScoresButtonActionPerformed
 
    /**
@@ -277,8 +279,9 @@ public class StartingGUI extends java.awt.Frame
     */
    private void survivalScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalScoresButtonActionPerformed
    {//GEN-HEADEREND:event_survivalScoresButtonActionPerformed
+      highScoresDataManager = new HighScoreDataManagement();
       scoreList.removeAll();
-      HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "survival");
+      highScoresDataManager.addScoresToList(scoreList, "survival");
 
    }//GEN-LAST:event_survivalScoresButtonActionPerformed
 

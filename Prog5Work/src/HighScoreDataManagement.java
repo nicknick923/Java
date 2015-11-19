@@ -19,7 +19,8 @@ public class HighScoreDataManagement
    private static Scanner highScoreScanner;
    private static final String HIGH_SCORE_FILE = "HS.dat";
    private static PrintWriter pw;
-   private HighScoreData[] highScores = new HighScoreData[100];
+   private final int MAX_NUM_OF_SCORES = 100;
+   private HighScoreData[] highScores = new HighScoreData[MAX_NUM_OF_SCORES];
    private int highScoreCount = 0;
    private int numberOfScoresToShow = 5;
    private int endlessCount;
@@ -65,9 +66,10 @@ public class HighScoreDataManagement
          System.err.println("Cound not open High Score File");
       }
       StringTokenizer tokenizer;
+      highScoreCount = 0;
+
       while (highScoreScanner.hasNext())
       {
-         highScoreCount = 0;
          String score = highScoreScanner.nextLine();
          try
          {
@@ -85,6 +87,7 @@ public class HighScoreDataManagement
          }
          catch (Exception e)
          {
+            System.err.println(e.toString());
          }
       }
       for (int i = 0; i < highScoreCount; i++)
@@ -99,13 +102,16 @@ public class HighScoreDataManagement
     @param level The level that the user just beat.
     @return The high score according to fewest deaths for the level.
     */
-   public HighScoreData getLeastDeathsForLevel(int level)
+   private HighScoreData getLeastDeathsForLevel(int level)
    {
       int leastDeathIndex = 0;
       int leastDeaths = Integer.MAX_VALUE;
       int leastTime = Integer.MAX_VALUE;
       for (int i = 0; i < highScoreCount; i++)
-         if (highScores[i].getMode().equals("rounds") && highScores[i].getLevel() == level && highScores[i].getDeaths() <= leastDeaths && highScores[i].getTime() <= leastTime)
+         if (highScores[i].getMode().equals("rounds")
+               && highScores[i].getLevel() == level
+               && highScores[i].getDeaths() <= leastDeaths
+               && highScores[i].getTime() <= leastTime)
          {
             leastDeathIndex = i;
             leastDeaths = highScores[i].getDeaths();
@@ -122,7 +128,7 @@ public class HighScoreDataManagement
     */
    private HighScoreData[] getTopSurvival()
    {
-      HighScoreData[] data = new HighScoreData[5];
+      HighScoreData[] data = new HighScoreData[MAX_NUM_OF_SCORES];
       endlessCount = 0;
       for (int i = 0; i < highScoreCount; i++)
          if (highScores[i].getMode().equals("endless"))
@@ -161,13 +167,20 @@ public class HighScoreDataManagement
     @param l The list where the scores will be added.
     @param data The scores to be added.
     */
-   private void addScoresToList(List l, HighScoreData[] data)
+   private void addScoresToList(List l)
    {
-      readData();
+      HighScoreData[] data = getTopSurvival();
       for (int i = 0; i < numberOfScoresToShow && i < endlessCount; i++)
          l.add(data[i].endlessString());
    }
 
+   /**
+    This method adds the scores in the array of data to the list while there
+    is more scores to add.
+
+    @param l The list where the scores will be added.
+    @param mode The game mode for which scores are to be displayed.
+    */
    public void addScoresToList(List l, String mode)
    {
       readData();
@@ -176,9 +189,14 @@ public class HighScoreDataManagement
          for (int i = 1; i <= highestLevel; i++)
             l.add(getLeastDeathsForLevel(i).roundString());
       else
-         addScoresToList(l, getTopSurvival());
+         addScoresToList(l);
    }
 
+   /**
+    This method gets the highest level completed in the rounds mode.
+
+    @return The highest level beat.
+    */
    private int getHighestLevel()
    {
       int highestLevel = Integer.MIN_VALUE;
@@ -188,6 +206,16 @@ public class HighScoreDataManagement
       return highestLevel;
    }
 
+   /**
+    This method writes scores to the high score file.
+
+    @param gameMode The game mode being played when the score was earned.
+    @param level The level being played when the score was earned.
+    @param numDeathsOnLevel The number of deaths being played when the score
+    was earned.
+    @param timeOnLevel The time spent on the level being played when the score
+    was earned.
+    */
    public void writeScore(String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
    {
       try
@@ -201,7 +229,5 @@ public class HighScoreDataManagement
       {
          System.err.println("Cound not open High Score File");
       }
-
    }
-
 }

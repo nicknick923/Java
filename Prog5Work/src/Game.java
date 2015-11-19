@@ -132,7 +132,7 @@ public class Game implements java.awt.event.ActionListener
     This method increments the level, resets the timeSpentOnLevel counter, and
     calls to set up the next level.
     */
-   public void userWonLevel()
+   private void userWonLevel()
    {
       highScoreManager.writeScore(gameMode, level, deathsThisLevel,
             timeSpentOnLevel);
@@ -193,7 +193,7 @@ public class Game implements java.awt.event.ActionListener
     figure, then randomly creates the correct number of enemies, which are
     randomly either DeathDroid's or DeathApple's.
     */
-   public void setLevel()
+   private void setLevel()
    {
       enemies = 0;
       figureList.resetList();
@@ -230,7 +230,7 @@ public class Game implements java.awt.event.ActionListener
     the time on the level and total time played by the timer interval, updates
     the time info, draws all of the figures, and checks for user collisions.
     */
-   public void timerTicked()
+   private void timerTicked()
    {
       timePlayed += GAME_SPEED;
       timeSpentOnLevel += GAME_SPEED;
@@ -283,5 +283,4 @@ public class Game implements java.awt.event.ActionListener
             setLevel();
          }
    }
-
 }

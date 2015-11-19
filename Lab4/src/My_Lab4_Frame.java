@@ -50,6 +50,7 @@ public class My_Lab4_Frame extends java.awt.Frame implements java.awt.event.Acti
       });
       setLayout(null);
 
+      figPanel.setBackground(new java.awt.Color(225, 225, 225));
       figPanel.setName("figPanel"); // NOI18N
       figPanel.addKeyListener(new java.awt.event.KeyAdapter()
       {

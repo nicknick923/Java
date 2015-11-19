@@ -112,5 +112,4 @@ public abstract class PFigure implements Comparable
     and height values stored in this class.
     */
    abstract public void draw();
-
 }

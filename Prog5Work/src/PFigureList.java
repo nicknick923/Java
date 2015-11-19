@@ -126,5 +126,4 @@ public class PFigureList
       if (figCount < figMax)
          listOfFigures[figCount++] = inFigure;
    }
-
 }
