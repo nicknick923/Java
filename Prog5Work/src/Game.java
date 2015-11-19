@@ -51,7 +51,7 @@ public class Game implements java.awt.event.ActionListener
     @param deathField
     @param inGameMode
     */
-   public Game(ActionListener gui, Panel p, java.awt.TextField inTimeField, java.awt.TextField deathField, String inGameMode)
+   public Game(Prog5GUI gui, Panel p, java.awt.TextField inTimeField, java.awt.TextField deathField, String inGameMode)
    {
       gameMode = inGameMode;
       moveTimer = new javax.swing.Timer(GAME_SPEED, gui);
@@ -153,7 +153,7 @@ public class Game implements java.awt.event.ActionListener
        level 2: ((2+5)*2)-2 = (7*2)-2 = 14-2 = 12
        level 3: ((3+5)*2)-2 = (8*2)-2 = 16-2 = 14
        */
-      return ((level + LEVEL_OFFSET) * ENIMIES_PER_LEVEL) - 2;
+      return ((level + LEVEL_OFFSET) * ENIMIES_PER_LEVEL)-2;
    }
 
    /**

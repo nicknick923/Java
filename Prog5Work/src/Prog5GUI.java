@@ -1,15 +1,17 @@
 
-import java.awt.event.ActionListener;
-
-
 /**
 
  @author Nick Sosinski
  @author Jake Ira
  */
-public class Prog5GUI extends java.awt.Frame
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 
+   private int PANEL_WIDTH_MARGIN = 20;
+   private int PANEL_HEIGHT_MARGIN = 20;
    private static Game gameManager;
    private static String gameMode;
    private final String MENU_MUSIC = "Hello.wav";
@@ -22,7 +24,7 @@ public class Prog5GUI extends java.awt.Frame
    {
       initComponents();
       componetResized(null);
-      gameManager = new Game((ActionListener)this, gamePanel, timeField, deathCountField,
+      gameManager = new Game(this, gamePanel, timeField, deathCountField,
             gameMode);
    }
 
@@ -140,7 +142,7 @@ public class Prog5GUI extends java.awt.Frame
     */
    private void componetResized(java.awt.event.ComponentEvent evt)//GEN-FIRST:event_componetResized
    {//GEN-HEADEREND:event_componetResized
-      gamePanel.setSize(getWidth() - 20, getHeight() - 70);
+      gamePanel.setSize(getWidth() - PANEL_WIDTH_MARGIN, getHeight() - PANEL_HEIGHT_MARGIN);
    }//GEN-LAST:event_componetResized
 
    /**
@@ -187,6 +189,18 @@ public class Prog5GUI extends java.awt.Frame
          }
       }
       );
+   }
+   
+      /**
+    This method is called every time a timer ticks and will call the game
+    managers timer ticked method to let the game know the timer has ticked.
+
+    @param ae The events data (not used).
+    */
+   @Override
+   public void actionPerformed(ActionEvent ae)
+   {
+      //gameManager.timerTicked();
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
