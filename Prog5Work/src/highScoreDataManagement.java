@@ -1,5 +1,6 @@
 
 /**
+ This class
 
  @author Nick Sosinski
  @author Jake Ira
@@ -23,6 +24,9 @@ public class highScoreDataManagement
    private int endlessCount;
    private static String user;
 
+   /**
+    This constructor creates and opens an out
+    */
    public highScoreDataManagement()
    {
       try
@@ -35,11 +39,15 @@ public class highScoreDataManagement
       }
    }
 
+   
    public static void setPlayerName(String inName)
    {
       user = inName;
    }
 
+   /**
+    This method 
+    */
    private void readData()
    {
       StringTokenizer tokenizer;
@@ -68,6 +76,14 @@ public class highScoreDataManagement
          System.out.println(highScores[i].getLevel());
    }
 
+   /**
+    This method checks to see that the current high score has the fewest
+    deaths and if there is a high score with a lower death it sets that as the
+    new high score.
+
+    @param level The level that the user just beat.
+    @return The high score according to fewest deaths for the level.
+    */
    public highScoreData getLeastDeathsForLevel(int level)
    {
       int leastDeathIndex = 0;
@@ -83,6 +99,11 @@ public class highScoreDataManagement
       return highScores[leastDeathIndex];
    }
 
+   /**
+    This method checks to see if
+
+    @return The high score for survival mode.
+    */
    private highScoreData[] getTopSurvival()
    {
       highScoreData[] data = new highScoreData[5];
@@ -103,6 +124,13 @@ public class highScoreDataManagement
       return data;
    }
 
+   /**
+    This method takes the data in the first index and swaps it with the data
+    in index two.
+
+    @param index1 First index to be swapped.
+    @param index2 Second index to be swapped.
+    */
    private void swap(int index1, int index2)
    {
       highScoreData temp = highScores[index1];
@@ -110,6 +138,12 @@ public class highScoreDataManagement
       highScores[index2] = temp;
    }
 
+   /**
+    nick is doing from this one down.
+
+    @param l
+    @param data
+    */
    private void addScoresToList(List l, highScoreData[] data)
    {
       for (int i = 0; i < numberOfScoresToShow && i < endlessCount; i++)
