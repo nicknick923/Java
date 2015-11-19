@@ -1,4 +1,7 @@
 
+import java.awt.event.ActionListener;
+
+
 /**
 
  @author Nick Sosinski
@@ -19,7 +22,7 @@ public class Prog5GUI extends java.awt.Frame
    {
       initComponents();
       componetResized(null);
-      gameManager = new Game(this, gamePanel, timeField, deathCountField,
+      gameManager = new Game((ActionListener)this, gamePanel, timeField, deathCountField,
             gameMode);
    }
 

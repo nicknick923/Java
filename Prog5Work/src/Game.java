@@ -6,6 +6,7 @@
  */
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Game implements java.awt.event.ActionListener
 {
@@ -50,7 +51,7 @@ public class Game implements java.awt.event.ActionListener
     @param deathField
     @param inGameMode
     */
-   public Game(Prog5GUI gui, Panel p, java.awt.TextField inTimeField, java.awt.TextField deathField, String inGameMode)
+   public Game(ActionListener gui, Panel p, java.awt.TextField inTimeField, java.awt.TextField deathField, String inGameMode)
    {
       gameMode = inGameMode;
       moveTimer = new javax.swing.Timer(GAME_SPEED, gui);

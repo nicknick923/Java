@@ -110,10 +110,27 @@ public class highScoreDataManagement
       highScores[index2] = temp;
    }
 
+   /**
+    This method adds the scores in the array of data to the list while.
+
+    @param l The list where the scores will be added.
+    @param data The scores to be added.
+    */
    private void addScoresToList(List l, highScoreData[] data)
    {
       for (int i = 0; i < numberOfScoresToShow && i < endlessCount; i++)
          l.add(data[i].endlessString());
+   }
+
+   public void addScoresToList(List l, String mode)
+   {
+      readData();
+      int highestLevel = getHighestLevel();
+      if (mode.equals("rounds"))
+         for (int i = 1; i <= highestLevel; i++)
+            l.add(getLeastDeathsForLevel(i).roundString());
+      else
+         addScoresToList(l, getTopSurvival());
    }
 
    private int getHighestLevel()
@@ -123,17 +140,6 @@ public class highScoreDataManagement
          if (highScores[i].getLevel() > highestLevel)
             highestLevel = highScores[i].getLevel();
       return highestLevel;
-   }
-
-   public void addScoresToList(List l, String mode)
-   {
-      readData();
-      int highestLevel = getHighestLevel();
-      if (mode.equals("rounds"))
-         for (int i = 1; i <= highestLevel; i++)
-            l.add(getLeastDeathsForLevel(i).toString());
-      else
-         addScoresToList(l, getTopSurvival());
    }
 
    public void writeScore(String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)

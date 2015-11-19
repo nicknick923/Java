@@ -21,11 +21,11 @@ public class highScoreData
     players name, game mode, level, total deaths, and the time spent on that
     level.
 
-    @param name players name.
-    @param mode game mode user is playing.
-    @param levelBeat level that the user just beat.
-    @param numberOfDeaths total number of deaths for the user.
-    @param timeTaken total time elapsed during that level.
+    @param name The players name.
+    @param mode The game mode user is playing.
+    @param levelBeat The level that the user just beat.
+    @param numberOfDeaths The total number of deaths for the user.
+    @param timeTaken The total time elapsed during that level.
     */
    public highScoreData(String name, String mode, int levelBeat, int numberOfDeaths, int timeTaken)
    {
@@ -101,10 +101,10 @@ public class highScoreData
    /**
     This method creates an output string for the rounds high score board.
 
-    @return An output to be sent to the scoreboard.
+    @return The concatenation of the players name and how long they lasted in
+    round mode.
     */
-   @Override
-   public String toString()
+   public String roundString()
    {
       if (deaths == 1)
          return (userName + " beat level " + level + " with 1 death in " + ((double) time / Game.MILISECONDS_IN_A_SECOND) + " seconds");
