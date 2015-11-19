@@ -1,5 +1,7 @@
 
 /**
+ This class represents the goal in the rounds mode where when the user
+ collides with it, the user wins that round.
 
  @author Nick Sosinski
  @author Jake Ira
@@ -12,9 +14,10 @@ public class GoalFigure extends PFigure
 {
 
    private Image img;
-   private static final int goalWidth = 92;
-   private static final int goalHeight = 108;
-   private static final int pxDistanceFromRightEdge = 5;
+   private static final int GOAL_WIDTH = 92;
+   private static final int GOAL_HEIGHT = 108;
+   private static final int DISTANCE_FROM_RIGHT_EDGE = 5;
+   private static final double AMMOUNT_NEEDED_TO_BEAT_LEVEL = .5;
 
    /**
     This constructor creates the goal with the size specified by the constants
@@ -25,8 +28,8 @@ public class GoalFigure extends PFigure
     */
    public GoalFigure(Panel p)
    {
-      super(0, 0, goalWidth, goalHeight, 0, p);
-      x = panel.getSize().width - width - pxDistanceFromRightEdge;
+      super(0, 0, GOAL_WIDTH, GOAL_HEIGHT, 0, p);
+      x = panel.getSize().width - width - DISTANCE_FROM_RIGHT_EDGE;
       y = panel.getSize().height / 2 - height / 2;
       try
       {
@@ -53,19 +56,19 @@ public class GoalFigure extends PFigure
    {
       if (p == null)
          return false;
-      return (x + width / 2) >= p.x
-            && (p.x + p.width / 2) >= x
-            && (y + height / 2) >= p.y
-            && (p.y + p.height / 2) >= y;
+      return (x + width * AMMOUNT_NEEDED_TO_BEAT_LEVEL) >= p.x
+            && (p.x + p.width * AMMOUNT_NEEDED_TO_BEAT_LEVEL) >= x
+            && (y + height * AMMOUNT_NEEDED_TO_BEAT_LEVEL) >= p.y
+            && (p.y + p.height * AMMOUNT_NEEDED_TO_BEAT_LEVEL) >= y;
    }
 
    @Override
    public void move()
    {
-      x = panel.getSize().width - width - pxDistanceFromRightEdge;
+      x = panel.getSize().width - width - DISTANCE_FROM_RIGHT_EDGE;
       y = panel.getSize().height / 2 - height / 2;
    }
-   
+
    /**
     This method will draw the goal at location x,y with the respective width
     and height values stored in this class, if the image was opened.

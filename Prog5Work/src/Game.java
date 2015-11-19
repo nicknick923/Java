@@ -1,5 +1,7 @@
 
 /**
+ This class represents the functioning of the game with methods that include
+ but is not limited to: pause/unpause, userWonLevel, setLevel and more.
 
  @author Nick Sosinski
  @author Jake Ira
@@ -20,25 +22,21 @@ public class Game implements java.awt.event.ActionListener
    private final int MILISECONDS_FOR_EACH_ENDLESS_SPAWN = 5000;
    private final int LEVEL_OFFSET = 5;
    private final int ENIMIES_PER_LEVEL = 2;
-
-   public static final int MILISECONDS_IN_A_SECOND = 1000;
-
    private final boolean USE_ALTERNATE_DRAW_METHOD = true;
-
    private String gameMode;
    private final String LEVEL_WON_SOUND_FILE = "tada.wav";
    private final String PLAYER_DEATH_SOUND_FILE = "Windows Critical Stop.wav";
    private final String PAUSE_SOUND_FILE = "Speech Sleep.wav";
    private final String UNPAUSE_SOUND_FILE = "Speech On.wav";
    private static String user = "default";
-
-   private HighScoreDataManagement highScoreManager = new HighScoreDataManagement();
+   private HighScoreDataManagement highScoreManager
+         = new HighScoreDataManagement();
    private PFigureList figureList;
-
    private javax.swing.Timer moveTimer;
    private Panel gamePanel;
    private TextField deathCountField;
    private TextField timeField;
+   public static final int MILISECONDS_IN_A_SECOND = 1000;
 
    /**
     This constructor creates and displays the Prog5GUI then sets up the figure
@@ -50,7 +48,8 @@ public class Game implements java.awt.event.ActionListener
     @param deathField
     @param inGameMode
     */
-   public Game(Prog5GUI gui, Panel p, java.awt.TextField inTimeField, java.awt.TextField deathField, String inGameMode)
+   public Game(Prog5GUI gui, Panel p, TextField inTimeField,
+         TextField deathField, String inGameMode)
    {
       gameMode = inGameMode;
       moveTimer = new javax.swing.Timer(GAME_SPEED, gui);
@@ -116,7 +115,8 @@ public class Game implements java.awt.event.ActionListener
     */
    public void keyDownHandler(java.awt.event.KeyEvent evt)
    {
-      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
+      if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE
+            || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
          if (moveTimer.isRunning())
             pause();
          else
@@ -133,7 +133,8 @@ public class Game implements java.awt.event.ActionListener
     */
    public void userWonLevel()
    {
-      highScoreManager.writeScore(gameMode, level, deathsThisLevel, timeSpentOnLevel);
+      highScoreManager.writeScore(gameMode, level, deathsThisLevel,
+            timeSpentOnLevel);
       level++;
       timeSpentOnLevel = 0;
       deathsThisLevel = 0;
@@ -149,7 +150,8 @@ public class Game implements java.awt.event.ActionListener
       if (deaths == 1)
          deathCountField.setText("Level " + level + ", 1 Death");
       else
-         deathCountField.setText("Level " + level + ", " + deaths + " Deaths");
+         deathCountField.setText("Level " + level + ", " + deaths
+               + " Deaths");
    }
 
    private void updateTimeInfo()

@@ -1,4 +1,3 @@
-
 /**
  This class is an enemy PFigure which is a graphically drawn image with a
  method that allows it to be drawn.

@@ -1,5 +1,8 @@
 
 /**
+ This class is an abstract class that represents any enemy in relation to the
+ player with methods that allow the figure to be moved and when the figure is
+ created, it must be at least SAFTEY_BOARDER pixels away.
 
  @author Nick Sosinski
  @author Jake Ira
@@ -11,7 +14,6 @@ public abstract class EnemyFigure extends PFigure
 {
 
    //The velocities for each EnemyFigure
-
    protected int xVelocity;
    protected int yVelocity;
 
