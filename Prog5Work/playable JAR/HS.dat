@@ -1,4 +1,3 @@
-#userName, levelBeat, deathsOnLevel, timeOnLevel
 #userName, gameMode, levelBeat, deathsOnLevel, timeOnLevel
 Travis,rounds,1,1,21000
 Travis,rounds,2,0,34000
@@ -64,19 +63,8 @@ Nick,endless,5,0,7300
 Nick,endless,5,0,40100
 Nick,endless,5,0,15400
 Nick,endless,5,0,21100
-Travis,endless,5,0,12000
-Travis,endless,5,0,40100
-Travis,endless,5,0,9800
-Travis,endless,5,0,56600
-Travis,endless,5,0,104100
-Travis,endless,5,0,40100
-Travis,endless,5,0,105500
-Travis,endless,5,0,3100
-Travis,endless,5,0,41100
-Travis,endless,5,0,45100
-Travis,endless,5,0,10100
-Travis,endless,5,0,35100
-Travis,endless,5,0,7100
-Travis,endless,5,0,1200
-Travis,endless,5,0,400
-Travis,endless,5,0,89500
+Jake,endless,5,0,2300
+Jake,endless,5,0,56800
+Jake,endless,5,0,45100
+Jake,endless,5,0,5100
+Jake,endless,5,0,69500
