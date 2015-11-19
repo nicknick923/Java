@@ -22,10 +22,10 @@ public class deathApple extends enemyFigure
 
     @param p The panel for which the game is played on.
     */
-   public deathApple(Panel p)
+   public deathApple(Panel p, PFigure player)
    {
       super(deathAppleBaseDimension, deathAppleBaseDimension,
-            deathAppleMaxVelocity, p);
+            deathAppleMaxVelocity, p, player);
       try
       {
          File file = new File("apple logo.png");

@@ -29,7 +29,7 @@ public abstract class enemyFigure extends PFigure
     have.
     @param p The panel the enemy figure lives on.
     */
-   public enemyFigure(int inWidth, int inHeight, int maxVelocity, Panel p)
+   public enemyFigure(int inWidth, int inHeight, int maxVelocity, Panel p, PFigure player)
    {
       super(0, 0, inWidth, inHeight, 0, p);
       int startingX = getRandom(0, p.getWidth() - inWidth);

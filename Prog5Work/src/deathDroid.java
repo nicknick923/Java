@@ -20,9 +20,9 @@ public class deathDroid extends enemyFigure
 
     @param p The panel for which the game is played on.
     */
-   public deathDroid(Panel p)
+   public deathDroid(Panel p, PFigure player)
    {
-      super(figureWidth, figureHeight, deathDroidMaxVelocity, p);
+      super(figureWidth, figureHeight, deathDroidMaxVelocity, p, player);
    }
 
    /**

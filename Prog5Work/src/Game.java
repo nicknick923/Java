@@ -6,11 +6,11 @@
  */
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 
 public class Game implements java.awt.event.ActionListener
 {
 
+   private scanMan player;
    private int deaths = 0;
    private int deathsThisLevel = 0;
    private int level = 1;  //start user at level 1
@@ -164,15 +164,16 @@ public class Game implements java.awt.event.ActionListener
    public void setLevel()
    {
       figureList.resetList();
+      player = new scanMan(gamePanel);
       if (gameMode.equals("rounds"))
       {
-         figureList.addFigure(new scanMan(gamePanel));
+         figureList.addFigure(player);
          figureList.addFigure(new goalFigure(gamePanel));
          for (int i = 0; i < numberOfEnimies(); i++)
             if (Math.random() > .5)
-               figureList.addFigure(new deathDroid(gamePanel));
+               figureList.addFigure(new deathDroid(gamePanel, player));
             else
-               figureList.addFigure(new deathApple(gamePanel));
+               figureList.addFigure(new deathApple(gamePanel, player));
       }
       else
       {
@@ -180,9 +181,9 @@ public class Game implements java.awt.event.ActionListener
          figureList.addFigure(new scanMan(gamePanel));
          for (int i = 0; i < numberOfEnimies(); i++)
             if (Math.random() > .5)
-               figureList.addFigure(new deathDroid(gamePanel));
+               figureList.addFigure(new deathDroid(gamePanel, player));
             else
-               figureList.addFigure(new deathApple(gamePanel));
+               figureList.addFigure(new deathApple(gamePanel, player));
       }
 
    }
@@ -202,9 +203,9 @@ public class Game implements java.awt.event.ActionListener
       if (timeSpentOnLevel % MILISECONDS_FOR_EACH_ENDLESS_SPAWN == 0
             && !gameMode.equals("rounds"))
          if (Math.random() > .5)
-            figureList.addFigure(new deathDroid(gamePanel));
+            figureList.addFigure(new deathDroid(gamePanel, player));
          else
-            figureList.addFigure(new deathApple(gamePanel));
+            figureList.addFigure(new deathApple(gamePanel, player));
    }
 
    /**
