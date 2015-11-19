@@ -17,7 +17,7 @@ public class StartingGUI extends java.awt.Frame
          = new highScoreDataManagement();
 
    /**
-    Creates new form StartingGUI
+    This constructor starts the games menu music and initializes components.
     */
    public StartingGUI()
    {
@@ -174,11 +174,20 @@ public class StartingGUI extends java.awt.Frame
 
    /**
     Exit the Application
+
+    @param evt The window event data (Not Used).
     */
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
        System.exit(0);
     }//GEN-LAST:event_exitForm
 
+   /**
+    This method prepares the game then starts it in survival mode, IF the
+    player changed the player name. If they didn't, it changes the player name
+    text box to yellow.
+
+    @param evt The action event data (Not Used).
+    */
    private void survivalButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalButtonActionPerformed
    {//GEN-HEADEREND:event_survivalButtonActionPerformed
       if (userNameTextField.getText().equals("Player Name"))
@@ -190,7 +199,13 @@ public class StartingGUI extends java.awt.Frame
          Prog5GUI.main(COMMAND_ARGUMENTS);
       }
    }//GEN-LAST:event_survivalButtonActionPerformed
+   /**
+    This method prepares the game then starts it in round mode, IF the player
+    changed the player name. If they didn't, it changes the player name text
+    box to yellow.
 
+    @param evt The action event data (Not Used).
+    */
    private void roundsButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundsButtonActionPerformed
    {//GEN-HEADEREND:event_roundsButtonActionPerformed
       if (userNameTextField.getText().equals("Player Name"))
@@ -202,31 +217,61 @@ public class StartingGUI extends java.awt.Frame
          Prog5GUI.main(COMMAND_ARGUMENTS);
       }
    }//GEN-LAST:event_roundsButtonActionPerformed
-
+   /**
+    This method the players name for high scores, stops the menu music, and
+    starts the game music.
+    */
    private void prepGame()
    {
       highScoreDataManagement.setPlayerName(userNameTextField.getText());
       Sound.stopGameMusic();
       Sound.playGameMusic(GAME_MUSIC);
    }
+
+   /**
+    This method clears the list of scores, sets the scores panel to the
+    visible then adds the scores for the rounds high scores.
+
+    @param evt The action event data (Not Used).
+    */
    private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
    {//GEN-HEADEREND:event_highScoresButtonActionPerformed
+
+      scoreList.removeAll();
       scoresPanel.setVisible(true);
       HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "rounds");
    }//GEN-LAST:event_highScoresButtonActionPerformed
 
+   /**
+    This method sets the scores panel visible boolean to false then clears the
+    list of scores.
+
+    @param evt The action event data (Not Used).
+    */
    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_closeButtonActionPerformed
    {//GEN-HEADEREND:event_closeButtonActionPerformed
       scoresPanel.setVisible(false);
       scoreList.removeAll();
    }//GEN-LAST:event_closeButtonActionPerformed
 
+   /**
+    This method clears all the scores in the list then adds the scores for the
+    rounds high scores.
+
+    @param evt The action event data (Not Used).
+    */
    private void roundScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundScoresButtonActionPerformed
    {//GEN-HEADEREND:event_roundScoresButtonActionPerformed
       scoreList.removeAll();
       HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "rounds");
    }//GEN-LAST:event_roundScoresButtonActionPerformed
 
+   /**
+    This method clears all the scores in the list then adds the scores for the
+    survival high scores.
+
+    @param evt The action event data (Not Used).
+    */
    private void survivalScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalScoresButtonActionPerformed
    {//GEN-HEADEREND:event_survivalScoresButtonActionPerformed
       scoreList.removeAll();
@@ -235,7 +280,9 @@ public class StartingGUI extends java.awt.Frame
    }//GEN-LAST:event_survivalScoresButtonActionPerformed
 
    /**
-    @param args the command line arguments
+    This method runs the starting GUI.
+
+    @param args the command line arguments (not used).
     */
    public static void main(String args[])
    {
