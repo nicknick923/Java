@@ -25,7 +25,7 @@ public class highScoreDataManagement
    private static String user;
 
    /**
-    This constructor creates and opens an out
+    This constructor creates and opens an output file for the high score.
     */
    public highScoreDataManagement()
    {
@@ -39,14 +39,19 @@ public class highScoreDataManagement
       }
    }
 
-   
+   /**
+    This method takes the inputed name and sets it as the user
+
+    @param inName The current user.
+    */
    public static void setPlayerName(String inName)
    {
       user = inName;
    }
 
    /**
-    This method 
+    This method reads data from the input file and inputs it into the high
+    scores array.
     */
    private void readData()
    {
@@ -100,9 +105,10 @@ public class highScoreDataManagement
    }
 
    /**
-    This method checks to see if
+    This method returns the top numberOfScoresToShow scores from the endless
+    game mode in an array of highScores.
 
-    @return The high score for survival mode.
+    @return The high score for endless mode.
     */
    private highScoreData[] getTopSurvival()
    {
