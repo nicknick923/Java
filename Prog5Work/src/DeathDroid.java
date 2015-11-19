@@ -1,5 +1,7 @@
 
 /**
+ This class is an enemy PFigure which is a graphically drawn image with a
+ method that allows it to be drawn.
 
  @author Nick Sosinski
  @author Jake Ira
@@ -9,9 +11,9 @@ import java.awt.*;
 public class DeathDroid extends EnemyFigure
 {
 
-   private static final int figureWidth = 75;
-   private static final int figureHeight = 90;
-   private static final int deathDroidMaxVelocity = 5;
+   private static final int FIGURE_WIDTH = 75;
+   private static final int FIGURE_HEIGHT = 90;
+   private static final int MAX_VELOCITY = 5;
 
    /**
     This constructor creates a deathDroid with the size and max velocity
@@ -23,7 +25,7 @@ public class DeathDroid extends EnemyFigure
     */
    public DeathDroid(Panel p, PFigure player)
    {
-      super(figureWidth, figureHeight, deathDroidMaxVelocity, p, player);
+      super(FIGURE_WIDTH, FIGURE_HEIGHT, MAX_VELOCITY, p, player);
    }
 
    /**

@@ -1,13 +1,15 @@
 
-import java.awt.*;
-import java.io.File;
-import javax.imageio.ImageIO;
-
 /**
+ This class is an enemy PFigure which is an image with a method that allows it
+ to be drawn.
 
  @author Nick Sosinski
  @author Jake Ira
  */
+import java.awt.*;
+import java.io.File;
+import javax.imageio.ImageIO;
+
 public class DeathApple extends EnemyFigure
 {
 
