@@ -7,10 +7,10 @@
 import java.awt.Panel;
 import java.util.Random;
 
-public abstract class enemyFigure extends PFigure
+public abstract class EnemyFigure extends PFigure
 {
 
-   //The velocities for each enemyFigure
+   //The velocities for each EnemyFigure
 
    protected int xVelocity;
    protected int yVelocity;
@@ -30,7 +30,7 @@ public abstract class enemyFigure extends PFigure
     @param p The panel the enemy figure lives on.
     @param player The players PFigure.
     */
-   public enemyFigure(int inWidth, int inHeight, int maxVelocity, Panel p, PFigure player)
+   public EnemyFigure(int inWidth, int inHeight, int maxVelocity, Panel p, PFigure player)
    {
       super(0, 0, inWidth, inHeight, 0, p);
       int startingX = getRandom(0, p.getWidth() - inWidth);

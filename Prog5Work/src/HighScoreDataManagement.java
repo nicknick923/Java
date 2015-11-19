@@ -13,13 +13,13 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.awt.*;
 
-public class highScoreDataManagement
+public class HighScoreDataManagement
 {
 
    private static Scanner highScoreScanner;
    private static final String highScoreFile = "HS.dat";
    private static PrintWriter pw;
-   private highScoreData[] highScores = new highScoreData[100];
+   private HighScoreData[] highScores = new HighScoreData[100];
    private int highScoreCount = 0;
    private int numberOfScoresToShow = 5;
    private int endlessCount;
@@ -28,7 +28,7 @@ public class highScoreDataManagement
    /**
     This constructor creates and opens an output file for the high score.
     */
-   public highScoreDataManagement()
+   public HighScoreDataManagement()
    {
       try
       {
@@ -71,7 +71,7 @@ public class highScoreDataManagement
                int levelBeat = Integer.parseInt(tokenizer.nextToken());
                int deathsOnLevel = Integer.parseInt(tokenizer.nextToken());
                int timeOnLevel = Integer.parseInt(tokenizer.nextToken());
-               highScores[highScoreCount++] = new highScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
+               highScores[highScoreCount++] = new HighScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
             }
          }
          catch (Exception e)
@@ -90,7 +90,7 @@ public class highScoreDataManagement
     @param level The level that the user just beat.
     @return The high score according to fewest deaths for the level.
     */
-   public highScoreData getLeastDeathsForLevel(int level)
+   public HighScoreData getLeastDeathsForLevel(int level)
    {
       int leastDeathIndex = 0;
       int leastDeaths = Integer.MAX_VALUE;
@@ -111,9 +111,9 @@ public class highScoreDataManagement
 
     @return The high score for endless mode.
     */
-   private highScoreData[] getTopSurvival()
+   private HighScoreData[] getTopSurvival()
    {
-      highScoreData[] data = new highScoreData[5];
+      HighScoreData[] data = new HighScoreData[5];
       endlessCount = 0;
       for (int i = 0; i < highScoreCount; i++)
          if (highScores[i].getMode().equals("endless"))
@@ -140,7 +140,7 @@ public class highScoreDataManagement
     */
    private void swap(int index1, int index2)
    {
-      highScoreData temp = highScores[index1];
+      HighScoreData temp = highScores[index1];
       highScores[index1] = highScores[index2];
       highScores[index2] = temp;
    }
@@ -151,7 +151,7 @@ public class highScoreDataManagement
     @param l The list where the scores will be added.
     @param data The scores to be added.
     */
-   private void addScoresToList(List l, highScoreData[] data)
+   private void addScoresToList(List l, HighScoreData[] data)
    {
       for (int i = 0; i < numberOfScoresToShow && i < endlessCount; i++)
          l.add(data[i].endlessString());

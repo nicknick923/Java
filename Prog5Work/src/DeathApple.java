@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
  @author Nick Sosinski
  @author Jake Ira
  */
-public class deathApple extends enemyFigure
+public class DeathApple extends EnemyFigure
 {
 
    private static final int deathAppleBaseDimension = 75;
@@ -23,7 +23,7 @@ public class deathApple extends enemyFigure
     @param p The panel for which the game is played on.
     @param player The players PFigure.
     */
-   public deathApple(Panel p, PFigure player)
+   public DeathApple(Panel p, PFigure player)
    {
       super(deathAppleBaseDimension, deathAppleBaseDimension,
             deathAppleMaxVelocity, p, player);
@@ -39,7 +39,7 @@ public class deathApple extends enemyFigure
    }
 
    /**
-    This method will draw the deathApple at location x,y with the respective
+    This method will draw the DeathApple at location x,y with the respective
     width and height values stored in this class, if the image was opened.
     */
    @Override

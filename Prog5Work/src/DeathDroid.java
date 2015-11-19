@@ -6,7 +6,7 @@
  */
 import java.awt.*;
 
-public class deathDroid extends enemyFigure
+public class DeathDroid extends EnemyFigure
 {
 
    private static final int figureWidth = 75;
@@ -21,7 +21,7 @@ public class deathDroid extends enemyFigure
     @param p The panel for which the game is played on.
     @param player The players PFigure.
     */
-   public deathDroid(Panel p, PFigure player)
+   public DeathDroid(Panel p, PFigure player)
    {
       super(figureWidth, figureHeight, deathDroidMaxVelocity, p, player);
    }

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-public class goalFigure extends PFigure
+public class GoalFigure extends PFigure
 {
 
    private Image img;
@@ -23,7 +23,7 @@ public class goalFigure extends PFigure
 
     @param p The panel for which the game is played on.
     */
-   public goalFigure(Panel p)
+   public GoalFigure(Panel p)
    {
       super(0, 0, goalWidth, goalHeight, 0, p);
       x = panel.getSize().width - width - pxDistanceFromRightEdge;

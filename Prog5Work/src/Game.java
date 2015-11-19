@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 public class Game implements java.awt.event.ActionListener
 {
 
-   private scanMan player;
+   private ScanMan player;
    private int deaths = 0;
    private int deathsThisLevel = 0;
    private int level = 1;  //start user at level 1
@@ -32,7 +32,7 @@ public class Game implements java.awt.event.ActionListener
    private final String UNPAUSE_SOUND_FILE = "Speech On.wav";
    private static String user = "default";
 
-   private highScoreDataManagement highScoreManager = new highScoreDataManagement();
+   private HighScoreDataManagement highScoreManager = new HighScoreDataManagement();
    private PFigureList figureList;
 
    private javax.swing.Timer moveTimer;
@@ -110,7 +110,7 @@ public class Game implements java.awt.event.ActionListener
    /**
     This method will pause the game if the key pressed was space or ESC, skip
     the level if it was F9, or any other key is passed on to the player's
-    class, scanMan.
+    class, ScanMan.
 
     @param evt The KeyEvent data.
     */
@@ -124,7 +124,7 @@ public class Game implements java.awt.event.ActionListener
       else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F9)
          userWonLevel();
       else
-         scanMan.keyDownReciver(evt);
+         ScanMan.keyDownReciver(evt);
    }
 
    /**
@@ -179,31 +179,31 @@ public class Game implements java.awt.event.ActionListener
     This method prepares the panel for playing based on what the level is. It
     does this by reseting the figure list, adding the player figure, the goal
     figure, then randomly creates the correct number of enemies, which are
-    randomly either deathDroid's or deathApple's.
+    randomly either DeathDroid's or DeathApple's.
     */
    public void setLevel()
    {
       figureList.resetList();
-      player = new scanMan(gamePanel);
+      player = new ScanMan(gamePanel);
       if (gameMode.equals("rounds"))
       {
          figureList.addFigure(player);
-         figureList.addFigure(new goalFigure(gamePanel));
+         figureList.addFigure(new GoalFigure(gamePanel));
          for (int i = 0; i < numberOfEnimies(); i++)
             if (Math.random() > .5)
-               figureList.addFigure(new deathDroid(gamePanel, player));
+               figureList.addFigure(new DeathDroid(gamePanel, player));
             else
-               figureList.addFigure(new deathApple(gamePanel, player));
+               figureList.addFigure(new DeathApple(gamePanel, player));
       }
       else
       {
          level = LEVEL_OFFSET;
-         figureList.addFigure(new scanMan(gamePanel));
+         figureList.addFigure(new ScanMan(gamePanel));
          for (int i = 0; i < numberOfEnimies(); i++)
             if (Math.random() > .5)
-               figureList.addFigure(new deathDroid(gamePanel, player));
+               figureList.addFigure(new DeathDroid(gamePanel, player));
             else
-               figureList.addFigure(new deathApple(gamePanel, player));
+               figureList.addFigure(new DeathApple(gamePanel, player));
       }
 
    }
@@ -223,15 +223,15 @@ public class Game implements java.awt.event.ActionListener
       if (timeSpentOnLevel % MILISECONDS_FOR_EACH_ENDLESS_SPAWN == 0
             && !gameMode.equals("rounds"))
          if (Math.random() > .5)
-            figureList.addFigure(new deathDroid(gamePanel, player));
+            figureList.addFigure(new DeathDroid(gamePanel, player));
          else
-            figureList.addFigure(new deathApple(gamePanel, player));
+            figureList.addFigure(new DeathApple(gamePanel, player));
    }
 
    /**
     This method checks to see if the user hit any PFigures and if so, it
     responds with the appropriate actions: If the user hit the goal, it plays
-    the win sound and calls the userWonLevel method, if it hit an enemyFigure,
+    the win sound and calls the userWonLevel method, if it hit an EnemyFigure,
     it increments deaths, updates death info, plays the death sound, and
     resets the level.
     */
@@ -239,12 +239,12 @@ public class Game implements java.awt.event.ActionListener
    {
       PFigure hitObject = figureList.userHitObject();
       if (hitObject != null)
-         if (hitObject instanceof goalFigure)
+         if (hitObject instanceof GoalFigure)
          {
             Sound.playSound(LEVEL_WON_SOUND_FILE);
             userWonLevel();
          }
-         else if (hitObject instanceof enemyFigure)
+         else if (hitObject instanceof EnemyFigure)
          {
             if (gameMode.equals("rounds"))
             {

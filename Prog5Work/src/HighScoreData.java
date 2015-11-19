@@ -7,7 +7,7 @@
  @author Nick Sosinski
  @author Jake Ira
  */
-public class highScoreData
+public class HighScoreData
 {
 
    private String userName;
@@ -25,7 +25,7 @@ public class highScoreData
     @param numberOfDeaths The total number of deaths for the user.
     @param timeTaken The total time elapsed during that level.
     */
-   public highScoreData(String name, String mode, int levelBeat, int numberOfDeaths, int timeTaken)
+   public HighScoreData(String name, String mode, int levelBeat, int numberOfDeaths, int timeTaken)
    {
       userName = name;
       gameMode = mode;

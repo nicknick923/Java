@@ -131,7 +131,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    private void gamePanelKeyUp(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyUp
    {//GEN-HEADEREND:event_gamePanelKeyUp
-      scanMan.keyUpReciver(evt);
+      ScanMan.keyUpReciver(evt);
    }//GEN-LAST:event_gamePanelKeyUp
 
    /**

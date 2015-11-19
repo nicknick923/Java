@@ -8,7 +8,7 @@ import java.awt.*;
 import java.io.File;
 import javax.imageio.ImageIO;
 
-public class scanMan extends PFigure
+public class ScanMan extends PFigure
 {
 
    private static final Point userInputData = new Point(0, 0);
@@ -26,7 +26,7 @@ public class scanMan extends PFigure
 
     @param p The panel for which the game is played on.
     */
-   public scanMan(Panel p)
+   public ScanMan(Panel p)
    {
       super(playerStartX, playerStartY, playerImageWidth, playerImageHeight,
             0, p);
@@ -80,7 +80,7 @@ public class scanMan extends PFigure
    }
 
    /**
-    This method will draw scanMan at location x,y with the respective width
+    This method will draw ScanMan at location x,y with the respective width
     and height values stored in this class, if the image was opened.
     */
    @Override

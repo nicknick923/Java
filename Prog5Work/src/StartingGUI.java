@@ -13,8 +13,8 @@ public class StartingGUI extends java.awt.Frame
    private final String MENU_MUSIC = "Hello.wav";
    private final String GAME_MUSIC = "The Drift.wav";
 
-   private final highScoreDataManagement HIGH_SCORES_DATA_MANAGER
-         = new highScoreDataManagement();
+   private final HighScoreDataManagement HIGH_SCORES_DATA_MANAGER
+         = new HighScoreDataManagement();
 
    /**
     This constructor starts the games menu music and initializes components.
@@ -223,7 +223,7 @@ public class StartingGUI extends java.awt.Frame
     */
    private void prepGame()
    {
-      highScoreDataManagement.setPlayerName(userNameTextField.getText());
+      HighScoreDataManagement.setPlayerName(userNameTextField.getText());
       Sound.stopGameMusic();
       Sound.playGameMusic(GAME_MUSIC);
    }
