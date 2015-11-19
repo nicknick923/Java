@@ -17,7 +17,7 @@ public class HighScoreDataManagement
 {
 
    private static Scanner highScoreScanner;
-   private static final String highScoreFile = "HS.dat";
+   private static final String HIGH_SCORE_FILE = "HS.dat";
    private static PrintWriter pw;
    private HighScoreData[] highScores = new HighScoreData[100];
    private int highScoreCount = 0;
@@ -56,9 +56,18 @@ public class HighScoreDataManagement
     */
    private void readData()
    {
+      try
+      {
+         highScoreScanner = new Scanner(new File("HS.dat"));
+      }
+      catch (Exception e)
+      {
+         System.err.println("Cound not open High Score File");
+      }
       StringTokenizer tokenizer;
       while (highScoreScanner.hasNext())
       {
+         highScoreCount = 0;
          String score = highScoreScanner.nextLine();
          try
          {
@@ -146,13 +155,15 @@ public class HighScoreDataManagement
    }
 
    /**
-    This method adds the scores in the array of data to the list while.
+    This method adds the scores in the array of data to the list while there
+    is more room to add data and more scores to add.
 
     @param l The list where the scores will be added.
     @param data The scores to be added.
     */
    private void addScoresToList(List l, HighScoreData[] data)
    {
+      readData();
       for (int i = 0; i < numberOfScoresToShow && i < endlessCount; i++)
          l.add(data[i].endlessString());
    }
@@ -181,7 +192,7 @@ public class HighScoreDataManagement
    {
       try
       {
-         pw = new PrintWriter(new FileWriter(highScoreFile, true));
+         pw = new PrintWriter(new FileWriter(HIGH_SCORE_FILE, true));
          pw.println();
          pw.print(user + "," + gameMode + "," + level + "," + numDeathsOnLevel + "," + timeOnLevel);
          pw.close();

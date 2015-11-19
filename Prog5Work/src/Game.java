@@ -13,6 +13,7 @@ public class Game implements java.awt.event.ActionListener
 {
 
    private ScanMan player;
+   private int enemies = 0;
    private int deaths = 0;
    private int deathsThisLevel = 0;
    private int level = 1;  //start user at level 1
@@ -147,17 +148,26 @@ public class Game implements java.awt.event.ActionListener
     */
    private void updateDeathInfo()
    {
-      if (deaths == 1)
-         deathCountField.setText("Level " + level + ", 1 Death");
+      if (gameMode.equals("rounds"))
+         if (deaths == 1)
+            deathCountField.setText("Level " + level + ", 1 Death");
+         else
+            deathCountField.setText("Level " + level + ", " + deaths
+                  + " Deaths");
       else
-         deathCountField.setText("Level " + level + ", " + deaths
-               + " Deaths");
+         deathCountField.setText("Enemies: " + enemies);
    }
 
    private void updateTimeInfo()
    {
-      timeField.setText("Total:" + (timePlayed / MILISECONDS_IN_A_SECOND)
-            + "/This Level:" + (timeSpentOnLevel / MILISECONDS_IN_A_SECOND));
+      if (gameMode.equals("rounds"))
+         timeField.setText("Total:" + (timePlayed / MILISECONDS_IN_A_SECOND)
+               + "/This Level:"
+               + (timeSpentOnLevel / MILISECONDS_IN_A_SECOND));
+      else
+         timeField.setText((timeSpentOnLevel / MILISECONDS_IN_A_SECOND)
+               + " Seconds");
+
    }
 
    /**
@@ -185,6 +195,7 @@ public class Game implements java.awt.event.ActionListener
     */
    public void setLevel()
    {
+      enemies = 0;
       figureList.resetList();
       player = new ScanMan(gamePanel);
       if (gameMode.equals("rounds"))
@@ -202,10 +213,14 @@ public class Game implements java.awt.event.ActionListener
          level = LEVEL_OFFSET;
          figureList.addFigure(new ScanMan(gamePanel));
          for (int i = 0; i < numberOfEnimies(); i++)
+         {
+            enemies++;
             if (Math.random() > .5)
                figureList.addFigure(new DeathDroid(gamePanel, player));
             else
                figureList.addFigure(new DeathApple(gamePanel, player));
+         }
+         updateDeathInfo();
       }
 
    }
@@ -224,10 +239,14 @@ public class Game implements java.awt.event.ActionListener
       userCollideCheck();
       if (timeSpentOnLevel % MILISECONDS_FOR_EACH_ENDLESS_SPAWN == 0
             && !gameMode.equals("rounds"))
+      {
+         enemies++;
          if (Math.random() > .5)
             figureList.addFigure(new DeathDroid(gamePanel, player));
          else
             figureList.addFigure(new DeathApple(gamePanel, player));
+         updateDeathInfo();
+      }
    }
 
    /**
