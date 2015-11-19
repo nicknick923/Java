@@ -4,9 +4,7 @@
  @author Nick Sosinski
  @author Jake Ira
  */
-import java.awt.event.ActionEvent;
-
-public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
+public class Prog5GUI extends java.awt.Frame
 {
 
    private static Game gameManager;
@@ -14,7 +12,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
    private final String MENU_MUSIC = "Hello.wav";
 
    /**
-    This initalizes the components, resizes the gamePanel for the current
+    This initializes the components, resizes the gamePanel for the current
     forms size, then creates the game manager which runs the game.
     */
    public Prog5GUI()
@@ -112,40 +110,63 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
       this.dispose();
     }//GEN-LAST:event_exitForm
 
+   /**
+    This method passes any KeyDown event onto gameManager.
+
+    @param evt The KeyEvent data.
+    */
    private void gamePanelKeyDown(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyDown
    {//GEN-HEADEREND:event_gamePanelKeyDown
       gameManager.keyDownHandler(evt);
    }//GEN-LAST:event_gamePanelKeyDown
 
+   /**
+    This method passes any KeyUp event onto gameManager.
+
+    @param evt The KeyEvent data.
+    */
    private void gamePanelKeyUp(java.awt.event.KeyEvent evt)//GEN-FIRST:event_gamePanelKeyUp
    {//GEN-HEADEREND:event_gamePanelKeyUp
       scanMan.keyUpReciver(evt);
    }//GEN-LAST:event_gamePanelKeyUp
 
+   /**
+    This method resizes the gamePanel to properly fit the window.
+
+    @param evt The resized event data. (Not Used)
+    */
    private void componetResized(java.awt.event.ComponentEvent evt)//GEN-FIRST:event_componetResized
    {//GEN-HEADEREND:event_componetResized
       gamePanel.setSize(getWidth() - 20, getHeight() - 70);
    }//GEN-LAST:event_componetResized
 
+   /**
+    This method transfers focus back to the gamePanel when the user clicks on
+    the deathCountField.
+
+    @param evt The focus event data. (Not Used)
+    */
    private void deathCountFieldtransferFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_deathCountFieldtransferFocus
    {//GEN-HEADEREND:event_deathCountFieldtransferFocus
       gamePanel.requestFocus();
    }//GEN-LAST:event_deathCountFieldtransferFocus
 
+   /**
+    This method transfers focus back to the gamePanel when the user clicks on
+    the deathCountField.
+
+    @param evt The focus event data. (Not Used)
+    */
    private void timeFieldTransferFocus(java.awt.event.FocusEvent evt)//GEN-FIRST:event_timeFieldTransferFocus
    {//GEN-HEADEREND:event_timeFieldTransferFocus
       gamePanel.requestFocus();
    }//GEN-LAST:event_timeFieldTransferFocus
 
-  
-
-   
-
    /**
     This method is the main method of the program and it creates and runs the
     program.
 
-    @param args the command line arguments (not used).
+    @param args the command line arguments.
     */
    public static void main(String args[])
    {
@@ -163,18 +184,6 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
          }
       }
       );
-   }
-
-   /**
-    This method is called every time a timer ticks and will call the game
-    managers timer ticked method to let the game know the timer has ticked.
-
-    @param ae The events data (not used).
-    */
-   @Override
-   public void actionPerformed(ActionEvent ae)
-   {
-      //gameManager.timerTicked();
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables

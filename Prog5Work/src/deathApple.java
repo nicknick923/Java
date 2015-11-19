@@ -21,6 +21,7 @@ public class deathApple extends enemyFigure
     parameter.
 
     @param p The panel for which the game is played on.
+    @param player The players PFigure.
     */
    public deathApple(Panel p, PFigure player)
    {
