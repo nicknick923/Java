@@ -1,10 +1,8 @@
 
-/**
- This class takes in information from the game such as the players name, game
+/** 
+This class takes in information from the game such as the players name, game
  mode, level, total deaths, and the time spent on that level, then outputs the
  information to the scoreboard.
- */
-/**
 
  @author Nick Sosinski
  @author Jake Ira
