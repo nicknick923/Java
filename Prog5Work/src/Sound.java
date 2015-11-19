@@ -1,12 +1,13 @@
 
-import java.io.IOException;
-import javax.sound.sampled.Clip;
-
 /**
+ This class controls anything related to sound in the program.
 
  @author Nick Sosinski
  @author Jake Ira
  */
+import java.io.IOException;
+import javax.sound.sampled.Clip;
+
 public class Sound
 {
 

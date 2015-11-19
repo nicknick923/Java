@@ -1,5 +1,8 @@
 
 /**
+ This class creates the starting menu and controls all functions on that such
+ as the music, which game mode is selected, opening the high scores and
+ inputing the users name.
 
  @author Jake Ira
  @author Nick Sosinski

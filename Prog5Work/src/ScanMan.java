@@ -1,5 +1,7 @@
 
 /**
+ This class controls everything with the users character, with things such as
+ moving the figure around the screen, and drawing the character.
 
  @author Nick Sosinski
  @author Jake Ira
