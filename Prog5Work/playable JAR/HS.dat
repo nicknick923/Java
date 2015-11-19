@@ -1,14 +1,70 @@
-#userName, levelBeat, deathsOnLevel, timeOnLevel
-Travis, 1, 1, 21
-Travis, 2, 0, 34
-Travis, 3, 0, 14
-Travis, 4, 5, 15
-Travis, 5, 0, 106
-Travis, 6, 0, 26
-Travis, 7, 13, 120
-Travis, 8, 15, 191
-Travis, 9, 8, 116
-Travis, 10, 0, 52
-Travis, 11, 1, 34
-Travis, 12, 24, 347
-Travis, 13, 12, 148
+#userName, gameMode, levelBeat, deathsOnLevel, timeOnLevel
+Travis,rounds,1,1,21000
+Travis,rounds,2,0,34000
+Travis,rounds,3,0,14000
+Travis,rounds,4,5,15000
+Travis,rounds,5,0,106000
+Travis,rounds,6,0,26000
+Travis,rounds,7,13,120000
+Travis,rounds,8,15,191000
+Travis,rounds,9,8,116000
+Travis,rounds,10,0,52000
+Travis,rounds,11,1,34000
+Travis,rounds,12,24,347000
+Travis,rounds,13,12,148000
+Jake,rounds,1,1,30500
+Jake,rounds,2,0,30500
+Jake,rounds,1,1,67800
+Jake,rounds,2,0,59700
+Jake,rounds,1,0,21200
+Jake,rounds,2,0,24100
+Jake,rounds,3,2,74300
+Jake,rounds,4,0,41700
+Jake,rounds,5,6,122700
+Jake,rounds,6,0,25100
+Jake,rounds,7,0,33100
+Jake,rounds,8,1,73100
+Jake,rounds,9,0,28100
+Jake,rounds,10,0,23900
+Jake,rounds,11,1,47400
+Jake,rounds,12,0,42200
+Jake,rounds,13,2,71400
+Jake,rounds,14,11,289500
+Jake,rounds,1,0,32600
+Jake,rounds,2,0,18000
+Jake,rounds,3,1,29500
+Jake,rounds,4,3,84900
+Jake,rounds,5,0,23500
+Jake,rounds,1,0,23500
+Jake,rounds,2,0,22400
+Jake,rounds,3,0,19200
+Jake,rounds,4,3,72300
+Jake,rounds,5,0,24200
+Jake,rounds,6,1,42100
+Jake,rounds,7,0,35100
+Jake,rounds,8,0,24200
+Jake,rounds,9,1,59700
+Jake,rounds,10,1,31700
+Jake,rounds,11,0,31400
+Jake,rounds,12,0,25700
+Jake,rounds,13,0,34700
+Jake,rounds,14,1,66900
+Jake,rounds,15,8,217400
+Jake,rounds,16,2,51600
+Jake,rounds,17,1,38500
+Jake,rounds,18,0,41400
+Jake,rounds,19,15,369600
+Nick,endless,5,0,18100
+Nick,endless,5,0,105400
+Jake,rounds,19,15,369600
+Nick,endless,5,0,2400
+Nick,endless,5,0,2100
+Nick,endless,5,0,7300
+Nick,endless,5,0,40100
+Nick,endless,5,0,15400
+Nick,endless,5,0,21100
+Jake,endless,5,0,2300
+Jake,endless,5,0,56800
+Jake,endless,5,0,45100
+Jake,endless,5,0,5100
+Jake,endless,5,0,69500
