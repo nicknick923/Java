@@ -1,5 +1,8 @@
 
 /**
+ This is a parent class to EnemyFigure that controls the movement and starting
+ position of all objects on the screen, this class also controls the
+ visibility of the objects.
 
  @author Nick Sosinski
  @author Jake Ira

@@ -1,5 +1,8 @@
 
 /**
+ This class works on the functionality of the game by telling the program
+ things such as when a button is pressed, and if the user clicks off of the
+ game.
 
  @author Nick Sosinski
  @author Jake Ira
