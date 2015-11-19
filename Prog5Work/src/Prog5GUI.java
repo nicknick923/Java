@@ -11,7 +11,7 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
 {
 
    private int PANEL_WIDTH_MARGIN = 20;
-   private int PANEL_HEIGHT_MARGIN = 20;
+   private int PANEL_HEIGHT_MARGIN = 70;
    private static Game gameManager;
    private static String gameMode;
    private final String MENU_MUSIC = "Hello.wav";
