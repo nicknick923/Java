@@ -1,6 +1,7 @@
 
 /**
- This class
+ This class manipulates the high score with methods that will set the users
+ name, read in data from the input file, and determine and set the high score.
 
  @author Nick Sosinski
  @author Jake Ira
