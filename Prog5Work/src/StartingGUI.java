@@ -8,20 +8,20 @@ import java.awt.*;
 
 public class StartingGUI extends java.awt.Frame
 {
-   //*********************************TODO**********************************//
-   //**************Add a username field for the leaderboard*****************//
-   //*********************************TODO**********************************//
 
-   private String[] commandString = new String[1];
+   private final String[] COMMAND_ARGUMENTS = new String[1];
+   private final String MENU_MUSIC = "Hello.wav";
+   private final String GAME_MUSIC = "The Drift.wav";
 
-   highScoreDataManagement highScores = new highScoreDataManagement();
+   private final highScoreDataManagement HIGH_SCORES_DATA_MANAGER
+         = new highScoreDataManagement();
 
    /**
     Creates new form StartingGUI
     */
    public StartingGUI()
    {
-      Prog5GUI.playGameMusic("Hello.wav");
+      Sound.playGameMusic(MENU_MUSIC);
       initComponents();
    }
 
@@ -50,6 +50,7 @@ public class StartingGUI extends java.awt.Frame
       setBackground(java.awt.Color.red);
       setMaximumSize(new java.awt.Dimension(566, 416));
       setMinimumSize(new java.awt.Dimension(566, 416));
+      setResizable(false);
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -159,13 +160,6 @@ public class StartingGUI extends java.awt.Frame
       highScoresButton.setBounds(340, 300, 90, 24);
 
       userNameTextField.setText("Player Name");
-      userNameTextField.addTextListener(new java.awt.event.TextListener()
-      {
-         public void textValueChanged(java.awt.event.TextEvent evt)
-         {
-            playerNameChanged(evt);
-         }
-      });
       add(userNameTextField);
       userNameTextField.setBounds(340, 210, 90, 20);
 
@@ -191,10 +185,9 @@ public class StartingGUI extends java.awt.Frame
          userNameTextField.setBackground(Color.yellow);
       else
       {
-         Prog5GUI.stopGameMusic();
-         Prog5GUI.playGameMusic("The Drift.wav");
-         commandString[0] = "survival";
-         Prog5GUI.main(commandString);
+         prepGame();
+         COMMAND_ARGUMENTS[0] = "survival";
+         Prog5GUI.main(COMMAND_ARGUMENTS);
       }
    }//GEN-LAST:event_survivalButtonActionPerformed
 
@@ -204,17 +197,22 @@ public class StartingGUI extends java.awt.Frame
          userNameTextField.setBackground(Color.yellow);
       else
       {
-         Prog5GUI.stopGameMusic();
-         Prog5GUI.playGameMusic("The Drift.wav");
-         commandString[0] = "rounds";
-         Prog5GUI.main(commandString);
+         prepGame();
+         COMMAND_ARGUMENTS[0] = "rounds";
+         Prog5GUI.main(COMMAND_ARGUMENTS);
       }
    }//GEN-LAST:event_roundsButtonActionPerformed
 
+   private void prepGame()
+   {
+      highScoreDataManagement.setPlayerName(userNameTextField.getText());
+      Sound.stopGameMusic();
+      Sound.playGameMusic(GAME_MUSIC);
+   }
    private void highScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_highScoresButtonActionPerformed
    {//GEN-HEADEREND:event_highScoresButtonActionPerformed
       scoresPanel.setVisible(true);
-      highScores.addScoresToList(scoreList, "rounds");
+      HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "rounds");
    }//GEN-LAST:event_highScoresButtonActionPerformed
 
    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_closeButtonActionPerformed
@@ -223,22 +221,17 @@ public class StartingGUI extends java.awt.Frame
       scoreList.removeAll();
    }//GEN-LAST:event_closeButtonActionPerformed
 
-   private void playerNameChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_playerNameChanged
-   {//GEN-HEADEREND:event_playerNameChanged
-      Prog5GUI.setScoreName(userNameTextField.getText());
-   }//GEN-LAST:event_playerNameChanged
-
    private void roundScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_roundScoresButtonActionPerformed
    {//GEN-HEADEREND:event_roundScoresButtonActionPerformed
       scoreList.removeAll();
-      highScores.addScoresToList(scoreList, "rounds");
+      HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "rounds");
    }//GEN-LAST:event_roundScoresButtonActionPerformed
 
    private void survivalScoresButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_survivalScoresButtonActionPerformed
    {//GEN-HEADEREND:event_survivalScoresButtonActionPerformed
       scoreList.removeAll();
-      highScores.addScoresToList(scoreList, "survival");
-      
+      HIGH_SCORES_DATA_MANAGER.addScoresToList(scoreList, "survival");
+
    }//GEN-LAST:event_survivalScoresButtonActionPerformed
 
    /**
@@ -254,7 +247,6 @@ public class StartingGUI extends java.awt.Frame
          }
       });
    }
-
 
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.Button closeButton;

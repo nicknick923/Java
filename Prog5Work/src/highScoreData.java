@@ -7,10 +7,9 @@
 public class highScoreData
 {
 
-   private final int milisecondsInASecond = 1000;
-   private final String userName;
-   private final String gameMode;
-   private final int level, deaths, time;
+   private String userName;
+   private String gameMode;
+   private int level, deaths, time;
 
    public highScoreData(String name, String mode, int levelBeat, int numberOfDeaths, int timeTaken)
    {
@@ -48,15 +47,15 @@ public class highScoreData
 
    public String endlessString()
    {
-      return (userName + " lasted " + ((double) time / milisecondsInASecond) + " seconds in endless mode.");
+      return (userName + " lasted " + ((double) time / Game.MILISECONDS_IN_A_SECOND) + " seconds in endless mode.");
    }
-   
+
    @Override
    public String toString()
    {
       if (deaths == 1)
-         return (userName + " beat level " + level + " with 1 death in " + ((double) time / milisecondsInASecond) + " seconds");
+         return (userName + " beat level " + level + " with 1 death in " + ((double) time / Game.MILISECONDS_IN_A_SECOND) + " seconds");
       else
-         return (userName + " beat level " + level + " with " + deaths + " deaths in " + ((double) time / milisecondsInASecond) + " seconds");
+         return (userName + " beat level " + level + " with " + deaths + " deaths in " + ((double) time / Game.MILISECONDS_IN_A_SECOND) + " seconds");
    }
 }

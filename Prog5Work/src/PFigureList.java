@@ -9,7 +9,7 @@ import java.awt.*;
 public class PFigureList
 {
 
-   private final int figMax = 1000;
+   private final int figMax = 250;
    private PFigure[] listOfFigures;
    private int figCount;
    private final Panel workingPanel;

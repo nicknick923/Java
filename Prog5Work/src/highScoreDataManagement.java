@@ -21,6 +21,7 @@ public class highScoreDataManagement
    private int highScoreCount = 0;
    private int numberOfScoresToShow = 5;
    private int endlessCount;
+   private static String user;
 
    public highScoreDataManagement()
    {
@@ -34,22 +35,33 @@ public class highScoreDataManagement
       }
    }
 
+   public static void setPlayerName(String inName)
+   {
+      user = inName;
+   }
+
    private void readData()
    {
       StringTokenizer tokenizer;
       while (highScoreScanner.hasNext())
       {
          String score = highScoreScanner.nextLine();
-         if (score.charAt(0) != '#')
+         try
          {
-            tokenizer = new StringTokenizer(score, ",");
-            //userName,gameMode,levelBeat,deathsOnLevel,timeOnLevel
-            String name = tokenizer.nextToken();
-            String gameMode = tokenizer.nextToken();
-            int levelBeat = Integer.parseInt(tokenizer.nextToken());
-            int deathsOnLevel = Integer.parseInt(tokenizer.nextToken());
-            int timeOnLevel = Integer.parseInt(tokenizer.nextToken());
-            highScores[highScoreCount++] = new highScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
+            if (score.charAt(0) != '#')
+            {
+               tokenizer = new StringTokenizer(score, ",");
+               //userName,gameMode,levelBeat,deathsOnLevel,timeOnLevel
+               String name = tokenizer.nextToken();
+               String gameMode = tokenizer.nextToken();
+               int levelBeat = Integer.parseInt(tokenizer.nextToken());
+               int deathsOnLevel = Integer.parseInt(tokenizer.nextToken());
+               int timeOnLevel = Integer.parseInt(tokenizer.nextToken());
+               highScores[highScoreCount++] = new highScoreData(name, gameMode, levelBeat, deathsOnLevel, timeOnLevel);
+            }
+         }
+         catch (Exception e)
+         {
          }
       }
       for (int i = 0; i < highScoreCount; i++)
@@ -124,7 +136,7 @@ public class highScoreDataManagement
          addScoresToList(l, getTopSurvival());
    }
 
-   public void writeScore(String user, String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
+   public void writeScore(String gameMode, int level, int numDeathsOnLevel, int timeOnLevel)
    {
       try
       {
