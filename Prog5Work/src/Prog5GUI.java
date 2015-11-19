@@ -4,14 +4,13 @@
  @author Nick Sosinski
  @author Jake Ira
  */
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionListener
 {
 
-   private int PANEL_WIDTH_MARGIN = 20;
-   private int PANEL_HEIGHT_MARGIN = 70;
+   private final int PANEL_WIDTH_MARGIN = 20;
+   private final int PANEL_HEIGHT_MARGIN = 70;
    private static Game gameManager;
    private static String gameMode;
    private final String MENU_MUSIC = "Hello.wav";
@@ -175,32 +174,28 @@ public class Prog5GUI extends java.awt.Frame implements java.awt.event.ActionLis
     */
    public static void main(String args[])
    {
-
       if (args[0].equals("rounds"))
          gameMode = "rounds";
       else
          gameMode = "endless";
-
       java.awt.EventQueue.invokeLater(new Runnable()
       {
          public void run()
          {
             new Prog5GUI().setVisible(true);
          }
-      }
-      );
+      });
    }
-   
-      /**
-    This method is called every time a timer ticks and will call the game
-    managers timer ticked method to let the game know the timer has ticked.
+
+   /**
+    This method is called every time a timer ticks and doesn't do anything but
+    is required for the code to run properly.
 
     @param ae The events data (not used).
     */
    @Override
    public void actionPerformed(ActionEvent ae)
    {
-      //gameManager.timerTicked();
    }
 
    // Variables declaration - do not modify//GEN-BEGIN:variables

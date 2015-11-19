@@ -6,7 +6,6 @@
  */
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Game implements java.awt.event.ActionListener
 {
@@ -79,22 +78,42 @@ public class Game implements java.awt.event.ActionListener
       updateDeathInfo();
    }
 
+   /**
+    This method is called every time a timer ticks and doesn't do anything but
+    is required for the code to run properly.
+
+    @param ae The events data (not used).
+    */
+   @Override
    public void actionPerformed(ActionEvent ae)
    {
    }
 
+   /**
+    This method pauses the game then plays the pause sound.
+    */
    private void pause()
    {
       moveTimer.stop();
       Sound.playSound(PAUSE_SOUND_FILE);
    }
 
+   /**
+    This method un-pauses the game then plays the un-pause sound.
+    */
    private void unpause()
    {
       moveTimer.start();
       Sound.playSound(UNPAUSE_SOUND_FILE);
    }
 
+   /**
+    This method will pause the game if the key pressed was space or ESC, skip
+    the level if it was F9, or any other key is passed on to the player's
+    class, scanMan.
+
+    @param evt The KeyEvent data.
+    */
    public void keyDownHandler(java.awt.event.KeyEvent evt)
    {
       if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ESCAPE || evt.getKeyCode() == java.awt.event.KeyEvent.VK_SPACE)
@@ -153,7 +172,7 @@ public class Game implements java.awt.event.ActionListener
        level 2: ((2+5)*2)-2 = (7*2)-2 = 14-2 = 12
        level 3: ((3+5)*2)-2 = (8*2)-2 = 16-2 = 14
        */
-      return ((level + LEVEL_OFFSET) * ENIMIES_PER_LEVEL)-2;
+      return ((level + LEVEL_OFFSET) * ENIMIES_PER_LEVEL) - 2;
    }
 
    /**
