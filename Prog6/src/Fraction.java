@@ -24,7 +24,7 @@ public class Fraction
    /**
     Copy Constructor.
 
-    @param inFraction
+    @param inFraction The fraction to be copied.
     */
    public Fraction(Fraction inFraction)
    {

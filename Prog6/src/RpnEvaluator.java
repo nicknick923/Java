@@ -17,10 +17,14 @@ public class RpnEvaluator
    private final Scanner stdin = new Scanner(System.in);
    private boolean isValid;
    private String token;
+   private Fraction mathFrac1;
+   private Fraction mathFrac2;
 
    /**
     This class is the one that is called by Prog3 and is run until end of file
     evaluating RPN expressions.
+
+    @throws java.io.IOException Thrown when the input has failed in some way.
     */
    public void run() throws java.io.IOException
    {
@@ -109,21 +113,13 @@ public class RpnEvaluator
     */
    private void addHelper()
    {
-      Fraction frac1 = EMPTY_FRACTION_VALUE;
-      Fraction frac2 = EMPTY_FRACTION_VALUE;
       Fraction result;
-      if (!fracStack.isEmpty())
-         frac1 = (Fraction) fracStack.pop();
-      if (!fracStack.isEmpty())
-         frac2 = (Fraction) fracStack.pop();
-      if (frac1 != EMPTY_FRACTION_VALUE && frac2 != EMPTY_FRACTION_VALUE)
+      if (fractionPopper())
       {
-         result = frac1.addFraction(frac2);
+         result = mathFrac1.addFraction(mathFrac2);
          fracQueue.add(result);
          fracStack.push(result);
       }
-      else
-         isValid = false;
       System.out.print("+");
    }
 
@@ -133,21 +129,13 @@ public class RpnEvaluator
     */
    private void subtractHelper()
    {
-      Fraction frac1 = EMPTY_FRACTION_VALUE;
-      Fraction frac2 = EMPTY_FRACTION_VALUE;
       Fraction result;
-      if (!fracStack.isEmpty())
-         frac1 = (Fraction) fracStack.pop();
-      if (!fracStack.isEmpty())
-         frac2 = (Fraction) fracStack.pop();
-      if (frac1 != EMPTY_FRACTION_VALUE && frac2 != EMPTY_FRACTION_VALUE)
+      if (fractionPopper())
       {
-         result = frac2.subtractFraction(frac1);
+         result = mathFrac2.subtractFraction(mathFrac1);
          fracQueue.add(result);
          fracStack.push(result);
       }
-      else
-         isValid = false;
       System.out.print("-");
    }
 
@@ -157,22 +145,27 @@ public class RpnEvaluator
     */
    private void multiplyHelper()
    {
-      Fraction frac1 = EMPTY_FRACTION_VALUE;
-      Fraction frac2 = EMPTY_FRACTION_VALUE;
       Fraction result;
-      if (!fracStack.isEmpty())
-         frac1 = (Fraction) fracStack.pop();
-      if (!fracStack.isEmpty())
-         frac2 = (Fraction) fracStack.pop();
-      if (frac1 != EMPTY_FRACTION_VALUE && frac2 != EMPTY_FRACTION_VALUE)
+      if (fractionPopper())
       {
-         result = frac1.multiplyFraction(frac2);
+         result = mathFrac1.multiplyFraction(mathFrac2);
          fracStack.push(result);
          fracQueue.add(result);
       }
-      else
-         isValid = false;
       System.out.print("*");
+   }
+
+   private boolean fractionPopper()
+   {
+      mathFrac1 = EMPTY_FRACTION_VALUE;
+      mathFrac2 = EMPTY_FRACTION_VALUE;
+      if (!fracStack.isEmpty())
+         mathFrac1 = (Fraction) fracStack.pop();
+      if (!fracStack.isEmpty())
+         mathFrac2 = (Fraction) fracStack.pop();
+      isValid = mathFrac1 != EMPTY_FRACTION_VALUE && mathFrac2 != EMPTY_FRACTION_VALUE;
+      return isValid;
+
    }
 
    /**
