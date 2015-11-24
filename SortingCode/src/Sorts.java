@@ -1,6 +1,4 @@
 
-import jdk.nashorn.internal.objects.AccessorPropertyDescriptor;
-
 /**
 
  @author Nick Sosinski
