@@ -186,7 +186,7 @@ public class Fraction
    /**
     This method tests the Fraction class.
 
-    @param args command line arguments
+    @param args command line arguments4
     */
    public static void main(String args[])
    {

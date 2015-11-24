@@ -3,7 +3,6 @@
  This class is a digital queue where elements are added to one end and removed
  from the other.
 
- @author Jake Ira
  @author Nick Sosinski
  */
 public class Queue
@@ -80,6 +79,37 @@ public class Queue
       front = rear = count = 0;
    }
 
+   /*
+    private Node front = null, rear = null;
+    public boolean isEmpty() 
+    { 
+    return front == null; 
+    }
+    public void add ( Object x )
+    {
+    if ( front == null )
+    {
+    front = new Node ( x, null );
+    rear = front;
+    }
+    else
+    {
+    rear.next  = new Node ( x, null );
+    rear = rear.next;
+    }
+    }
+    public Object remove()
+    {
+    if ( front ==  null )
+    return null;
+    Object x = front.info;
+    front = front.next;
+    if ( front ==  null )
+    rear = null;
+    return x;
+    }
+    }  
+    */
    /**
     This method tests the Queue class.
 

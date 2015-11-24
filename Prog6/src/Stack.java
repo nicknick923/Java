@@ -4,7 +4,6 @@
  end only.
 
  @author Jake Ira
- @author Nick Sosinski
  */
 public class Stack
 {
@@ -56,6 +55,11 @@ public class Stack
       elements[top++] = x;
    }
 
+   /*public void push(Object x)
+    {
+    s = new Node(x, s)
+    }
+    */
    /**
     This method returns the top object in the stack. If the stack is empty,
     the program will crash.
@@ -67,6 +71,15 @@ public class Stack
       return elements[--top];
    }
 
+   /*
+    public Object pop()
+    {
+    Object x = s.info;
+    s = s.next;
+    return x;
+    }
+
+    */
    /**
     This method resets the stack.
     */
