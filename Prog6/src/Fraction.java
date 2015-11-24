@@ -3,6 +3,7 @@
  This class has commands to create and perform mathematics on individual
  fractions.
 
+ @author Jake Ira
  @author Nick Sosinski
  */
 import java.util.StringTokenizer;

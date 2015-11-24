@@ -3,6 +3,7 @@
  This class is a digital queue where elements are added to one end and removed
  from the other.
 
+ @author Jake Ira
  @author Nick Sosinski
  */
 public class Queue

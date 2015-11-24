@@ -3,6 +3,7 @@
  This class is used to evaluate reverse polish notation expressions that end
  with a #. This class only outputs an answer when an expression is valid.
 
+ @author Jake Ira
  @author Nick Sosinski
  */
 import java.util.Scanner;
