@@ -8,66 +8,60 @@
 public class Queue
 {
 
-   private Object[] elements;
-   private int front, rear, count;
+   private Node front, rear;
 
    /**
-    Constructor that takes in the wanted size of the queue.
-
-    @param size The number of spots in the queue
+    Constructor that creates an empty queue.
     */
-   public Queue(int size)
+   public Queue()
    {
-      elements = new Object[size];
-      front = rear = count = 0;
+      front = null;
+      rear = null;
    }
 
    /**
     This method returns a boolean value of true if the queue is empty or false
     if it is not empty.
 
-    @return A boolean value where true means empty and false means not empty
+    @return A boolean value where true means empty and false means not empty.
     */
    public boolean isEmpty()
    {
-      return count == 0;
+      return front == null;
    }
 
    /**
-    This method returns a boolean value of true if the queue is full or false
-    if it is not full.
+    This method adds an object to the end of the queue.
 
-    @return A boolean value where true means full and false means not full
-    */
-   public boolean isFull()
-   {
-      return count == elements.length;
-   }
-
-   /**
-    This method adds an object to the end of the queue. If it is full, it may
-    crash the program.
-
-    @param x The object to be added to the queue
+    @param x The object to be added to the queue.
     */
    public void add(Object x)
    {
-      elements[rear] = x;
-      rear = (rear + 1) % elements.length;
-      count++;
+      if (front == null)
+      {
+         front = new Node(x, null);
+         rear = front;
+      }
+      else
+      {
+         rear.next = new Node(x, null);
+         rear = rear.next;
+      }
    }
 
    /**
-    This method removes the next object in the queue. If it is empty, it will
-    crash the program.
+    This method removes the next object in the queue.
 
-    @return The next object in the queue
+    @return The next object in the queue or null if the queue is empty.
     */
    public Object remove()
    {
-      Object x = elements[front];
-      front = (front + 1) % elements.length;
-      count--;
+      if (front == null)
+         return null;
+      Object x = front.info;
+      front = front.next;
+      if (front == null)
+         rear = null;
       return x;
    }
 
@@ -76,17 +70,17 @@ public class Queue
     */
    public void clear()
    {
-      front = rear = count = 0;
+      front = rear = null;
    }
 
    /**
-    This method tests the Queue class.
+    This method tests the Queue2 class.
 
-    @param args command line arguments
+    @param args The command line arguments.
     */
    public static void main(String args[])
    {
-      Queue trialQueue = new Queue(5);
+      Queue trialQueue = new Queue();
       String testObject1 = "Object 1";
       String testObject2 = "Object 2";
       String testObject3 = "Object 3";
@@ -97,11 +91,6 @@ public class Queue
          System.out.println("isEmpty Method Test---------Pass");
       else
          System.out.println("isEmpty Method Test---------Fail");
-
-      if (trialQueue.isFull())
-         System.out.println("isFull Method Test----------Fail");
-      else
-         System.out.println("isFull Method Test----------Pass");
 
       trialQueue.add(testObject1);
 
@@ -130,11 +119,6 @@ public class Queue
          System.out.println("isEmpty Method Test---------Fail");
       else
          System.out.println("isEmpty Method Test---------Pass");
-
-      if (trialQueue.isFull())
-         System.out.println("isFull Method Test----------Pass");
-      else
-         System.out.println("isFull Method Test----------Fail");
 
       if (trialQueue.remove().toString().equals("Object 1"))
          System.out.println("Remove Method Test----------Pass");
@@ -166,21 +150,11 @@ public class Queue
       else
          System.out.println("isEmpty Method Test---------Fail");
 
-      if (trialQueue.isFull())
-         System.out.println("isFull Method Test----------Fail");
-      else
-         System.out.println("isFull Method Test----------Pass");
-
       trialQueue.add(testObject1);
       trialQueue.add(testObject2);
       trialQueue.add(testObject3);
       trialQueue.add(testObject4);
       trialQueue.add(testObject5);
-
-      if (trialQueue.isFull())
-         System.out.println("isFull Method Test----------Pass");
-      else
-         System.out.println("isFull Method Test----------Fail");
 
       trialQueue.clear();
 

@@ -11,10 +11,9 @@ import java.util.Scanner;
 public class RpnEvaluator
 {
 
-   private final int MAXIMUM_SIZE = 50;
    private final Fraction EMPTY_FRACTION_VALUE = null;
    private final Stack fracStack = new Stack();
-   private final Queue fracQueue = new Queue(MAXIMUM_SIZE);
+   private final Queue fracQueue = new Queue();
    private final Scanner stdin = new Scanner(System.in);
    private boolean isValid;
    private String token;
