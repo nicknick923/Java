@@ -8,8 +8,11 @@
 public class Queue2
 {
 
-   private Node front = null, rear = null;
+   private Node front, rear;
 
+   /**
+    Constructor that creates an empty queue.
+    */
    public Queue2()
    {
       front = null;
@@ -20,7 +23,7 @@ public class Queue2
     This method returns a boolean value of true if the queue is empty or false
     if it is not empty.
 
-    @return A boolean value where true means empty and false means not empty
+    @return A boolean value where true means empty and false means not empty.
     */
    public boolean isEmpty()
    {
@@ -30,7 +33,7 @@ public class Queue2
    /**
     This method adds an object to the end of the queue.
 
-    @param x The object to be added to the queue
+    @param x The object to be added to the queue.
     */
    public void add(Object x)
    {
@@ -71,9 +74,9 @@ public class Queue2
    }
 
    /**
-    This method tests the Queue class.
+    This method tests the Queue2 class.
 
-    @param args command line arguments
+    @param args The command line arguments.
     */
    public static void main(String args[])
    {
