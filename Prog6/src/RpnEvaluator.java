@@ -16,7 +16,8 @@ public class RpnEvaluator
    private final Queue fracQueue = new Queue();
    private final Scanner stdin = new Scanner(System.in);
    private boolean isValid;
-   private String token;
+   private String myStringTok;
+   private Fraction answer;
    private Fraction mathFrac1;
    private Fraction mathFrac2;
 
@@ -34,11 +35,11 @@ public class RpnEvaluator
          isValid = true;
          while (stdin.hasNext() && isValid)
          {
-            token = stdin.next();
+            myStringTok = stdin.next();
             numCompleated++;
             System.out.print("Expression " + numCompleated + " is: ");
             expressionProcessor();
-            if (!token.equals("#"))
+            if (!myStringTok.equals("#"))
                stdin.findInLine("#");
             System.out.println();
             printFinalResult();
@@ -52,23 +53,33 @@ public class RpnEvaluator
     */
    private void expressionProcessor()
    {
-      while (isValid && !token.equals("#"))
+      while (isValid && !myStringTok.equals("#"))
       {
-         if (token.charAt(0) == '(')
-            pushFraction(token);
-         else if (token.equals("+"))
+         if (myStringTok.charAt(0) == '(')
+            pushFraction(myStringTok);
+         else if (myStringTok.equals("+"))
             addHelper();
-         else if (token.equals("-"))
+         else if (myStringTok.equals("-"))
             subtractHelper();
-         else if (token.equals("*"))
+         else if (myStringTok.equals("*"))
             multiplyHelper();
          else
          {
-            System.out.print(token);
+            System.out.print(myStringTok);
             isValid = false;
          }
-         token = stdin.next();
+         myStringTok = stdin.next();
       }
+   }
+
+   /**
+    This method returns the fraction stack.
+
+    @return The fraction stack.
+    */
+   public Stack getStack()
+   {
+      return fracStack;
    }
 
    /**

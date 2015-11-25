@@ -7,9 +7,6 @@
  */
 public class Stack
 {
-   /*REMOVE ME
-   Removed isFull, 
-    */
 
    private Node linkedListStack;
 
