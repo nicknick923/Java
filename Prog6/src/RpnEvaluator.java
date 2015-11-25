@@ -83,6 +83,16 @@ public class RpnEvaluator
    }
 
    /**
+    This method returns the fraction queue.
+
+    @return The fraction queue.
+    */
+   public Queue getQueue()
+   {
+      return fracQueue;
+   }
+
+   /**
     This method creates a fraction object then pushes it onto the stack.
 
     @param fracString The fraction in the form of a string in parentheses
@@ -92,16 +102,6 @@ public class RpnEvaluator
       Fraction readInFraction = new Fraction(fracString);
       fracStack.push(readInFraction);
       System.out.print(readInFraction.toString());
-   }
-
-   /**
-    This method returns the fraction queue.
-
-    @return The fraction queue.
-    */
-   public Queue getQueue()
-   {
-      return fracQueue;
    }
 
    /**
