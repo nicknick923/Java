@@ -84,6 +84,16 @@ public class RpnEvaluator
    }
 
    /**
+    This method returns the fraction queue.
+
+    @return The fraction queue.
+    */
+   public Queue getQueue()
+   {
+      return fracQueue;
+   }
+
+   /**
     This method prints the results of the expression if valid and if invalid
     notifies the user. It also prepares the program for the next expression.
     */
