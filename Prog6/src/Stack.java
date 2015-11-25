@@ -3,67 +3,62 @@
  This class is a digital stack where elements are added and removed from one
  end only.
 
- @author Nick Sosinski
+ @author Jake Ira
  */
 public class Stack
 {
+   /*REMOVE ME
+   Removed isFull, 
+    */
 
-   private Object[] elements;
-   private int top;
+   private Node linkedListStack;
 
    /**
-    Constructor that takes in the wanted size of the stack.
-
-    @param size The number of spots in the stack
+    Constructor that that creates an empty stack.
     */
-   public Stack(int size)
+   public Stack()
    {
-      elements = new Object[size];
-      top = 0;
+      linkedListStack = null;
    }
 
    /**
     This method returns a boolean value of true if the stack is empty or false
     if it is not empty.
 
-    @return A boolean value where true means empty and false means not empty
+    @return A boolean value where true means empty and false means not empty.
     */
    public boolean isEmpty()
    {
-      return top == 0;
+      return linkedListStack == null;
    }
 
    /**
-    This method returns a boolean value of true if the stack is full or false
-    if it is not full.
+    This method adds an object to the top of the stack.
 
-    @return A boolean value where true means full and false means not full
-    */
-   public boolean isFull()
-   {
-      return top == elements.length;
-   }
-
-   /**
-    This method adds an object to the top of the stack. If the stack is full,
-    the program will crash.
-
-    @param x The object to be added to the top of the stack
+    @param x The object to be added to the linkedListStack of the stack.
     */
    public void push(Object x)
    {
-      elements[top++] = x;
+      linkedListStack = new Node(x, linkedListStack);
    }
 
    /**
-    This method returns the top object in the stack. If the stack is empty,
-    the program will crash.
+    This method returns the top object in the stack or if the stack is empty
+    it returns null.
 
-    @return The object on the top of the stack
+    @return The top object in the stack or null if the stack is empty.
     */
    public Object pop()
    {
-      return elements[--top];
+      if (isEmpty())
+         return null;
+      else
+      {
+         Object x = linkedListStack.info;
+         linkedListStack = linkedListStack.next;
+         return x;
+      }
+
    }
 
    /**
@@ -71,17 +66,17 @@ public class Stack
     */
    public void clear()
    {
-      top = 0;
+      linkedListStack = null;
    }
 
    /**
     This method tests the Stack class.
 
-    @param args command line arguments
+    @param args The command line arguments.
     */
    public static void main(String args[])
    {
-      Stack trialStack = new Stack(5);
+      Stack trialStack = new Stack();
       String testObject1 = "Object 1";
       String testObject2 = "Object 2";
       String testObject3 = "Object 3";
@@ -93,17 +88,7 @@ public class Stack
       else
          System.out.println("isEmpty Method Test---------Fail");
 
-      if (trialStack.isFull())
-         System.out.println("isFull Method Test----------Fail");
-      else
-         System.out.println("isFull Method Test----------Pass");
-
       trialStack.push(testObject1);
-
-      if (trialStack.isEmpty())
-         System.out.println("Push Method Test------------Fail");
-      else
-         System.out.println("Push Method Test------------Pass");
 
       if (trialStack.isEmpty())
          System.out.println("isEmpty Method Test---------Fail");
@@ -125,11 +110,6 @@ public class Stack
          System.out.println("isEmpty Method Test---------Fail");
       else
          System.out.println("isEmpty Method Test---------Pass");
-
-      if (trialStack.isFull())
-         System.out.println("isFull Method Test----------Pass");
-      else
-         System.out.println("isFull Method Test----------Fail");
 
       if (trialStack.pop().toString().equals("Object 5"))
          System.out.println("Pop Method Test-------------Pass");
@@ -161,21 +141,11 @@ public class Stack
       else
          System.out.println("isEmpty Method Test---------Fail");
 
-      if (trialStack.isFull())
-         System.out.println("isFull Method Test----------Fail");
-      else
-         System.out.println("isFull Method Test----------Pass");
-
       trialStack.push(testObject1);
       trialStack.push(testObject2);
       trialStack.push(testObject3);
       trialStack.push(testObject4);
       trialStack.push(testObject5);
-
-      if (trialStack.isFull())
-         System.out.println("isFull Method Test----------Pass");
-      else
-         System.out.println("isFull Method Test----------Fail");
 
       trialStack.clear();
 
