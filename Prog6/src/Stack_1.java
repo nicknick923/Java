@@ -7,25 +7,19 @@
  */
 public class Stack
 {
-      public Object info;
-      public Node next;
-      public Node Node( Object x, Node p ) 
-      { 
-         info = x;  
-         next = p; 
-      }
 
-   private Node top = null, bottom = null;
+   private Object[] elements;
+   private int top;
 
    /**
     Constructor that takes in the wanted size of the stack.
 
-    @param list The number of spots in the stack
+    @param size The number of spots in the stack
     */
-   public Stack(Node list)
+   public Stack(int size)
    {
-      Node elements  = list;
-      top = null;
+      elements = new Object[size];
+      top = 0;
    }
 
    /**
@@ -36,7 +30,7 @@ public class Stack
     */
    public boolean isEmpty()
    {
-      return top == null;
+      return top == 0;
    }
 
    /**
@@ -47,8 +41,7 @@ public class Stack
     */
    public boolean isFull()
    {
-      
-      return list.next == null;
+      return top == elements.length;
    }
 
    /**
