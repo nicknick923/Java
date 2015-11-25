@@ -5,21 +5,20 @@
 
  @author Jake Ira
  */
-public class Stack
+public class Stack2
 {
 
-   private Object[] elements;
-   private int top;
+   private Node top = null, bottom = null;
 
    /**
     Constructor that takes in the wanted size of the stack.
 
-    @param size The number of spots in the stack
+    @param list The number of spots in the stack
     */
-   public Stack(int size)
+   public Stack2(Node list)
    {
-      elements = new Object[size];
-      top = 0;
+      Node elements = list;
+      top = null;
    }
 
    /**
@@ -30,7 +29,7 @@ public class Stack
     */
    public boolean isEmpty()
    {
-      return top == 0;
+      return top == null;
    }
 
    /**
@@ -41,7 +40,8 @@ public class Stack
     */
    public boolean isFull()
    {
-      return top == elements.length;
+
+      return list.next == null;
    }
 
    /**
