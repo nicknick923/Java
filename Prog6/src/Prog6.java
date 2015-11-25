@@ -4,7 +4,7 @@ Runs the main for Program 3
 @author Mr. Scanlan
 */
 
-public class Prog3
+public class Prog6
 {
    /**
    Runs RpnEvaluator.
