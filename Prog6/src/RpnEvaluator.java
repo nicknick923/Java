@@ -48,6 +48,31 @@ public class RpnEvaluator
       System.out.println("Normal Termination of Program 3.");
    }
 
+   public void processToken(String tok)
+   {
+      if (tok.charAt(0) == '(')
+         pushFraction(tok);
+      else if (tok.equals("+"))
+         addHelper();
+      else if (tok.equals("-"))
+         subtractHelper();
+      else if (tok.equals("*"))
+         multiplyHelper();
+      else
+      {
+         System.out.print(tok);
+         isValid = false;
+      }
+   }
+
+   public void processToken()
+   {
+      while (isValid && !myStringTok.equals("#"))
+      {
+         
+      }
+   }
+   
    /**
     This method determines what to do with the current token.
     */
