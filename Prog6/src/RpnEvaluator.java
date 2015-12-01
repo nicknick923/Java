@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class RpnEvaluator
 {
-   
+
    private final Fraction EMPTY_FRACTION_VALUE = null;
    private final Stack fracStack = new Stack();
    private final Queue fracQueue = new Queue();
@@ -100,32 +100,9 @@ public class RpnEvaluator
     */
    public void processToken()
    {
-      if (isValid)
-      {
-         expressionProcessor(myStringTok.substring(0, myStringTok.indexOf(" ")));
-         myStringTok = myStringTok.substring(myStringTok.indexOf(" "));
-      }
-   }
-
-   /**
-    This method determines what to do with the current token.
-    */
-   private void expressionProcessor(String inToken)
-   {
-      while (isValid)
-         if (inToken.charAt(0) == '(')
-            pushFraction(inToken);
-         else if (inToken.equals("+"))
-            addHelper();
-         else if (inToken.equals("-"))
-            subtractHelper();
-         else if (inToken.equals("*"))
-            multiplyHelper();
-         else
-         {
-            System.out.print(inToken);
-            isValid = false;
-         }
+      String nextToken = myStringTok.substring(0, myStringTok.indexOf(" "));
+      processToken(nextToken);
+      myStringTok = myStringTok.substring(myStringTok.indexOf(" "));
    }
 
    /**
@@ -208,7 +185,7 @@ public class RpnEvaluator
       else
          System.out.println("Invalid Expression");
       System.out.println("Intermediate results: " + intermediateValue());
-      
+
       fracQueue.clear();
       fracStack.clear();
       isValid = true;
@@ -261,7 +238,7 @@ public class RpnEvaluator
       }
       System.out.print("*");
    }
-   
+
    private boolean fractionPopper()
    {
       mathFrac1 = EMPTY_FRACTION_VALUE;
@@ -272,7 +249,7 @@ public class RpnEvaluator
          mathFrac2 = (Fraction) fracStack.pop();
       isValid = mathFrac1 != EMPTY_FRACTION_VALUE && mathFrac2 != EMPTY_FRACTION_VALUE;
       return isValid;
-      
+
    }
 
    /**
