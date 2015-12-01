@@ -6,7 +6,6 @@
  @author Jake Ira
  @author Nick Sosinski
  */
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMsg;
 import java.util.Scanner;
 
 public class RpnEvaluator
@@ -21,40 +20,51 @@ public class RpnEvaluator
    private Fraction answer;
    private Fraction mathFrac1;
    private Fraction mathFrac2;
-   
-   public RpnEvaluator() throws Exception
+
+   /**
+    This constructor runs the method for command line input.
+
+    @throws java.io.IOException Thrown when the input has failed in some way.
+    */
+   public RpnEvaluator() throws java.io.IOException
    {
       commandRun();
    }
-   
+
+   /**
+    This constructor sets myStringTok to the passed string and thats all.
+
+    @param initStr The full expression string to be processed.
+    */
    public RpnEvaluator(String initStr)
    {
       myStringTok = initStr;
    }
 
    /**
-    This class is the one that is called by Prog6 and is run until end of file
-    evaluating RPN expressions.
+    This class is the one that is called by the parameterless constructor and
+    is run until end of file evaluating RPN expressions.
 
     @throws java.io.IOException Thrown when the input has failed in some way.
     */
    private void commandRun() throws java.io.IOException
    {
+      String expressionString;
       int numCompleated = 0;
       while (stdin.hasNext())
       {
          isValid = true;
          while (stdin.hasNext() && isValid)
          {
-            myStringTok = stdin.next();
+            expressionString = stdin.next();
             numCompleated++;
             System.out.print("Expression " + numCompleated + " is: ");
-            while (isValid && !myStringTok.equals("#"))
+            while (isValid && !expressionString.equals("#"))
             {
-               expressionProcessor();
-               myStringTok = stdin.next();
+               processToken(expressionString);
+               expressionString = stdin.next();
             }
-            if (!myStringTok.equals("#"))
+            if (!expressionString.equals("#"))
                stdin.findInLine("#");
             System.out.println();
             printFinalResult();
@@ -62,7 +72,12 @@ public class RpnEvaluator
       }
       System.out.println("Normal Termination of Program 3.");
    }
-   
+
+   /**
+    This method processes the token passed in.
+
+    @param tok The token that is to be processed.
+    */
    public void processToken(String tok)
    {
       if (tok.charAt(0) == '(')
@@ -79,12 +94,15 @@ public class RpnEvaluator
          isValid = false;
       }
    }
-   
+
+   /**
+    This method is called from the GUI to process to compleat the next step.
+    */
    public void processToken()
    {
       if (isValid)
       {
-         expressionProcessor();
+         expressionProcessor(myStringTok.substring(0, myStringTok.indexOf(" ")));
          myStringTok = myStringTok.substring(myStringTok.indexOf(" "));
       }
    }
@@ -92,20 +110,20 @@ public class RpnEvaluator
    /**
     This method determines what to do with the current token.
     */
-   private void expressionProcessor()
+   private void expressionProcessor(String inToken)
    {
       while (isValid)
-         if (myStringTok.charAt(0) == '(')
-            pushFraction(myStringTok);
-         else if (myStringTok.equals("+"))
+         if (inToken.charAt(0) == '(')
+            pushFraction(inToken);
+         else if (inToken.equals("+"))
             addHelper();
-         else if (myStringTok.equals("-"))
+         else if (inToken.equals("-"))
             subtractHelper();
-         else if (myStringTok.equals("*"))
+         else if (inToken.equals("*"))
             multiplyHelper();
          else
          {
-            System.out.print(myStringTok);
+            System.out.print(inToken);
             isValid = false;
          }
    }
@@ -129,17 +147,32 @@ public class RpnEvaluator
    {
       return fracQueue;
    }
-   
+
+   /**
+    This method returns true if the rpnExpression is valid up to this point.
+
+    @return True if it is valid, false if it is invalid.
+    */
    public boolean getValid()
    {
       return isValid;
    }
-   
+
+   /**
+    This method returns true if the processing is complete.
+
+    @return True if it is dine, false if not.
+    */
    public boolean getDone()
    {
       return fracQueue.isEmpty();
    }
-   
+
+   /**
+    This method returns the answer.
+
+    @return The answer.
+    */
    public Fraction getAnswer()
    {
       return answer;
