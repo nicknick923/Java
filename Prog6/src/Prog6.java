@@ -17,7 +17,7 @@ public class Prog6
       try
       {
          if (args.length == 0)
-            new RpnEvaluator().run();
+            new RpnEvaluator();
          else if (args.length == 1)
             new Prog6Frame().setVisible(true);
       }
