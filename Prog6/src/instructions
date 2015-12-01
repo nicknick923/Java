@@ -1,0 +1,174 @@
+CS 2430 - Object-Oriented Programming & Data Structures I  F15 Scanlan
+
+Program:                       6 - Maintenance/Using Linked Lists/Frames
+Plan Due Date:                 November 23
+Plan Grace Date:               November 25  (no later than noon)
+
+Program Submittal Due Date:    December 8
+Program Demo Due Date:         December 8 (demonstrated no later than noon)
+                                           
+Program Submittal Grace Date:  December 10 (11 am)
+Program Demo Grace Date:       December 10 (demonstrated no later than 2 pm)
+Points:                        20
+
+----------------------------------------------------------------------------
+You will be working in your groups. If you need to change groups for some
+reason, see you instructor as soon as possible.
+
+Note the early due date for the plan!
+
+You will be demonstrating this program in my office.
+When you come to demo, each of you must have all java and html files in
+your team folder under a folder called Prog6.  In addition to the
+project files, you must have the generated HTML java documentation (
+generated via javadoc) in the Prog6 folder.
+
+Your grade will be determined by a combination of factors:
+
+   demonstration, style, documentation, test bed mains, design of
+   program (Part III),  plan, generated javadoc
+   documentation, submission of program, and answers to questions
+   I ask during the demonstration to determine your understanding
+   of the program
+
+If it is clear that one person has a significantly lower level
+of understanding than the others, that person can expect to
+receive a lower grade.
+----------------------------------------------------------------------------
+
+You will be doing this program in two parts.
+
+Part I  -- Prog6.java -- run with no arguments
+
+   You will be redoing program 3 partially over again as a team.  Decide
+   between the two (or three) of you which program 3 was the better program 3
+   and start with that for your start for program 6.  Make sure to add the
+   other person's  name to each file.
+   Requirements:
+   1.  Change Prog3.java to Prog6.java and rename the class from Prog3 to
+       Prog6.  In the try-block, you will need to modify main to test for the number of
+       arguments (args.length). If number of arguments is 0, call the
+       run method of RpnEvaluator; if it is 1, call the setVisible method
+       of Prog6Frame (see part III).
+   2.  Add new @author for each new author.
+   3.  Create a public Node class (as seen in Week 12 notes)
+       and add it to the project.  Document it.
+   4.  Your Stack.java must use the Node class and linked list (again, see
+       week 12 notes).  Assign this to one team member and include that person's
+       name only as the author. It must only have methods: isEmpty, clear,
+       pop, push and a test bed main.
+   5.  Your Queue.java must use the Node class and linked list (see
+       week 13 notes, but take inner class of Node out of Queue class).  
+       Assign this to one team member and include that person's
+       name only as the author. It must only have methods: isEmpty, clear,
+       remove, add and a test bed main.
+       You will need this class to store intermediate results of your RPN 
+       expression.  
+   6.  Note that the grader output will still say:
+       "Normal Termination of Program 3."     
+ 
+   7.  You will have to revise RpnEvaluator.java to be as modular as possible.
+
+       A.  Add the following private data:  -- you should already have a
+                                            --   stack and queue, keep them
+
+              private String myStringTok;
+              private Fraction answer;
+              private boolean valid;        --- you may have this already.
+
+       B.  Add the following public methods: 
+             - Queue getQueue()       
+             - Stack getStack()
+             - void ProcessToken( String tok)
+             - void ProcessToken()   -- this method will 
+                                        1.  Get the next token from myStringTok
+                                        2.  Call other ProcessToken, sending it
+                                            this token that it just got.
+             - boolean getValid()
+             - boolean getDone()
+             - Fraction getAnswer()
+       C.  Add 2 constructors 
+               public RpnEvaluator()  // does nothing
+               public RpnEvaluator(String initStr)
+	       Note the 2nd constructor is passed a string parameter,
+	       to initialize the tokenizer, myStringTok.
+
+       This modularity redesign will be necessary for part III to work
+       correctly and provide a smooth interface with Prog6Frame.
+   8.  Create a Prog6Frame.java file (see part III below for a description.)
+   9.  ONCE PART III IS DONE YOU CAN SUBMIT.
+       Submit to the grader program as program 6; you need only submit
+       under one person's name and I will count it for the team.  Do this by
+       the Program Submittal Grace Date.
+       Remember that there are seven files to send:
+          Prog6.java, RpnEvaluator.java, Fraction.java, Node.java, Stack.java,
+          Prog6Frame.java, and Queue.java
+       Make sure that the stack and queue classes use Node and linked lists.
+            [-12.5 points if linked lists is not used!]
+       Make sure that ALL seven files are commented.
+
+Part II  -- Prog6.java run with  one argument (any argument)
+
+   If you provide an argument (any argument) to Prog6, then it should
+   create a Prog6Frame object and call it's setVisible method with a true
+   argument.  Remember that if there are no parameters
+   it should create a RpnEvaluator object and execute it's run method.
+   Note to test the frame in Netbeans, you can right click on the solution
+   and choose properties, and then select "Run" and supply an argument, 
+   any argument to run the frame.
+
+Part III   --Prog6Frame.java
+
+   You will be providing a GUI approach to solve this same problem. Prog6Frame
+   will use either a java Frame or a java JFrame.  Decide which of these
+   early on.
+
+   The Frame (JFrame) at a minimum must have the following components (or the
+   corresponding J-components):
+       a.  Label and textbox:  Label should say, initially
+           "Raw RPN expression".
+           The textbox is for the user to enter an RPN fraction expression.
+       b.  Another label and textbox for answer and/or error messages.
+       c.  A step button that steps one iteration of the loop that evaluates
+           the expression.  As one clicks the step button the queue and stack
+           are changing and are illustrated in the lists, mentioned below.
+       d.  Two lists: one showing the present contents of the stack and
+           one showing the contents of the queue.  These lists change as
+           the user presses the  "Step" button.
+       e.  A clear button to clear all lists and reset all fields.
+
+   Sample bitmap files with sample "demo" GUIs are on
+   under the names p6init1.bmp, p6step1.bmp,
+   p6step3.bmp, p6step4.bmp, p6step5.bmp, and p6Answer.bmp.
+
+----------------------------------------------------------------------------
+Additional requirements/notes:
+
+
+1.  Enter a time plan (similar to what
+    you did for last program) in CSSE_Hub. 
+    It must specify what you plan to work on during each period.
+    Each person enters their own; however, you work together to agree on 
+    this.  You must indicate the periods you plan to work together
+    and the periods you plan to work separately.  
+    Enter this by the plan grace date.
+
+    Failure to do so will result in up to a 5 point deduction.
+
+3.  CSSE HUB Time Log: This must indicate both separate and group 
+    work, clearly indicating which is which. 
+    Failure to do so will result in up to a 5 point deduction.
+
+4.  You must run javadoc and have the resulting documentation
+    files in the folder when you come to demonstrate.  Make sure the java documentation
+    for Queue and Stack do NOT mention linked list.  The user of your class
+    does NOT need to know YOUR implementation. 
+    [-2 if your java doc mentions linked lists]
+
+5.  No bonus points this time.
+
+6.  As always, I expect good OO and follow the programming ground rules.
+
+7.  Reminder: have test bed mains for both Stack and Queue classes.
+----------------------------------------------------------------------------
+
