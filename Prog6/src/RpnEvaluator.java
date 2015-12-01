@@ -94,7 +94,7 @@ public class RpnEvaluator
     */
    private void expressionProcessor()
    {
-      while (isValid && !myStringTok.equals("#"))
+      while (isValid)
          if (myStringTok.charAt(0) == '(')
             pushFraction(myStringTok);
          else if (myStringTok.equals("+"))
@@ -137,7 +137,7 @@ public class RpnEvaluator
    
    public boolean getDone()
    {
-      
+      return fracQueue.isEmpty();
    }
    
    public Fraction getAnswer()
