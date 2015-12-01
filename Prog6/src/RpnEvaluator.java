@@ -38,7 +38,7 @@ public class RpnEvaluator
     */
    public RpnEvaluator(String initStr)
    {
-      myStringTok = initStr;
+      myStringTok = initStr + " ";
    }
 
    /**
@@ -102,7 +102,16 @@ public class RpnEvaluator
    {
       String nextToken = myStringTok.substring(0, myStringTok.indexOf(" "));
       processToken(nextToken);
-      myStringTok = myStringTok.substring(myStringTok.indexOf(" "));
+      if (!myStringTok.replace(" ", "").equals(""))
+         myStringTok = myStringTok.substring(myStringTok.indexOf(" ")+1);
+      if (!fracStack.isEmpty() && myStringTok.replace(" ", "").equals(""))
+      {
+         answer = (Fraction) fracStack.pop();
+         if (!fracStack.isEmpty())
+            isValid = false;
+      }
+      else
+         isValid = false;
    }
 
    /**
@@ -142,7 +151,7 @@ public class RpnEvaluator
     */
    public boolean getDone()
    {
-      return fracQueue.isEmpty();
+      return myStringTok.trim().equals("");
    }
 
    /**

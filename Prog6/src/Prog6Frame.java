@@ -6,6 +6,8 @@
  */
 public class Prog6Frame extends java.awt.Frame
 {
+   
+   RpnEvaluator rpnEval;
 
    /**
     Creates new form Prog6Frame
@@ -35,7 +37,7 @@ public class Prog6Frame extends java.awt.Frame
       queueList = new java.awt.List();
       stackList = new java.awt.List();
 
-      setMinimumSize(new java.awt.Dimension(250, 250));
+      setMinimumSize(new java.awt.Dimension(500, 500));
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -91,6 +93,13 @@ public class Prog6Frame extends java.awt.Frame
             RPNTextFieldActionPerformed(evt);
          }
       });
+      RPNTextField.addTextListener(new java.awt.event.TextListener()
+      {
+         public void textValueChanged(java.awt.event.TextEvent evt)
+         {
+            RPNTextFieldTextValueChanged(evt);
+         }
+      });
       add(RPNTextField);
       RPNTextField.setBounds(150, 210, 180, 20);
 
@@ -124,7 +133,11 @@ public class Prog6Frame extends java.awt.Frame
 
    private void stepButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stepButtonActionPerformed
    {//GEN-HEADEREND:event_stepButtonActionPerformed
-      //stackList;
+      if (rpnEval != null)
+         rpnEval.processToken();
+      updateStackAndQueue();
+      if (rpnEval.getDone())
+         answerTextField.setText(rpnEval.getAnswer().toString());
    }//GEN-LAST:event_stepButtonActionPerformed
 
    private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllButtonActionPerformed
@@ -135,13 +148,28 @@ public class Prog6Frame extends java.awt.Frame
 
    private void RPNTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_RPNTextFieldActionPerformed
    {//GEN-HEADEREND:event_RPNTextFieldActionPerformed
-      
+
    }//GEN-LAST:event_RPNTextFieldActionPerformed
 
    private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextFieldActionPerformed
    {//GEN-HEADEREND:event_answerTextFieldActionPerformed
-      
+
    }//GEN-LAST:event_answerTextFieldActionPerformed
+
+   private void RPNTextFieldTextValueChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_RPNTextFieldTextValueChanged
+   {//GEN-HEADEREND:event_RPNTextFieldTextValueChanged
+      rpnEval = new RpnEvaluator(RPNTextField.getText());
+   }//GEN-LAST:event_RPNTextFieldTextValueChanged
+   
+   private void updateStackAndQueue()
+   {
+      Stack tempStack = rpnEval.getStack();
+      Queue tempQueue = rpnEval.getQueue();
+      while (!tempStack.isEmpty())
+         stackList.add(tempStack.pop().toString());
+      while (!tempQueue.isEmpty())
+         queueList.add(tempQueue.remove().toString());
+   }
 
    /**
     @param args the command line arguments
