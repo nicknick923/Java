@@ -26,14 +26,14 @@ public class Prog6Frame extends java.awt.Frame
 
       queueLabel = new java.awt.Label();
       stackLa = new java.awt.Label();
-      queueTextField = new java.awt.TextField();
-      stackTextField = new java.awt.TextField();
       stepButton = new java.awt.Button();
       clearAllButton = new java.awt.Button();
       expressionLabel = new java.awt.Label();
       answerLabel = new java.awt.Label();
       RPNTextField = new java.awt.TextField();
       answerTextField = new java.awt.TextField();
+      queueList = new java.awt.List();
+      stackList = new java.awt.List();
 
       setMinimumSize(new java.awt.Dimension(250, 250));
       addWindowListener(new java.awt.event.WindowAdapter()
@@ -49,33 +49,10 @@ public class Prog6Frame extends java.awt.Frame
       queueLabel.setText("Queue");
       add(queueLabel);
       queueLabel.setBounds(20, 20, 41, 20);
-      queueLabel.getAccessibleContext().setAccessibleName("Queue");
 
       stackLa.setText("Stack");
       add(stackLa);
       stackLa.setBounds(140, 20, 34, 20);
-
-      queueTextField.setEditable(false);
-      queueTextField.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            queueTextFieldActionPerformed(evt);
-         }
-      });
-      add(queueTextField);
-      queueTextField.setBounds(20, 50, 110, 140);
-
-      stackTextField.setEditable(false);
-      stackTextField.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            stackTextFieldActionPerformed(evt);
-         }
-      });
-      add(stackTextField);
-      stackTextField.setBounds(140, 50, 100, 140);
 
       stepButton.setLabel("Step");
       stepButton.addActionListener(new java.awt.event.ActionListener()
@@ -127,6 +104,14 @@ public class Prog6Frame extends java.awt.Frame
       add(answerTextField);
       answerTextField.setBounds(80, 240, 190, 20);
 
+      queueList.setName("queueList"); // NOI18N
+      add(queueList);
+      queueList.setBounds(20, 40, 100, 160);
+
+      stackList.setName("stackList"); // NOI18N
+      add(stackList);
+      stackList.setBounds(140, 40, 100, 160);
+
       pack();
    }// </editor-fold>//GEN-END:initComponents
 
@@ -139,13 +124,13 @@ public class Prog6Frame extends java.awt.Frame
 
    private void stepButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stepButtonActionPerformed
    {//GEN-HEADEREND:event_stepButtonActionPerformed
-      stackTextField.addActionListener(RPNTextField);
+      //stackList;
    }//GEN-LAST:event_stepButtonActionPerformed
 
    private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllButtonActionPerformed
    {//GEN-HEADEREND:event_clearAllButtonActionPerformed
-      stackTextField.setText(null);
-      queueTextField.setText(null);
+      queueList.removeAll();
+      stackList.removeAll();
    }//GEN-LAST:event_clearAllButtonActionPerformed
 
    private void RPNTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_RPNTextFieldActionPerformed
@@ -155,18 +140,8 @@ public class Prog6Frame extends java.awt.Frame
 
    private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextFieldActionPerformed
    {//GEN-HEADEREND:event_answerTextFieldActionPerformed
-      System.out.print(queueTextField);
+      
    }//GEN-LAST:event_answerTextFieldActionPerformed
-
-   private void queueTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_queueTextFieldActionPerformed
-   {//GEN-HEADEREND:event_queueTextFieldActionPerformed
-      // TODO add your handling code here:
-   }//GEN-LAST:event_queueTextFieldActionPerformed
-
-   private void stackTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stackTextFieldActionPerformed
-   {//GEN-HEADEREND:event_stackTextFieldActionPerformed
-      // TODO add your handling code here:
-   }//GEN-LAST:event_stackTextFieldActionPerformed
 
    /**
     @param args the command line arguments
@@ -190,9 +165,9 @@ public class Prog6Frame extends java.awt.Frame
    private java.awt.Button clearAllButton;
    private java.awt.Label expressionLabel;
    private java.awt.Label queueLabel;
-   private java.awt.TextField queueTextField;
+   private java.awt.List queueList;
    private java.awt.Label stackLa;
-   private java.awt.TextField stackTextField;
+   private java.awt.List stackList;
    private java.awt.Button stepButton;
    // End of variables declaration//GEN-END:variables
 }
