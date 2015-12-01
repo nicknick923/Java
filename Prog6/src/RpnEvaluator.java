@@ -6,6 +6,7 @@
  @author Jake Ira
  @author Nick Sosinski
  */
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ErrorMsg;
 import java.util.Scanner;
 
 public class RpnEvaluator
@@ -126,6 +127,21 @@ public class RpnEvaluator
    public Queue getQueue()
    {
       return fracQueue;
+   }
+   
+   public boolean getValid()
+   {
+      return isValid;
+   }
+   
+   public boolean getDone()
+   {
+      
+   }
+   
+   public Fraction getAnswer()
+   {
+      return answer;
    }
 
    /**
