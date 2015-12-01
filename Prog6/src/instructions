@@ -45,26 +45,26 @@ Part I  -- Prog6.java -- run with no arguments
    and start with that for your start for program 6.  Make sure to add the
    other person's  name to each file.
    Requirements:
-   1.  Change Prog3.java to Prog6.java and rename the class from Prog3 to
+~   1.  Change Prog3.java to Prog6.java and rename the class from Prog3 to
        Prog6.  In the try-block, you will need to modify main to test for the number of
        arguments (args.length). If number of arguments is 0, call the
        run method of RpnEvaluator; if it is 1, call the setVisible method
        of Prog6Frame (see part III).
-   2.  Add new @author for each new author.
-   3.  Create a public Node class (as seen in Week 12 notes)
+~   2.  Add new @author for each new author.
+~   3.  Create a public Node class (as seen in Week 12 notes)
        and add it to the project.  Document it.
-   4.  Your Stack.java must use the Node class and linked list (again, see
+~   4.  Your Stack.java must use the Node class and linked list (again, see
        week 12 notes).  Assign this to one team member and include that person's
        name only as the author. It must only have methods: isEmpty, clear,
        pop, push and a test bed main.
-   5.  Your Queue.java must use the Node class and linked list (see
+~   5.  Your Queue.java must use the Node class and linked list (see
        week 13 notes, but take inner class of Node out of Queue class).  
        Assign this to one team member and include that person's
        name only as the author. It must only have methods: isEmpty, clear,
        remove, add and a test bed main.
        You will need this class to store intermediate results of your RPN 
        expression.  
-   6.  Note that the grader output will still say:
+~   6.  Note that the grader output will still say:
        "Normal Termination of Program 3."     
  
    7.  You will have to revise RpnEvaluator.java to be as modular as possible.
@@ -79,14 +79,14 @@ Part I  -- Prog6.java -- run with no arguments
        B.  Add the following public methods: 
              - Queue getQueue()       
              - Stack getStack()
-             - void ProcessToken( String tok)
+             - void ProcessToken(String tok)
              - void ProcessToken()   -- this method will 
-                                        1.  Get the next token from myStringTok
-                                        2.  Call other ProcessToken, sending it
-                                            this token that it just got.
-             - boolean getValid()
-             - boolean getDone()
-             - Fraction getAnswer()
+                    1.  Get the next token from myStringTok
+                    2.  Call other ProcessToken, sending it
+                        this token that it just got.
+--JAKE      - boolean getValid()
+--JAKE      - boolean getDone()
+--JAKE      - Fraction getAnswer()
        C.  Add 2 constructors 
                public RpnEvaluator()  // does nothing
                public RpnEvaluator(String initStr)
@@ -95,7 +95,7 @@ Part I  -- Prog6.java -- run with no arguments
 
        This modularity redesign will be necessary for part III to work
        correctly and provide a smooth interface with Prog6Frame.
-   8.  Create a Prog6Frame.java file (see part III below for a description.)
+--JAKE   8.  Create a Prog6Frame.java file (see part III below for a description.)
    9.  ONCE PART III IS DONE YOU CAN SUBMIT.
        Submit to the grader program as program 6; you need only submit
        under one person's name and I will count it for the team.  Do this by

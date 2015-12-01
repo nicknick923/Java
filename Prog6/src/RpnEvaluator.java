@@ -21,12 +21,23 @@ public class RpnEvaluator
    private Fraction mathFrac1;
    private Fraction mathFrac2;
 
+   public RpnEvaluator()
+   {
+
+   }
+
+   public RpnEvaluator(String initStr)
+   {
+
+   }
+
    /**
-    This class is the one that is called by Prog3 and is run until end of file
+    This class is the one that is called by Prog6 and is run until end of file
     evaluating RPN expressions.
 
     @throws java.io.IOException Thrown when the input has failed in some way.
     */
+
    public void run() throws java.io.IOException
    {
       int numCompleated = 0;
@@ -69,10 +80,10 @@ public class RpnEvaluator
    {
       while (isValid && !myStringTok.equals("#"))
       {
-         
+
       }
    }
-   
+
    /**
     This method determines what to do with the current token.
     */
