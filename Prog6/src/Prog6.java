@@ -1,6 +1,6 @@
 
 /**
- Runs the main for Program 3
+ Runs the main for Program 6
 
  @author Mr. Scanlan
  */
@@ -17,12 +17,9 @@ public class Prog6
       try
       {
          if (args.length == 0)
-         {
-            RpnEvaluator rpne = new RpnEvaluator();
-            rpne.run();
-         }
+            new RpnEvaluator().run();
          else if (args.length == 1)
-            ;//Prog6Frame.setVisible(true);
+            new Prog6Frame().setVisible(true);
       }
       catch (Exception e)
       {
