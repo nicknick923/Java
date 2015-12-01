@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class RpnEvaluator
 {
-
+   
    private final Fraction EMPTY_FRACTION_VALUE = null;
    private final Stack fracStack = new Stack();
    private final Queue fracQueue = new Queue();
@@ -21,15 +21,15 @@ public class RpnEvaluator
    private Fraction answer;
    private Fraction mathFrac1;
    private Fraction mathFrac2;
-
-   public RpnEvaluator()
+   
+   public RpnEvaluator() throws Exception
    {
-
+      commandRun();
    }
-
+   
    public RpnEvaluator(String initStr)
    {
-
+      myStringTok = initStr;
    }
 
    /**
@@ -38,8 +38,7 @@ public class RpnEvaluator
 
     @throws java.io.IOException Thrown when the input has failed in some way.
     */
-
-   public void run() throws java.io.IOException
+   private void commandRun() throws java.io.IOException
    {
       int numCompleated = 0;
       while (stdin.hasNext())
@@ -50,7 +49,11 @@ public class RpnEvaluator
             myStringTok = stdin.next();
             numCompleated++;
             System.out.print("Expression " + numCompleated + " is: ");
-            expressionProcessor();
+            while (isValid && !myStringTok.equals("#"))
+            {
+               expressionProcessor();
+               myStringTok = stdin.next();
+            }
             if (!myStringTok.equals("#"))
                stdin.findInLine("#");
             System.out.println();
@@ -59,7 +62,7 @@ public class RpnEvaluator
       }
       System.out.println("Normal Termination of Program 3.");
    }
-
+   
    public void processToken(String tok)
    {
       if (tok.charAt(0) == '(')
@@ -76,12 +79,13 @@ public class RpnEvaluator
          isValid = false;
       }
    }
-
+   
    public void processToken()
    {
-      while (isValid && !myStringTok.equals("#"))
+      if (isValid)
       {
-
+         expressionProcessor();
+         myStringTok = myStringTok.substring(myStringTok.indexOf(" "));
       }
    }
 
@@ -91,7 +95,6 @@ public class RpnEvaluator
    private void expressionProcessor()
    {
       while (isValid && !myStringTok.equals("#"))
-      {
          if (myStringTok.charAt(0) == '(')
             pushFraction(myStringTok);
          else if (myStringTok.equals("+"))
@@ -105,8 +108,6 @@ public class RpnEvaluator
             System.out.print(myStringTok);
             isValid = false;
          }
-         myStringTok = stdin.next();
-      }
    }
 
    /**
@@ -174,7 +175,7 @@ public class RpnEvaluator
       else
          System.out.println("Invalid Expression");
       System.out.println("Intermediate results: " + intermediateValue());
-
+      
       fracQueue.clear();
       fracStack.clear();
       isValid = true;
@@ -227,7 +228,7 @@ public class RpnEvaluator
       }
       System.out.print("*");
    }
-
+   
    private boolean fractionPopper()
    {
       mathFrac1 = EMPTY_FRACTION_VALUE;
@@ -238,7 +239,7 @@ public class RpnEvaluator
          mathFrac2 = (Fraction) fracStack.pop();
       isValid = mathFrac1 != EMPTY_FRACTION_VALUE && mathFrac2 != EMPTY_FRACTION_VALUE;
       return isValid;
-
+      
    }
 
    /**
