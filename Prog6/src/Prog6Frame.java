@@ -1,6 +1,6 @@
 
 /**
- ~Jake
+ This class controls the GUI by doing 
 
  @author Nick Sosinski
  @author Jake Ira
