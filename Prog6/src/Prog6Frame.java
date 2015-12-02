@@ -87,13 +87,6 @@ public class Prog6Frame extends java.awt.Frame
       add(answerLabel);
       answerLabel.setBounds(20, 240, 50, 20);
 
-      RPNTextField.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            RPNTextFieldActionPerformed(evt);
-         }
-      });
       RPNTextField.addTextListener(new java.awt.event.TextListener()
       {
          public void textValueChanged(java.awt.event.TextEvent evt)
@@ -103,14 +96,6 @@ public class Prog6Frame extends java.awt.Frame
       });
       add(RPNTextField);
       RPNTextField.setBounds(150, 210, 180, 20);
-
-      answerTextField.addActionListener(new java.awt.event.ActionListener()
-      {
-         public void actionPerformed(java.awt.event.ActionEvent evt)
-         {
-            answerTextFieldActionPerformed(evt);
-         }
-      });
       add(answerTextField);
       answerTextField.setBounds(80, 240, 190, 20);
 
@@ -155,16 +140,6 @@ public class Prog6Frame extends java.awt.Frame
       queueList.removeAll();
       stackList.removeAll();
    }//GEN-LAST:event_clearAllButtonActionPerformed
-
-   private void RPNTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_RPNTextFieldActionPerformed
-   {//GEN-HEADEREND:event_RPNTextFieldActionPerformed
-
-   }//GEN-LAST:event_RPNTextFieldActionPerformed
-
-   private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_answerTextFieldActionPerformed
-   {//GEN-HEADEREND:event_answerTextFieldActionPerformed
-
-   }//GEN-LAST:event_answerTextFieldActionPerformed
    /**
     This method updates the RPNEvaluator with the current string in the Raw
     RPN Expression text field.
