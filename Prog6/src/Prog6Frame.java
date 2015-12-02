@@ -132,20 +132,14 @@ public class Prog6Frame extends java.awt.Frame
        System.exit(0);
     }//GEN-LAST:event_exitForm
    /**
-    ~Nick
+    This method will process the RPN String token by token.
 
-    @param evt
+    @param evt A Java action event that we don't use.
     */
    private void stepButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stepButtonActionPerformed
    {//GEN-HEADEREND:event_stepButtonActionPerformed
       if (rpnEval.getDone())
-         try
-         {
-            answerTextField.setText(rpnEval.getAnswer().toString());
-         }
-         catch (Exception e)
-         {
-         }
+         answerTextField.setText(rpnEval.getAnswer().toString());
       if (rpnEval != null)
          rpnEval.processToken();
       updateStackAndQueue();
@@ -172,9 +166,10 @@ public class Prog6Frame extends java.awt.Frame
 
    }//GEN-LAST:event_answerTextFieldActionPerformed
    /**
-    ~Nick
+    This method updates the RPNEvaluator with the current string in the Raw
+    RPN Expression text field.
 
-    @param evt
+    @param evt A Java text event that we don't use.
     */
    private void RPNTextFieldTextValueChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_RPNTextFieldTextValueChanged
    {//GEN-HEADEREND:event_RPNTextFieldTextValueChanged
@@ -194,9 +189,9 @@ public class Prog6Frame extends java.awt.Frame
    }
 
    /**
-    ~Nick
+    This method creates an instance of Prog6Frame and runs it.
 
-    @param args the command line arguments
+    @param args the command line arguments (Not used).
     */
    public static void main(String args[])
    {
