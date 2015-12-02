@@ -139,6 +139,9 @@ public class Prog6Frame extends java.awt.Frame
     */
    private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllButtonActionPerformed
    {//GEN-HEADEREND:event_clearAllButtonActionPerformed
+      rpnEval = null;
+      RPNTextField.setText("");
+      answerTextField.setText("");
       queueList.removeAll();
       stackList.removeAll();
    }//GEN-LAST:event_clearAllButtonActionPerformed
@@ -157,12 +160,18 @@ public class Prog6Frame extends java.awt.Frame
     */
    private void updateStackAndQueue()
    {
+      stackList.removeAll();
+      queueList.removeAll();
       Stack tempStack = rpnEval.getStack();
       Queue tempQueue = rpnEval.getQueue();
       while (!tempStack.isEmpty())
          stackList.add(tempStack.pop().toString());
+      for (int i = 0; i < stackList.getItemCount(); i++)
+         tempStack.push(new Fraction(stackList.getItem(i)));
       while (!tempQueue.isEmpty())
          queueList.add(tempQueue.remove().toString());
+      for (int i = 0; i < queueList.getItemCount(); i++)
+         tempQueue.add(new Fraction(queueList.getItem(i)));
    }
 
    /**
