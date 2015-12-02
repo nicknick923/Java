@@ -1,6 +1,7 @@
 
 /**
-~Jake
+ ~Jake
+
  @author Nick Sosinski
  @author Jake Ira
  */
@@ -130,9 +131,10 @@ public class Prog6Frame extends java.awt.Frame
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
        System.exit(0);
     }//GEN-LAST:event_exitForm
-/**
+   /**
     ~Nick
-    @param evt 
+
+    @param evt
     */
    private void stepButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stepButtonActionPerformed
    {//GEN-HEADEREND:event_stepButtonActionPerformed
@@ -149,10 +151,11 @@ public class Prog6Frame extends java.awt.Frame
       updateStackAndQueue();
 
    }//GEN-LAST:event_stepButtonActionPerformed
-/**
-   ~Jake
-   @param evt 
-   */
+   /**
+    ~Jake
+
+    @param evt
+    */
    private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllButtonActionPerformed
    {//GEN-HEADEREND:event_clearAllButtonActionPerformed
       queueList.removeAll();
@@ -168,17 +171,18 @@ public class Prog6Frame extends java.awt.Frame
    {//GEN-HEADEREND:event_answerTextFieldActionPerformed
 
    }//GEN-LAST:event_answerTextFieldActionPerformed
-/**
-   ~Nick
-   @param evt 
-   */
+   /**
+    ~Nick
+
+    @param evt
+    */
    private void RPNTextFieldTextValueChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_RPNTextFieldTextValueChanged
    {//GEN-HEADEREND:event_RPNTextFieldTextValueChanged
       rpnEval = new RpnEvaluator(RPNTextField.getText());
    }//GEN-LAST:event_RPNTextFieldTextValueChanged
-/**
-   ~Jake
-   */
+   /**
+    ~Jake
+    */
    private void updateStackAndQueue()
    {
       Stack tempStack = rpnEval.getStack();
@@ -190,7 +194,8 @@ public class Prog6Frame extends java.awt.Frame
    }
 
    /**
-   ~Nick
+    ~Nick
+
     @param args the command line arguments
     */
    public static void main(String args[])
