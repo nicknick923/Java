@@ -1,6 +1,8 @@
 
 /**
- This class controls the GUI by doing 
+ This class controls the GUI by adding and removing fractions from the stack
+ and queue one at a time with a push button, it also has a method to clear
+ everything in the stack and queue.
 
  @author Nick Sosinski
  @author Jake Ira
@@ -146,9 +148,9 @@ public class Prog6Frame extends java.awt.Frame
 
    }//GEN-LAST:event_stepButtonActionPerformed
    /**
-    ~Jake
+    This method clears all the fractions in the stack and queue.
 
-    @param evt
+    @param evt A Java action event that we don't use.
     */
    private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllButtonActionPerformed
    {//GEN-HEADEREND:event_clearAllButtonActionPerformed
@@ -176,7 +178,7 @@ public class Prog6Frame extends java.awt.Frame
       rpnEval = new RpnEvaluator(RPNTextField.getText());
    }//GEN-LAST:event_RPNTextFieldTextValueChanged
    /**
-    ~Jake
+    This method updates and removes the fractions in the stack.
     */
    private void updateStackAndQueue()
    {
