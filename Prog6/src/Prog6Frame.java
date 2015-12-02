@@ -6,7 +6,7 @@
  */
 public class Prog6Frame extends java.awt.Frame
 {
-   
+
    RpnEvaluator rpnEval;
 
    /**
@@ -133,11 +133,18 @@ public class Prog6Frame extends java.awt.Frame
 
    private void stepButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stepButtonActionPerformed
    {//GEN-HEADEREND:event_stepButtonActionPerformed
+      if (rpnEval.getDone())
+         try
+         {
+            answerTextField.setText(rpnEval.getAnswer().toString());
+         }
+         catch (Exception e)
+         {
+         }
       if (rpnEval != null)
          rpnEval.processToken();
       updateStackAndQueue();
-      if (rpnEval.getDone())
-         answerTextField.setText(rpnEval.getAnswer().toString());
+
    }//GEN-LAST:event_stepButtonActionPerformed
 
    private void clearAllButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_clearAllButtonActionPerformed
@@ -160,7 +167,7 @@ public class Prog6Frame extends java.awt.Frame
    {//GEN-HEADEREND:event_RPNTextFieldTextValueChanged
       rpnEval = new RpnEvaluator(RPNTextField.getText());
    }//GEN-LAST:event_RPNTextFieldTextValueChanged
-   
+
    private void updateStackAndQueue()
    {
       Stack tempStack = rpnEval.getStack();

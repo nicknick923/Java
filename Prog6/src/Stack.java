@@ -8,16 +8,12 @@
 public class Stack
 {
 
-   private Node linkedListStack;
+   public Node linkedListStack = null;
 
    /**
-    Constructor that that creates an empty stack.
+    Constructor that that creates an empty stack. public Stack() {
+    linkedListStack = null; }
     */
-   public Stack()
-   {
-      linkedListStack = null;
-   }
-
    /**
     This method returns a boolean value of true if the stack is empty or false
     if it is not empty.
@@ -34,9 +30,9 @@ public class Stack
 
     @param x The object to be added to the linkedListStack of the stack.
     */
-   public void push(Object x)
+   public void push(Object inObject)
    {
-      linkedListStack = new Node(x, linkedListStack);
+      linkedListStack = new Node(inObject, linkedListStack);
    }
 
    /**

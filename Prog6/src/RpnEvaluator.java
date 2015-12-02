@@ -12,8 +12,8 @@ public class RpnEvaluator
 {
 
    private final Fraction EMPTY_FRACTION_VALUE = null;
-   private final Stack fracStack = new Stack();
-   private final Queue fracQueue = new Queue();
+   private Stack fracStack = new Stack();
+   private Queue fracQueue = new Queue();
    private final Scanner stdin = new Scanner(System.in);
    private boolean isValid;
    private String myStringTok;
@@ -103,8 +103,8 @@ public class RpnEvaluator
       String nextToken = myStringTok.substring(0, myStringTok.indexOf(" "));
       processToken(nextToken);
       if (!myStringTok.replace(" ", "").equals(""))
-         myStringTok = myStringTok.substring(myStringTok.indexOf(" ")+1);
-      if (!fracStack.isEmpty() && myStringTok.replace(" ", "").equals(""))
+         myStringTok = myStringTok.substring(myStringTok.indexOf(" ") + 1);
+      if ((!fracStack.isEmpty()) && myStringTok.trim().equals(""))
       {
          answer = (Fraction) fracStack.pop();
          if (!fracStack.isEmpty())
@@ -151,7 +151,7 @@ public class RpnEvaluator
     */
    public boolean getDone()
    {
-      return myStringTok.trim().equals("");
+      return myStringTok.equals("");
    }
 
    /**
