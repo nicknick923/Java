@@ -178,8 +178,9 @@ public class Prog6Frame extends java.awt.Frame
             && rawRPNString.charAt(rawRPNString.length() - 1) == ' ')
          rawRPNString
                = rawRPNString.substring(0, rawRPNString.length() - 1);
-
-      if (!rawRPNString.equals(""))
+      rawRPNString = rawRPNString + " ";
+      
+      if (!rawRPNString.equals(" "))
       {
          evaluatorInitalized = true;
          rpnEval = new RpnEvaluator(rawRPNString);
@@ -205,6 +206,7 @@ public class Prog6Frame extends java.awt.Frame
       }
       else
          rpnEval.processToken();
+      //Test at the end to make sure that the previous step was valid
       testValid();
    }
 

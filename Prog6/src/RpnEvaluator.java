@@ -14,7 +14,7 @@ public class RpnEvaluator
    private final Fraction EMPTY_FRACTION_VALUE = null;
    private Stack fracStack = new Stack();
    private Queue fracQueue = new Queue();
-   private final Scanner stdin = new Scanner(System.in);
+   private Scanner stdin = new Scanner(System.in);
    private boolean isValid = true;
    private String myStringTok;
    private Fraction answer;
@@ -38,7 +38,7 @@ public class RpnEvaluator
     */
    public RpnEvaluator(String initStr)
    {
-      myStringTok = initStr + " ";
+      myStringTok = initStr;
    }
 
    /**
@@ -80,19 +80,19 @@ public class RpnEvaluator
     */
    public void processToken(String tok)
    {
-         if (tok.charAt(0) == '(')
-            pushFraction(tok);
-         else if (tok.equals("+"))
-            addHelper();
-         else if (tok.equals("-"))
-            subtractHelper();
-         else if (tok.equals("*"))
-            multiplyHelper();
-         else
-         {
-            System.out.print(tok);
-            isValid = false;
-         }
+      if (tok.charAt(0) == '(')
+         pushFraction(tok);
+      else if (tok.equals("+"))
+         addHelper();
+      else if (tok.equals("-"))
+         subtractHelper();
+      else if (tok.equals("*"))
+         multiplyHelper();
+      else
+      {
+         System.out.print(tok);
+         isValid = false;
+      }
    }
 
    /**
@@ -102,7 +102,8 @@ public class RpnEvaluator
    {
       if (myStringTok.length() > 1)
       {
-         String nextToken = myStringTok.substring(0, myStringTok.indexOf(" "));
+         String nextToken
+               = myStringTok.substring(0, myStringTok.indexOf(" "));
          processToken(nextToken);
          if (!myStringTok.replace(" ", "").equals(""))
             myStringTok = myStringTok.substring(myStringTok.indexOf(" ") + 1);
@@ -260,7 +261,8 @@ public class RpnEvaluator
          mathFrac1 = (Fraction) fracStack.pop();
       if (!fracStack.isEmpty())
          mathFrac2 = (Fraction) fracStack.pop();
-      isValid = mathFrac1 != EMPTY_FRACTION_VALUE && mathFrac2 != EMPTY_FRACTION_VALUE;
+      isValid = mathFrac1 != EMPTY_FRACTION_VALUE
+            && mathFrac2 != EMPTY_FRACTION_VALUE;
       return isValid;
 
    }
