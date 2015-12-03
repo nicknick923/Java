@@ -130,22 +130,9 @@ public class Prog6Frame extends java.awt.Frame
          initalizeEvaluator();
       if (rpnEval != null)
       {
-         if (evalValid())
-            if (rpnEval.getDone())
-            {
-               Fraction answer = rpnEval.getAnswer();
-               if (!evalValid())
-                  answerTextField.setText("Invalid Expression");
-               else
-                  answerTextField.setText(answer.toString());
-            }
-            else
-            {
-               rpnEval.processToken();
-               updateStackAndQueue();
-            }
-         if (!evalValid())
-            answerTextField.setText("Invalid Expression");
+         if (testValid())
+            testDone();
+         updateStackAndQueue();
       }
       else
          answerTextField.setText("Invalid Expression");
@@ -173,13 +160,16 @@ public class Prog6Frame extends java.awt.Frame
    private void RPNTextFieldTextValueChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_RPNTextFieldTextValueChanged
    {//GEN-HEADEREND:event_RPNTextFieldTextValueChanged
       answerTextField.setText("");
+      queueList.removeAll();
+      stackList.removeAll();
       evaluatorInitalized = false;
    }//GEN-LAST:event_RPNTextFieldTextValueChanged
 
    private void initalizeEvaluator()
    {
-
       String rawRPNString = RPNTextField.getText();
+
+      //This Section formats the rawRPNString into a program readable form
       while (rawRPNString.contains("  "))
          rawRPNString = rawRPNString.replace("  ", " ");
       while (rawRPNString.length() > 0 && rawRPNString.charAt(0) == ' ')
@@ -188,22 +178,34 @@ public class Prog6Frame extends java.awt.Frame
             && rawRPNString.charAt(rawRPNString.length() - 1) == ' ')
          rawRPNString
                = rawRPNString.substring(0, rawRPNString.length() - 1);
+
       if (!rawRPNString.equals(""))
       {
          evaluatorInitalized = true;
          rpnEval = new RpnEvaluator(rawRPNString);
-
       }
    }
 
-   private boolean evalValid()
+   private boolean testValid()
    {
-      return rpnEval.getValid();
+      boolean isValid = rpnEval.getValid();
+      if (!isValid)
+         answerTextField.setText("Invalid Expression");
+      return isValid;
    }
 
-   private boolean evalDone()
+   private void testDone()
    {
-      return rpnEval.getDone();
+      boolean isDone = rpnEval.getDone();
+      if (isDone)
+      {
+         Fraction answer = rpnEval.getAnswer();
+         if (testValid())
+            answerTextField.setText(answer.toString());
+      }
+      else
+         rpnEval.processToken();
+      testValid();
    }
 
    /**
@@ -212,17 +214,29 @@ public class Prog6Frame extends java.awt.Frame
    private void updateStackAndQueue()
    {
       stackList.removeAll();
-      queueList.removeAll();
       Stack tempStack = rpnEval.getStack();
-      Queue tempQueue = rpnEval.getQueue();
       while (!tempStack.isEmpty())
          stackList.add(tempStack.pop().toString());
       for (int i = stackList.getItemCount() - 1; i >= 0; i--)
          tempStack.push(new Fraction(stackList.getItem(i)));
+      flipStack();
+
+      queueList.removeAll();
+      Queue tempQueue = rpnEval.getQueue();
       while (!tempQueue.isEmpty())
          queueList.add(tempQueue.remove().toString());
       for (int i = 0; i < queueList.getItemCount(); i++)
          tempQueue.add(new Fraction(queueList.getItem(i)));
+   }
+
+   private void flipStack()
+   {
+      Queue flippingQueue = new Queue();
+      for (int i = 0; i < stackList.getItemCount(); i++)
+         flippingQueue.add(new Fraction(stackList.getItem(i)));
+      stackList.removeAll();
+      while (!flippingQueue.isEmpty())
+         stackList.add(flippingQueue.remove().toString());
    }
 
    /**

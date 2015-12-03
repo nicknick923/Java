@@ -163,7 +163,7 @@ public class RpnEvaluator
          answer = (Fraction) fracStack.pop();
          if (!fracStack.isEmpty())
             isValid = false;
-         fracStack.push(answer);
+         //fracStack.push(answer);
       }
       return answer;
    }
