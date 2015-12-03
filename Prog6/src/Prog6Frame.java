@@ -10,7 +10,8 @@
 public class Prog6Frame extends java.awt.Frame
 {
 
-   RpnEvaluator rpnEval;
+   private RpnEvaluator rpnEval;
+   private boolean evaluatorInitalized = false;
 
    /**
     Creates new form Prog6Frame
@@ -53,11 +54,11 @@ public class Prog6Frame extends java.awt.Frame
       queueLabel.setName(""); // NOI18N
       queueLabel.setText("Queue");
       add(queueLabel);
-      queueLabel.setBounds(20, 20, 41, 20);
+      queueLabel.setBounds(10, 30, 41, 20);
 
       stackLa.setText("Stack");
       add(stackLa);
-      stackLa.setBounds(140, 20, 34, 20);
+      stackLa.setBounds(130, 30, 34, 20);
 
       stepButton.setLabel("Step");
       stepButton.addActionListener(new java.awt.event.ActionListener()
@@ -68,7 +69,7 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
       add(stepButton);
-      stepButton.setBounds(250, 60, 41, 24);
+      stepButton.setBounds(240, 70, 41, 24);
 
       clearAllButton.setLabel("Click to clear all");
       clearAllButton.addActionListener(new java.awt.event.ActionListener()
@@ -79,15 +80,15 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
       add(clearAllButton);
-      clearAllButton.setBounds(250, 100, 100, 24);
+      clearAllButton.setBounds(240, 110, 100, 24);
 
       expressionLabel.setText("Raw RPN expression");
       add(expressionLabel);
-      expressionLabel.setBounds(20, 210, 130, 20);
+      expressionLabel.setBounds(10, 220, 130, 20);
 
       answerLabel.setText("Answer");
       add(answerLabel);
-      answerLabel.setBounds(20, 240, 50, 20);
+      answerLabel.setBounds(10, 250, 50, 20);
 
       RPNTextField.addTextListener(new java.awt.event.TextListener()
       {
@@ -97,17 +98,17 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
       add(RPNTextField);
-      RPNTextField.setBounds(150, 210, 180, 20);
+      RPNTextField.setBounds(140, 220, 180, 20);
       add(answerTextField);
-      answerTextField.setBounds(80, 240, 190, 20);
+      answerTextField.setBounds(70, 250, 190, 20);
 
       queueList.setName("queueList"); // NOI18N
       add(queueList);
-      queueList.setBounds(20, 40, 100, 160);
+      queueList.setBounds(10, 50, 100, 160);
 
       stackList.setName("stackList"); // NOI18N
       add(stackList);
-      stackList.setBounds(140, 40, 100, 160);
+      stackList.setBounds(130, 50, 100, 160);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -125,11 +126,29 @@ public class Prog6Frame extends java.awt.Frame
     */
    private void stepButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stepButtonActionPerformed
    {//GEN-HEADEREND:event_stepButtonActionPerformed
-      if (rpnEval.getDone())
-         answerTextField.setText(rpnEval.getAnswer().toString());
+      if (!evaluatorInitalized)
+         initalizeEvaluator();
       if (rpnEval != null)
-         rpnEval.processToken();
-      updateStackAndQueue();
+      {
+         if (evalValid())
+            if (rpnEval.getDone())
+            {
+               Fraction answer = rpnEval.getAnswer();
+               if (!evalValid())
+                  answerTextField.setText("Invalid Expression");
+               else
+                  answerTextField.setText(answer.toString());
+            }
+            else
+            {
+               rpnEval.processToken();
+               updateStackAndQueue();
+            }
+         if (!evalValid())
+            answerTextField.setText("Invalid Expression");
+      }
+      else
+         answerTextField.setText("Invalid Expression");
 
    }//GEN-LAST:event_stepButtonActionPerformed
    /**
@@ -153,8 +172,40 @@ public class Prog6Frame extends java.awt.Frame
     */
    private void RPNTextFieldTextValueChanged(java.awt.event.TextEvent evt)//GEN-FIRST:event_RPNTextFieldTextValueChanged
    {//GEN-HEADEREND:event_RPNTextFieldTextValueChanged
-      rpnEval = new RpnEvaluator(RPNTextField.getText());
+      answerTextField.setText("");
+      evaluatorInitalized = false;
    }//GEN-LAST:event_RPNTextFieldTextValueChanged
+
+   private void initalizeEvaluator()
+   {
+
+      String rawRPNString = RPNTextField.getText();
+      while (rawRPNString.contains("  "))
+         rawRPNString = rawRPNString.replace("  ", " ");
+      while (rawRPNString.length() > 0 && rawRPNString.charAt(0) == ' ')
+         rawRPNString = rawRPNString.substring(1);
+      while (rawRPNString.length() > 0
+            && rawRPNString.charAt(rawRPNString.length() - 1) == ' ')
+         rawRPNString
+               = rawRPNString.substring(0, rawRPNString.length() - 1);
+      if (!rawRPNString.equals(""))
+      {
+         evaluatorInitalized = true;
+         rpnEval = new RpnEvaluator(rawRPNString);
+
+      }
+   }
+
+   private boolean evalValid()
+   {
+      return rpnEval.getValid();
+   }
+
+   private boolean evalDone()
+   {
+      return rpnEval.getDone();
+   }
+
    /**
     This method updates and removes the fractions in the stack.
     */
@@ -166,7 +217,7 @@ public class Prog6Frame extends java.awt.Frame
       Queue tempQueue = rpnEval.getQueue();
       while (!tempStack.isEmpty())
          stackList.add(tempStack.pop().toString());
-      for (int i = 0; i < stackList.getItemCount(); i++)
+      for (int i = stackList.getItemCount() - 1; i >= 0; i--)
          tempStack.push(new Fraction(stackList.getItem(i)));
       while (!tempQueue.isEmpty())
          queueList.add(tempQueue.remove().toString());

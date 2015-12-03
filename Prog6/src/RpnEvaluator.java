@@ -15,7 +15,7 @@ public class RpnEvaluator
    private Stack fracStack = new Stack();
    private Queue fracQueue = new Queue();
    private final Scanner stdin = new Scanner(System.in);
-   private boolean isValid;
+   private boolean isValid = true;
    private String myStringTok;
    private Fraction answer;
    private Fraction mathFrac1;
@@ -80,19 +80,19 @@ public class RpnEvaluator
     */
    public void processToken(String tok)
    {
-      if (tok.charAt(0) == '(')
-         pushFraction(tok);
-      else if (tok.equals("+"))
-         addHelper();
-      else if (tok.equals("-"))
-         subtractHelper();
-      else if (tok.equals("*"))
-         multiplyHelper();
-      else
-      {
-         System.out.print(tok);
-         isValid = false;
-      }
+         if (tok.charAt(0) == '(')
+            pushFraction(tok);
+         else if (tok.equals("+"))
+            addHelper();
+         else if (tok.equals("-"))
+            subtractHelper();
+         else if (tok.equals("*"))
+            multiplyHelper();
+         else
+         {
+            System.out.print(tok);
+            isValid = false;
+         }
    }
 
    /**
@@ -100,15 +100,12 @@ public class RpnEvaluator
     */
    public void processToken()
    {
-      String nextToken = myStringTok.substring(0, myStringTok.indexOf(" "));
-      processToken(nextToken);
-      if (!myStringTok.replace(" ", "").equals(""))
-         myStringTok = myStringTok.substring(myStringTok.indexOf(" ") + 1);
-      if ((!fracStack.isEmpty()) && myStringTok.trim().equals(""))
+      if (myStringTok.length() > 1)
       {
-         answer = (Fraction) fracStack.pop();
-         if (!fracStack.isEmpty())
-            isValid = false;
+         String nextToken = myStringTok.substring(0, myStringTok.indexOf(" "));
+         processToken(nextToken);
+         if (!myStringTok.replace(" ", "").equals(""))
+            myStringTok = myStringTok.substring(myStringTok.indexOf(" ") + 1);
       }
       else
          isValid = false;
@@ -161,6 +158,13 @@ public class RpnEvaluator
     */
    public Fraction getAnswer()
    {
+      if ((!fracStack.isEmpty()) && myStringTok.trim().equals(""))
+      {
+         answer = (Fraction) fracStack.pop();
+         if (!fracStack.isEmpty())
+            isValid = false;
+         fracStack.push(answer);
+      }
       return answer;
    }
 

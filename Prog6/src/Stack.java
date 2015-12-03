@@ -8,12 +8,16 @@
 public class Stack
 {
 
-   public Node linkedListStack = null;
+   private Node linkedListStack;
 
    /**
-    Constructor that that creates an empty stack. public Stack() {
-    linkedListStack = null; }
+    Constructor that that creates an empty stack.
     */
+   public Stack()
+   {
+      linkedListStack = null;
+   }
+
    /**
     This method returns a boolean value of true if the stack is empty or false
     if it is not empty.
