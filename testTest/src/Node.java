@@ -7,12 +7,13 @@
 public class Node
 {
 
-   public Node next;
    public Object info;
+   public Node next;
 
-   public Node(Object inInfo, Node inNext)
+   public Node(Object x, Node p)
    {
-      info = inInfo;
-      next = inNext;
+      info = x;
+      next = p;
    }
+
 }
