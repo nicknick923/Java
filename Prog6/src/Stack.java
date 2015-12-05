@@ -32,7 +32,8 @@ public class Stack
    /**
     This method adds an object to the top of the stack.
 
-    @param x The object to be added to the linkedListStack of the stack.
+    @param inObject The object to be added to the linkedListStack of the
+    stack.
     */
    public void push(Object inObject)
    {
