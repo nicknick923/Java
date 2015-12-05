@@ -1,4 +1,7 @@
 
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
 /**
  This class is used to evaluate reverse polish notation expressions. This
  class only outputs an answer when an expression is valid.
@@ -6,9 +9,6 @@
  @author Jake Ira
  @author Nick Sosinski
  */
-import java.util.Scanner;
-import java.util.StringTokenizer;
-
 public class RpnEvaluator
 {
 
@@ -144,7 +144,7 @@ public class RpnEvaluator
    /**
     This method returns true if the processing is complete.
 
-    @return True if it is dine, false if not.
+    @return True if it is done, false if not.
     */
    public boolean getDone()
    {
