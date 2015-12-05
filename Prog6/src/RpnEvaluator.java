@@ -1,7 +1,7 @@
 
 /**
- This class is used to evaluate reverse polish notation expressions that end
- with a #. This class only outputs an answer when an expression is valid.
+ This class is used to evaluate reverse polish notation expressions. This
+ class only outputs an answer when an expression is valid.
 
  @author Jake Ira
  @author Nick Sosinski
@@ -250,6 +250,14 @@ public class RpnEvaluator
       System.out.print("*");
    }
 
+   /**
+    This method tests to see if popping two fractions the stack will make the
+    program invalid, if it remains valid, then the two fractions have been
+    popped into mathFrac1 and mathFrac2 and the method returned true if its
+    still valid, false if not.
+
+    @return True if the pop was successful or false if it wasn't.
+    */
    private boolean fractionPopper()
    {
       mathFrac1 = EMPTY_FRACTION_VALUE;

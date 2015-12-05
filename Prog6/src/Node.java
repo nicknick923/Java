@@ -1,6 +1,6 @@
 
 /**
- This class creates each node in the linked list.
+ This class represents an element in a linked list.
 
  @author Nick Sosinski
  @author Jake Ira
@@ -12,10 +12,10 @@ public class Node
    public Object info;
 
    /**
-    This method creates the nodes for the linked list.
+    This constructor creates a node with data inInfo and next Node inNext.
 
-    @param inInfo inputs the information for the node.
-    @param inNext inputs a reference to where the next node is.
+    @param inInfo The information for the node.
+    @param inNext A reference to where the next node is.
     */
    public Node(Object inInfo, Node inNext)
    {
