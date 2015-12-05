@@ -131,7 +131,12 @@ public class Prog6Frame extends java.awt.Frame
       if (rpnEval != null)
       {
          if (testValid())
-            testDone();
+            if (!testDone())
+            {
+               rpnEval.processToken();
+               //Test at the end to make sure that the previous step was valid
+               testValid();
+            }
          updateStackAndQueue();
       }
       else
@@ -195,7 +200,7 @@ public class Prog6Frame extends java.awt.Frame
       return isValid;
    }
 
-   private void testDone()
+   private boolean testDone()
    {
       boolean isDone = rpnEval.getDone();
       if (isDone)
@@ -204,10 +209,7 @@ public class Prog6Frame extends java.awt.Frame
          if (testValid())
             answerTextField.setText(answer.toString());
       }
-      else
-         rpnEval.processToken();
-      //Test at the end to make sure that the previous step was valid
-      testValid();
+      return isDone;
    }
 
    /**
