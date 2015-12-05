@@ -1,4 +1,6 @@
 
+import java.util.StringTokenizer;
+
 /**
  This class has commands to create and perform mathematics on individual
  fractions.
@@ -6,8 +8,6 @@
  @author Jake Ira
  @author Nick Sosinski
  */
-import java.util.StringTokenizer;
-
 public class Fraction
 {
 
@@ -39,7 +39,7 @@ public class Fraction
     denominator.
 
     @param FractionString The fraction string in the form of
-    numerator/denominator
+    numerator/denominator.
     */
    public Fraction(String FractionString)
    {
@@ -53,8 +53,8 @@ public class Fraction
     Fraction constructor that takes two integer values and creates a fraction
     object.
 
-    @param nu The fractions numerator
-    @param de The fractions denominator
+    @param nu The fractions numerator.
+    @param de The fractions denominator.
     */
    public Fraction(int nu, int de)
    {
@@ -67,7 +67,7 @@ public class Fraction
     This method returns the the fraction in the form of a string with
     (numerator / denominator).
 
-    @return A string in the form of "(" numerator "/" denominator ")"
+    @return A string in the form of "(" numerator "/" denominator ")".
     */
    @Override
    public String toString()
@@ -79,8 +79,8 @@ public class Fraction
     This method returns a boolean value of true if two fraction objects are
     equal, and false if not.
 
-    @param x The second object to be compared
-    @return The boolean value indicating weather the two objects were equal
+    @param x The second object to be compared.
+    @return The boolean value indicating weather the two objects were equal.
     */
    @Override
    public boolean equals(Object x)
@@ -126,10 +126,10 @@ public class Fraction
 
    /**
     This method takes a fraction and adds it to the the fraction that called
-    the method and returns the result of the addition.
+    the method and returns the sum.
 
-    @param inFraction The other summand fraction
-    @return The resulting fraction in reduced form
+    @param inFraction The other summand fraction.
+    @return The resulting fraction in reduced form.
     */
    public Fraction addFraction(Fraction inFraction)
    {
@@ -145,11 +145,11 @@ public class Fraction
    }
 
    /**
-    This method returns the result of the subtraction of the calling fraction
+    This method returns the difference of the calling fraction
     minus the passed in fraction.
 
-    @param inFraction The subtrahend fraction
-    @return The resulting fraction in reduced form
+    @param inFraction The subtrahend fraction.
+    @return The resulting fraction in reduced form.
     */
    public Fraction subtractFraction(Fraction inFraction)
    {
@@ -168,8 +168,8 @@ public class Fraction
     This method returns the product of the passed in fraction times the
     fraction that called the method.
 
-    @param inFraction The other multiplicand fraction
-    @return The resulting fraction in reduced form
+    @param inFraction The other multiplicand fraction.
+    @return The resulting fraction in reduced form.
     */
    public Fraction multiplyFraction(Fraction inFraction)
    {
@@ -186,7 +186,7 @@ public class Fraction
    /**
     This method tests the Fraction class.
 
-    @param args command line arguments4
+    @param args command line arguments4.
     */
    public static void main(String args[])
    {

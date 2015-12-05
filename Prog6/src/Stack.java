@@ -11,7 +11,7 @@ public class Stack
    private Node linkedListStack;
 
    /**
-    Constructor that that creates an empty stack.
+    Constructor that creates an empty stack.
     */
    public Stack()
    {
