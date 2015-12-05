@@ -1,7 +1,7 @@
 
 /**
  This class is a digital queue where elements are added to one end and removed
- from the other.
+ from the other with linked list implementation.
 
  @author Nick Sosinski
  */

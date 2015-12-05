@@ -119,7 +119,8 @@ public class Prog6Frame extends java.awt.Frame
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
        System.exit(0);
     }//GEN-LAST:event_exitForm
-   /**
+   
+    /**
     This method will process the RPN String token by token.
 
     @param evt A Java action event that we don't use.
@@ -127,7 +128,7 @@ public class Prog6Frame extends java.awt.Frame
    private void stepButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_stepButtonActionPerformed
    {//GEN-HEADEREND:event_stepButtonActionPerformed
       if (!evaluatorInitalized)
-         initalizeEvaluator();
+         initializeEvaluator();
       if (rpnEval != null)
       {
          if (testValid())
@@ -144,6 +145,7 @@ public class Prog6Frame extends java.awt.Frame
 
 
    }//GEN-LAST:event_stepButtonActionPerformed
+
    /**
     This method clears all the fractions in the stack and queue.
 
@@ -157,6 +159,7 @@ public class Prog6Frame extends java.awt.Frame
       queueList.removeAll();
       stackList.removeAll();
    }//GEN-LAST:event_clearAllButtonActionPerformed
+
    /**
     This method updates the RPNEvaluator with the current string in the Raw
     RPN Expression text field.
@@ -171,7 +174,11 @@ public class Prog6Frame extends java.awt.Frame
       evaluatorInitalized = false;
    }//GEN-LAST:event_RPNTextFieldTextValueChanged
 
-   private void initalizeEvaluator()
+   /**
+    This method initializes the RPN evaluator after formatting the text in the
+    raw RPN expression box as long as the string is not empty.
+    */
+   private void initializeEvaluator()
    {
       String rawRPNString = RPNTextField.getText();
 
@@ -192,6 +199,13 @@ public class Prog6Frame extends java.awt.Frame
       }
    }
 
+   /**
+    This method checks weather the evaluator is valid up to this point, and if
+    not it notifies the user by putting "Invalid Expression" in the answer
+    text field.
+
+    @return True if its valid, false if not.
+    */
    private boolean testValid()
    {
       boolean isValid = rpnEval.getValid();
@@ -200,6 +214,13 @@ public class Prog6Frame extends java.awt.Frame
       return isValid;
    }
 
+   /**
+    This method tests to see if the evaluator is done and if it is, it sets
+    the answer text box, and in either case returns weather or not it was
+    done.
+
+    @return True if the evaluator is done, false if not.
+    */
    private boolean testDone()
    {
       boolean isDone = rpnEval.getDone();
@@ -233,6 +254,10 @@ public class Prog6Frame extends java.awt.Frame
          tempQueue.add(new Fraction(queueList.getItem(i)));
    }
 
+   /**
+    This method flips the stack so that the top of the stack is at the top of
+    the list.
+    */
    private void flipStack()
    {
       Queue flippingQueue = new Queue();
@@ -258,8 +283,7 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
    }
-
-
+   
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.TextField RPNTextField;
    private java.awt.Label answerLabel;

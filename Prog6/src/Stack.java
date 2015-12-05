@@ -1,7 +1,7 @@
 
 /**
  This class is a digital stack where elements are added and removed from one
- end only.
+ end only with linked list implementation.
 
  @author Jake Ira
  */
