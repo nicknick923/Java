@@ -33,7 +33,8 @@ public class RpnEvaluator
    }
 
    /**
-    This constructor sets myStringTok to the passed string and thats all.
+    This constructor sets myStringTok's string to the passed string and thats
+    all.
 
     @param initStr The full expression string to be processed.
     */
@@ -97,7 +98,7 @@ public class RpnEvaluator
    }
 
    /**
-    This method is called from the GUI to process to compleat the next step.
+    This method is called from the GUI to process to complete the next step.
     */
    public void processToken()
    {
