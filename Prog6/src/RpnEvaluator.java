@@ -7,6 +7,7 @@
  @author Nick Sosinski
  */
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class RpnEvaluator
 {
@@ -16,7 +17,7 @@ public class RpnEvaluator
    private Queue fracQueue = new Queue();
    private Scanner stdin = new Scanner(System.in);
    private boolean isValid = true;
-   private String myStringTok;
+   private StringTokenizer myStringTok;
    private Fraction answer;
    private Fraction mathFrac1;
    private Fraction mathFrac2;
@@ -38,7 +39,7 @@ public class RpnEvaluator
     */
    public RpnEvaluator(String initStr)
    {
-      myStringTok = initStr;
+      myStringTok = new StringTokenizer(initStr);
    }
 
    /**
@@ -100,13 +101,10 @@ public class RpnEvaluator
     */
    public void processToken()
    {
-      if (myStringTok.length() > 1)
+      if (myStringTok.hasMoreTokens())
       {
-         String nextToken
-               = myStringTok.substring(0, myStringTok.indexOf(" "));
+         String nextToken = myStringTok.nextToken();
          processToken(nextToken);
-         if (!myStringTok.replace(" ", "").equals(""))
-            myStringTok = myStringTok.substring(myStringTok.indexOf(" ") + 1);
       }
       else
          isValid = false;
@@ -149,7 +147,7 @@ public class RpnEvaluator
     */
    public boolean getDone()
    {
-      return myStringTok.equals("");
+      return !myStringTok.hasMoreTokens();
    }
 
    /**
@@ -159,12 +157,11 @@ public class RpnEvaluator
     */
    public Fraction getAnswer()
    {
-      if ((!fracStack.isEmpty()) && myStringTok.trim().equals(""))
+      if ((!fracStack.isEmpty()) && !myStringTok.hasMoreTokens())
       {
          answer = (Fraction) fracStack.pop();
          if (!fracStack.isEmpty())
             isValid = false;
-         //fracStack.push(answer);
       }
       return answer;
    }

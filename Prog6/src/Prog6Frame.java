@@ -137,6 +137,7 @@ public class Prog6Frame extends java.awt.Frame
       else
          answerTextField.setText("Invalid Expression");
 
+
    }//GEN-LAST:event_stepButtonActionPerformed
    /**
     This method clears all the fractions in the stack and queue.
@@ -178,9 +179,8 @@ public class Prog6Frame extends java.awt.Frame
             && rawRPNString.charAt(rawRPNString.length() - 1) == ' ')
          rawRPNString
                = rawRPNString.substring(0, rawRPNString.length() - 1);
-      rawRPNString = rawRPNString + " ";
-      
-      if (!rawRPNString.equals(" "))
+
+      if (!rawRPNString.equals(""))
       {
          evaluatorInitalized = true;
          rpnEval = new RpnEvaluator(rawRPNString);
