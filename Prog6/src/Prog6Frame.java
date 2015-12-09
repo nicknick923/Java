@@ -31,7 +31,7 @@ public class Prog6Frame extends java.awt.Frame
    {
 
       queueLabel = new java.awt.Label();
-      stackLa = new java.awt.Label();
+      topOfStackLabel = new java.awt.Label();
       stepButton = new java.awt.Button();
       clearAllButton = new java.awt.Button();
       expressionLabel = new java.awt.Label();
@@ -40,8 +40,12 @@ public class Prog6Frame extends java.awt.Frame
       answerTextField = new java.awt.TextField();
       queueList = new java.awt.List();
       stackList = new java.awt.List();
+      stackLabel = new java.awt.Label();
 
-      setMinimumSize(new java.awt.Dimension(500, 500));
+      setBackground(java.awt.Color.lightGray);
+      setMaximumSize(new java.awt.Dimension(375, 300));
+      setMinimumSize(new java.awt.Dimension(375, 300));
+      setTitle("RPN Calculator");
       addWindowListener(new java.awt.event.WindowAdapter()
       {
          public void windowClosing(java.awt.event.WindowEvent evt)
@@ -54,11 +58,11 @@ public class Prog6Frame extends java.awt.Frame
       queueLabel.setName(""); // NOI18N
       queueLabel.setText("Queue");
       add(queueLabel);
-      queueLabel.setBounds(10, 30, 41, 20);
+      queueLabel.setBounds(20, 40, 41, 20);
 
-      stackLa.setText("Stack");
-      add(stackLa);
-      stackLa.setBounds(130, 30, 34, 20);
+      topOfStackLabel.setText("Top");
+      add(topOfStackLabel);
+      topOfStackLabel.setBounds(140, 60, 25, 20);
 
       stepButton.setLabel("Step");
       stepButton.addActionListener(new java.awt.event.ActionListener()
@@ -69,7 +73,7 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
       add(stepButton);
-      stepButton.setBounds(240, 70, 41, 24);
+      stepButton.setBounds(250, 80, 41, 24);
 
       clearAllButton.setLabel("Click to clear all");
       clearAllButton.addActionListener(new java.awt.event.ActionListener()
@@ -80,15 +84,15 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
       add(clearAllButton);
-      clearAllButton.setBounds(240, 110, 100, 24);
+      clearAllButton.setBounds(250, 120, 100, 24);
 
       expressionLabel.setText("Raw RPN expression");
       add(expressionLabel);
-      expressionLabel.setBounds(10, 220, 130, 20);
+      expressionLabel.setBounds(20, 230, 130, 20);
 
       answerLabel.setText("Answer");
       add(answerLabel);
-      answerLabel.setBounds(10, 250, 50, 20);
+      answerLabel.setBounds(20, 260, 50, 20);
 
       RPNTextField.addTextListener(new java.awt.event.TextListener()
       {
@@ -98,17 +102,25 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
       add(RPNTextField);
-      RPNTextField.setBounds(140, 220, 180, 20);
+      RPNTextField.setBounds(150, 230, 210, 20);
+      RPNTextField.getAccessibleContext().setAccessibleName("");
+
+      answerTextField.setEditable(false);
       add(answerTextField);
-      answerTextField.setBounds(70, 250, 190, 20);
+      answerTextField.setBounds(80, 260, 280, 20);
 
       queueList.setName("queueList"); // NOI18N
       add(queueList);
-      queueList.setBounds(10, 50, 100, 160);
+      queueList.setBounds(20, 60, 100, 160);
+      queueList.getAccessibleContext().setAccessibleName("queueList");
 
       stackList.setName("stackList"); // NOI18N
       add(stackList);
-      stackList.setBounds(130, 50, 100, 160);
+      stackList.setBounds(140, 80, 100, 140);
+
+      stackLabel.setText("Stack");
+      add(stackLabel);
+      stackLabel.setBounds(140, 40, 34, 20);
 
       pack();
    }// </editor-fold>//GEN-END:initComponents
@@ -119,8 +131,8 @@ public class Prog6Frame extends java.awt.Frame
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
        System.exit(0);
     }//GEN-LAST:event_exitForm
-   
-    /**
+
+   /**
     This method will process the RPN String token by token.
 
     @param evt A Java action event that we don't use.
@@ -283,7 +295,7 @@ public class Prog6Frame extends java.awt.Frame
          }
       });
    }
-   
+
    // Variables declaration - do not modify//GEN-BEGIN:variables
    private java.awt.TextField RPNTextField;
    private java.awt.Label answerLabel;
@@ -292,8 +304,9 @@ public class Prog6Frame extends java.awt.Frame
    private java.awt.Label expressionLabel;
    private java.awt.Label queueLabel;
    private java.awt.List queueList;
-   private java.awt.Label stackLa;
+   private java.awt.Label stackLabel;
    private java.awt.List stackList;
    private java.awt.Button stepButton;
+   private java.awt.Label topOfStackLabel;
    // End of variables declaration//GEN-END:variables
 }

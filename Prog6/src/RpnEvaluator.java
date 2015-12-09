@@ -78,21 +78,21 @@ public class RpnEvaluator
    /**
     This method processes the token passed in.
 
-    @param tok The token that is to be processed.
+    @param token The token that is to be processed.
     */
-   public void processToken(String tok)
+   public void processToken(String token)
    {
-      if (tok.charAt(0) == '(')
-         pushFraction(tok);
-      else if (tok.equals("+"))
+      if (token.charAt(0) == '(')
+         pushFraction(token);
+      else if (token.equals("+"))
          addHelper();
-      else if (tok.equals("-"))
+      else if (token.equals("-"))
          subtractHelper();
-      else if (tok.equals("*"))
+      else if (token.equals("*"))
          multiplyHelper();
       else
       {
-         System.out.print(tok);
+         System.out.print(token);
          isValid = false;
       }
    }

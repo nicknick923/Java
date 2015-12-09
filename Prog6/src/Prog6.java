@@ -1,6 +1,6 @@
 
 /**
- Runs the main for Program 6
+ Runs the main for Program 6.
 
  @author Mr. Scanlan
  */
@@ -10,7 +10,7 @@ public class Prog6
    /**
     Runs RpnEvaluator.
 
-    @param args is unused
+    @param args is unused.
     */
    public static void main(String args[])
    {

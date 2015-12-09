@@ -1,21 +1,21 @@
 
 /**
  This class is a digital stack where elements are added and removed from one
- end only with linked list implementation.
+ end only.
 
  @author Jake Ira
  */
 public class Stack
 {
 
-   private Node linkedListStack;
+   private Node top;
 
    /**
     Constructor that creates an empty stack.
     */
    public Stack()
    {
-      linkedListStack = null;
+      top = null;
    }
 
    /**
@@ -26,18 +26,18 @@ public class Stack
     */
    public boolean isEmpty()
    {
-      return linkedListStack == null;
+      return top == null;
    }
 
    /**
     This method adds an object to the top of the stack.
 
-    @param inObject The object to be added to the linkedListStack of the
+    @param inObject The object to be added to the top of the
     stack.
     */
    public void push(Object inObject)
    {
-      linkedListStack = new Node(inObject, linkedListStack);
+      top = new Node(inObject, top);
    }
 
    /**
@@ -52,8 +52,8 @@ public class Stack
          return null;
       else
       {
-         Object x = linkedListStack.info;
-         linkedListStack = linkedListStack.next;
+         Object x = top.info;
+         top = top.next;
          return x;
       }
 
@@ -64,7 +64,7 @@ public class Stack
     */
    public void clear()
    {
-      linkedListStack = null;
+      top = null;
    }
 
    /**

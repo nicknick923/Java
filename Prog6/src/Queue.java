@@ -1,7 +1,7 @@
 
 /**
  This class is a digital queue where elements are added to one end and removed
- from the other with linked list implementation.
+ from the other.
 
  @author Nick Sosinski
  */
@@ -74,7 +74,7 @@ public class Queue
    }
 
    /**
-    This method tests the Queue2 class.
+    This method tests the Queue class.
 
     @param args The command line arguments.
     */
