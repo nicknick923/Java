@@ -148,7 +148,7 @@ public class Fraction
     This method returns the difference of the calling fraction
     minus the passed in fraction.
 
-    @param inFraction The subtrahend fraction.
+    @param inFraction The subtracted fraction.
     @return The resulting fraction in reduced form.
     */
    public Fraction subtractFraction(Fraction inFraction)
