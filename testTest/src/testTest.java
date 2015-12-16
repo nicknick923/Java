@@ -11,6 +11,9 @@ public class testTest
 
    public static void main(String args[])
    {
+      runner test =  new runner();
+      test.run();
+      /*
       Node list;
       Node p;
 
@@ -33,5 +36,6 @@ public class testTest
 
          }
       System.out.println("hi");
+            */
    }
 }

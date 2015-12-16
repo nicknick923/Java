@@ -1,0 +1,13 @@
+Brace Matching:
+   If in string or a character, ignore the sign.
+   Use a stack to store the next expected closing sign.
+
+Indentation:
+   If the previous line did not have a semicolon, and the current line contains text, don't flag current line.
+
+Magic numbers:
+   A number not in a string or a character or a line that contains "normal termination of program" that is not 1 or 0.
+
+Line Length:
+   If the line is longer than __ characters then its wrong.
+
